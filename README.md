@@ -36,6 +36,35 @@
 
 **Key Mapping:**
 
+| 按键             | 含义          |
+| -------------   |:-------------|
+| F2              | 关闭当前buffer                                |
+| F3              | 退出vim                                       |
+| F4              | 保存文件                                      |
+| F5              | 打开文件浏览器                                |
+| F6              | 打开tagbar                                   |
+| F7              | 查找光标位置的词语                             |
+| F8              | 替换光标位置的词语                             |
+| F11             | 开关代码缩进线                                 |
+| F12             | 打开文件历史记录                               |
+| w  v            | 垂直分割当前窗口                               |
+| w  x            | 水平分割当前窗口                               |
+| w  c            | 关闭当前窗口                                   |
+| l  n            | 开关行号                                      |
+| f  x            | 打开quickfix窗口                              |
+| a  s            | 调用AsyncRun执行异步操作                       |
+| t               | vim中打开shell                                |
+| b  u            | 打开buffer list                               |
+| f  u            | 打开当前文件函数列表                            |
+| m               | 标记光标下词语                                 |
+| Ctrl n          | 新建buffer                                    |
+| Ctrl c          | 复制                                          |
+| Ctrl x          | 剪切                                          | 
+| Ctrl v          | 粘贴                                          |
+| Ctrl a          | 全选                                          |
+| Ctrl \          | 注释、反注释                                   |
+| Ctrl p          | 打开文件搜索                                   |
+| Ctrl Shift - s  | 搜索光标下变量名或函数名调用位置（需要cscope支持） |
 
 
 ### Changelog
