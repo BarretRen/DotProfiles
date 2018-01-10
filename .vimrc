@@ -53,10 +53,11 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'vim-scripts/a.vim'
 Plug 'https://github.com/skywind3000/asyncrun.vim.git'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'Renxiuhu/vim-colorscheme-tatami'
+Plug 'Renxiuhu/vim-colorscheme'
 Plug 'Renxiuhu/SearchOnSelectVim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'aceofall/gtags.vim'
 "Plug 'Shougo/neocomplcache.vim'
 if has("python") || has("python3")
 	Plug 'Renxiuhu/LeaderF'
@@ -214,23 +215,19 @@ let g:bufExplorerUseCurrentWindow=1  " Open in new windo
 nmap bu \bs
 
 "--------------------------------------------------------------------------------
+" gtags
+"--------------------------------------------------------------------------------
+let GtagsCscope_Auto_Load = 1
+let CtagsCscope_Auto_Map = 1
+let GtagsCscope_Quiet = 1
+let GtagsCscope_Absolute_Path = 1
+
+"--------------------------------------------------------------------------------
 " cscope
 "--------------------------------------------------------------------------------
-if strridx(getcwd(),"tmp") == -1
-    if strridx(getcwd(),"repo2") == -1
-        cs add /repo/barretr/fdt1265/cscope.out /
-    else
-        cs add /repo2/barretr/workspace/fdt1265/cscope.out /
-    endif
-else
-    if strridx(getcwd(),"repo2") == -1
-        cs add /repo/barretr/fdt1265_tmp/cscope.out /
-    else
-        cs add /repo2/barretr/workspace/fdt1265_tmp/cscope.out /
-    endif
-endif
 ":set cscopequickfix=s-,g-,c-,d-,i-,t-,e-,f-   "是否使用 quickfix 窗口来显示 cscope 结果
 :set cscopetag
+set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
 ":set tags=/home/barretr/space/cvpsw/tags,/home/barretr/space/ISR5501/sw/vobs/tags
 " 按下面这种组合键有技巧,按了<C-_>后要马上按下一个键,否则屏幕一闪
 " 就回到nomal状态了
@@ -256,7 +253,7 @@ else
         nmap <F9> :AsyncRun find /repo2/barretr/workspace/fdt1265_tmp -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.cc' -o -iname '*.hh' -o -iname "*.idl" > ./cscope.files<CR>
     endif
 endif
-nmap <F10> :AsyncRun cscope -b -q -i ./cscope.files -f ./cscope.out<CR>
+nmap <F10> :AsyncRun gtags -f cscope.files<CR>
 
 "--------------------------------------------------------------------------------
 " EasyGrep
@@ -308,6 +305,7 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 nmap <C-\> \ci
+vmap <C-\> \ci
 
 "--------------------------------------------------------------------------------
 " SearchOnSelectVim
@@ -390,4 +388,3 @@ endif
 "##################################################################
 "########################## End Of Vimrc ##########################
 "##################################################################
-
