@@ -64,7 +64,7 @@
 | Ctrl a          | 全选                                          |
 | Ctrl \          | 注释、反注释                                   |
 | Ctrl p          | 打开文件搜索                                   |
-| Ctrl Shift - s  | 搜索光标下变量名或函数名调用位置（需要cscope支持） |
+| Ctrl Shift - s  | 搜索光标下变量名或函数名调用位置（需要gtags支持） |
 
 
 ### Changelog
