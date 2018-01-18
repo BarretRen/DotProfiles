@@ -58,6 +58,7 @@ Plug 'Renxiuhu/SearchOnSelectVim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'aceofall/gtags.vim'
+Plug 'vim-scripts/YankRing.vim'
 "Plug 'Shougo/neocomplcache.vim'
 if has("python") || has("python3")
 	Plug 'Renxiuhu/LeaderF'
@@ -228,7 +229,6 @@ let GtagsCscope_Absolute_Path = 1
 ":set cscopequickfix=s-,g-,c-,d-,i-,t-,e-,f-   "是否使用 quickfix 窗口来显示 cscope 结果
 :set cscopetag
 set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
-":set tags=/home/barretr/space/cvpsw/tags,/home/barretr/space/ISR5501/sw/vobs/tags
 " 按下面这种组合键有技巧,按了<C-_>后要马上按下一个键,否则屏幕一闪
 " 就回到nomal状态了
 " <C-_>s的按法是先按"Ctrl+Shift+-",然后很快再按"s"
@@ -335,10 +335,22 @@ let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 
 "--------------------------------------------------------------------------------
+"" YankRing, 可视化多选择剪切板
+"--------------------------------------------------------------------------------
+""显示yankring中的内容
+nmap ys :YRShow<CR>
+nmap yc :YRClear<CR>
+let g:yankring_paste_n_bkey = ''
+let g:yankring_paste_n_akey = ''
+let g:yankring_paste_v_bkey = ''
+let g:yankring_paste_v_akey = ''
+let g:yankring_zap_keys = ''
+
+"--------------------------------------------------------------------------------
 " LeaderF and ctrlp
 "--------------------------------------------------------------------------------
 if has("python") || has("python3")
-	let g:Lf_ShortcutF = '<c-p>' " search file
+	let g:Lf_ShortcutF = '<c-o>' " search file
 	let g:Lf_ShortcutB = '<c-b>' " list buffer
 	let g:Lf_ShowRelativePath = 0
 	let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
@@ -349,8 +361,8 @@ if has("python") || has("python3")
 	nmap fu :LeaderfBufTag<cr>
 else
 "按键映射
-	let g:ctrlp_map = '<c-p>'
-	let g:ctrlp_cmd = 'CtrlP'
+	let g:ctrlp_map = '<c-o>'
+	" let g:ctrlp_cmd = 'CtrlP'
 	let g:ctrlp_working_path_mode = 'ra'
 	let g:ctrlp_regexp = 1
 	let g:ctrlp_match_window_bottom=1
