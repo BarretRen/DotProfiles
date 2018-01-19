@@ -65,7 +65,6 @@
 | Ctrl v          | 粘贴                                          |
 | Ctrl a          | 全选                                          |
 | Ctrl \          | 注释、反注释                                   |
-| Ctrl o          | 打开文件搜索(同source insight)                    |
 | Ctrl p          | 打开文件搜索                                   |
 | Ctrl Shift - s  | 搜索光标下变量名或函数名调用位置（需要gtags支持） |
 

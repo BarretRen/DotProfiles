@@ -340,17 +340,14 @@ let g:cpp_concepts_highlight = 1
 ""显示yankring中的内容
 nmap ys :YRShow<CR>
 nmap yc :YRClear<CR>
-let g:yankring_paste_n_bkey = ''
-let g:yankring_paste_n_akey = ''
-let g:yankring_paste_v_bkey = ''
-let g:yankring_paste_v_akey = ''
-let g:yankring_zap_keys = ''
+let g:yankring_replace_n_pkey = ''
+let g:yankring_replace_n_nkey = ''
 
 "--------------------------------------------------------------------------------
 " LeaderF and ctrlp
 "--------------------------------------------------------------------------------
 if has("python") || has("python3")
-	let g:Lf_ShortcutF = '<c-o>' " search file
+	let g:Lf_ShortcutF = '<c-p>' " search file
 	let g:Lf_ShortcutB = '<c-b>' " list buffer
 	let g:Lf_ShowRelativePath = 0
 	let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
@@ -361,7 +358,7 @@ if has("python") || has("python3")
 	nmap fu :LeaderfBufTag<cr>
 else
 "按键映射
-	let g:ctrlp_map = '<c-o>'
+	let g:ctrlp_map = '<c-p>'
 	" let g:ctrlp_cmd = 'CtrlP'
 	let g:ctrlp_working_path_mode = 'ra'
 	let g:ctrlp_regexp = 1
