@@ -65,7 +65,6 @@ if has("python") || has("python3")
 else
 	Plug 'kien/ctrlp.vim'
 endif
-Plug 'godlygeek/csapprox'
 
 call plug#end()
 
