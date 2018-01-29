@@ -59,6 +59,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'aceofall/gtags.vim'
 Plug 'vim-scripts/YankRing.vim'
+Plug 'python-mode/python-mode'
 "Plug 'Shougo/neocomplcache.vim'
 if has("python") || has("python3")
 	Plug 'Renxiuhu/LeaderF'
@@ -130,7 +131,7 @@ set ignorecase
 set t_Co=256
 
 set background=light
-colorscheme tatami
+colorscheme github "tatami
 "--------------------------------------------------------------------------------
 " 编程相关的设置
 "--------------------------------------------------------------------------------
@@ -393,6 +394,63 @@ else
 	set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 	set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 endif
+
+"--------------------------------------------------------------------------------
+" Python mode
+"--------------------------------------------------------------------------------
+" Python-mode
+" Activate rope
+" Keys: 按键：
+" K             Show python docs 显示Python文档
+" <Ctrl-Space>  Rope autocomplete  使用Rope进行自动补全
+" <Ctrl-c>g     Rope goto definition  跳转到定义处
+" <Ctrl-c>d     Rope show documentation  显示文档
+" <Ctrl-c>f     Rope find occurrences  寻找该对象出现的地方
+" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled) 断点
+" [[            Jump on previous class or function (normal, visual, operator modes)
+"  ]]            Jump on next class or function (normal, visual, operator modes)
+"            跳转到前一个/后一个类或函数
+" [M            Jump on previous class or method (normal, visual, operator modes)
+" ]M            Jump on next class or method (normal, visual, operator modes)
+"              跳转到前一个/后一个类或方法
+"
+" 启动插件
+let g:pymode = 1
+let g:pymode_rope = 1
+" 设置一行最大宽度和提示线
+let g:pymode_options_max_line_length = 120
+let g:pymode_options_colorcolumn = 1
+" 设置解释器
+let g:pymode_python = 'python3'
+let g:pymode_indent = 1
+" Documentation 显示文档
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+" 运行
+let g:pymode_run = 1
+let g:pymode_run_bind = '<leader>r'
+" Linting 代码查错，=1为启用
+let g:pymode_lint = 1
+let g:pymode_lint_checkers = ['pep8', 'pyflakes']
+let g:pymode_lint_ignore = "E501,W"
+"" Auto check on save
+let g:pymode_lint_write = 1
+
+" Support virtualenv
+" let g:pymode_virtualenv = 1
+
+" " Enable breakpoints plugin
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<leader>b'
+
+" syntax highlighting 高亮形式
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Don't autofold code 禁用自动代码折叠
+let g:pymode_folding = 0
 "##################################################################
 "########################## End Of Vimrc ##########################
 "##################################################################
