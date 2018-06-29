@@ -55,11 +55,10 @@ Plug 'https://github.com/skywind3000/asyncrun.vim.git'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'Renxiuhu/vim-colorscheme'
 Plug 'Renxiuhu/SearchOnSelectVim'
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'aceofall/gtags.vim'
-Plug 'vim-scripts/YankRing.vim'
-Plug 'python-mode/python-mode'
+"Plug 'python-mode/python-mode'
 "Plug 'Shougo/neocomplcache.vim'
 if has("python") || has("python3")
 	Plug 'Renxiuhu/LeaderF'
@@ -131,7 +130,7 @@ set ignorecase
 set t_Co=256
 
 set background=light
-colorscheme github "tatami
+colorscheme monokai "tatami
 "--------------------------------------------------------------------------------
 " 编程相关的设置
 "--------------------------------------------------------------------------------
