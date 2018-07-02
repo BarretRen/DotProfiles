@@ -81,7 +81,7 @@ set linebreak       " 整词换行
 set whichwrap=b,s,<,>,[,]       " 光标从行首和行末时可以跳到另一行去
 "set list                       " 显示制表符
 "set listchars=tab:>-,trail:-     " 将制表符显示为'>---',将行尾空格显示为'-'
-set autochdir                   " 自动设置目录为正在编辑的文件所在的目录
+"set autochdir                   " 自动设置目录为正在编辑的文件所在的目录
 set hidden          " 没有保存的缓冲区可以自动被隐藏
 set scrolloff=5
 set clipboard+=unnamed   "复制到剪贴板，默认是寄存器
