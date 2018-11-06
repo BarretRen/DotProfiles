@@ -45,20 +45,20 @@ else
 endif
 	
 Plug 'majutsushi/tagbar'
-Plug 'vim-scripts/EasyGrep'
-Plug 'Yggdroot/indentLine'
+" Plug 'vim-scripts/EasyGrep'
+" Plug 'Yggdroot/indentLine'
 Plug 'vim-scripts/Mark--Karkat'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'vim-scripts/a.vim'
+" Plug 'vim-scripts/a.vim'
 Plug 'https://github.com/skywind3000/asyncrun.vim.git'
-Plug 'jlanzarotta/bufexplorer'
+" Plug 'jlanzarotta/bufexplorer'
 Plug 'Renxiuhu/vim-colorscheme'
 Plug 'Renxiuhu/SearchOnSelectVim'
-"Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'aceofall/gtags.vim'
-"Plug 'python-mode/python-mode'
+"Plug 'vim-scripts/YankRing.vim'
 "Plug 'Shougo/neocomplcache.vim'
 if has("python") || has("python3")
 	Plug 'Renxiuhu/LeaderF'
@@ -130,22 +130,22 @@ set ignorecase
 set t_Co=256
 
 set background=light
-colorscheme monokai "tatami
+colorscheme PaperColor "tatami 
 "--------------------------------------------------------------------------------
 " 编程相关的设置
 "--------------------------------------------------------------------------------
 set completeopt=longest,menu    " 关掉智能补全时的预览窗口
 filetype plugin indent on       " 加了这句才可以用智能补全
 syntax enable             " 打开语法高亮
-syntax on
-set showmatch       " 设置匹配模式，类似当输入一个左括号时会匹配相应的那个右括号
+"syntax on
+"set showmatch       " 设置匹配模式，类似当输入一个左括号时会匹配相应的那个右括号
 set smartindent     " 智能对齐方式
 set shiftwidth=4    " 换行时行间交错使用4个空格
 set autoindent      " 自动对齐
 set ai!             " 设置自动缩进
-"set foldmethod=indent "代码折叠
-set foldmethod=syntax
-set foldlevel=100       " Don't autofold anything (but I can still fold manually)
+set foldmethod=indent "代码折叠
+"set foldmethod=syntax
+set foldlevel=10       " Don't autofold anything (but I can still fold manually)
 "set foldopen-=search   " don't open folds when you search into them
 "set foldopen-=undo     " don't open folds when you undo stuff
 "set foldcolumn=4
@@ -179,7 +179,12 @@ nmap <F2> :bd<cr>    "关闭minibufexplorer中的某个文件
 nmap ln :set nu!<cr>
 nmap fx :copen<cr>
 nmap as :AsyncRun
-nmap t :terminal<cr>
+"nmap t :terminal<cr>
+" vimmerge 快捷键
+map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
+map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
+map <silent> <leader>3 :diffget 3<CR> :diffupdate<CR>
+map <silent> <leader>4 :diffget 4<CR> :diffupdate<CR>
 
 "--------------------------------------------------------------------------------
 " 其他配置
@@ -200,7 +205,7 @@ autocmd BufReadPost *
 let g:tagbar_width = 30
 let g:tagbar_singleclick = 1 "点击一次跳转
 let g:tagbar_iconchars = ['+', '-']
-nmap <F6> :TagbarToggle<CR>
+nmap <F5> :TagbarToggle<CR>
 
 "--------------------------------------------------------------------------------
 "" BufExplorer
@@ -273,6 +278,7 @@ nmap <F11> :IndentLinesToggle<cr>
 let g:indentLine_char = '|'
 let g:indentLine_color_term = 239
 let g:indentLine_setColors = 0
+let g:indentLine_enabled = 0
 
 "--------------------------------------------------------------------------------
 " mark插件
@@ -283,7 +289,7 @@ nmap m lbve\m
 "--------------------------------------------------------------------------------
 " NERDTree
 "--------------------------------------------------------------------------------
-nmap <F5> :exec("NERDTree ".expand('%:h'))<CR>
+"nmap <F5> :exec("NERDTree ".expand('%:h'))<CR>
 let NERDTreeIgnore=['desktop.ini$']
 
 "--------------------------------------------------------------------------------
@@ -337,10 +343,10 @@ let g:cpp_concepts_highlight = 1
 "" YankRing, 可视化多选择剪切板
 "--------------------------------------------------------------------------------
 ""显示yankring中的内容
-nmap ys :YRShow<CR>
-nmap yc :YRClear<CR>
-let g:yankring_replace_n_pkey = ''
-let g:yankring_replace_n_nkey = ''
+"nmap ys :YRShow<CR>
+"nmap yc :YRClear<CR>
+"let g:yankring_replace_n_pkey = ''
+"let g:yankring_replace_n_nkey = ''
 
 "--------------------------------------------------------------------------------
 " LeaderF and ctrlp
@@ -393,63 +399,7 @@ else
 	set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 	set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 endif
-
-"--------------------------------------------------------------------------------
-" Python mode
-"--------------------------------------------------------------------------------
-" Python-mode
-" Activate rope
-" Keys: 按键：
-" K             Show python docs 显示Python文档
-" <Ctrl-Space>  Rope autocomplete  使用Rope进行自动补全
-" <Ctrl-c>g     Rope goto definition  跳转到定义处
-" <Ctrl-c>d     Rope show documentation  显示文档
-" <Ctrl-c>f     Rope find occurrences  寻找该对象出现的地方
-" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled) 断点
-" [[            Jump on previous class or function (normal, visual, operator modes)
-"  ]]            Jump on next class or function (normal, visual, operator modes)
-"            跳转到前一个/后一个类或函数
-" [M            Jump on previous class or method (normal, visual, operator modes)
-" ]M            Jump on next class or method (normal, visual, operator modes)
-"              跳转到前一个/后一个类或方法
-"
-" 启动插件
-let g:pymode = 1
-let g:pymode_rope = 1
-" 设置一行最大宽度和提示线
-let g:pymode_options_max_line_length = 120
-let g:pymode_options_colorcolumn = 1
-" 设置解释器
-let g:pymode_python = 'python3'
-let g:pymode_indent = 1
-" Documentation 显示文档
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
-" 运行
-let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>r'
-" Linting 代码查错，=1为启用
-let g:pymode_lint = 1
-let g:pymode_lint_checkers = ['pep8', 'pyflakes']
-let g:pymode_lint_ignore = "E501,W"
-"" Auto check on save
-let g:pymode_lint_write = 1
-
-" Support virtualenv
-" let g:pymode_virtualenv = 1
-
-" " Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_bind = '<leader>b'
-
-" syntax highlighting 高亮形式
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-
-" Don't autofold code 禁用自动代码折叠
-let g:pymode_folding = 0
 "##################################################################
 "########################## End Of Vimrc ##########################
 "##################################################################
+
