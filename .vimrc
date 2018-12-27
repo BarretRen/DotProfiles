@@ -53,15 +53,15 @@ Plug 'scrooloose/nerdcommenter'
 " Plug 'vim-scripts/a.vim'
 Plug 'https://github.com/skywind3000/asyncrun.vim.git'
 " Plug 'jlanzarotta/bufexplorer'
-Plug 'Renxiuhu/vim-colorscheme'
-Plug 'Renxiuhu/SearchOnSelectVim'
+Plug 'BarretRen/vim-colorscheme'
+Plug 'BarretRen/SearchOnSelectVim'
 " Plug 'jiangmiao/auto-pairs'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'aceofall/gtags.vim'
 "Plug 'vim-scripts/YankRing.vim'
 "Plug 'Shougo/neocomplcache.vim'
 if has("python") || has("python3")
-	Plug 'Renxiuhu/LeaderF'
+	Plug 'BarretRen/LeaderF'
 else
 	Plug 'kien/ctrlp.vim'
 endif
@@ -333,7 +333,7 @@ let g:SearchOnSelect_active = 1
 " vim-cpp-enhanced-highlight,C++关键字高亮
 "--------------------------------------------------------------------------------
 "let g:cpp_class_scope_highlight = 1
-"let g:cpp_member_variable_highlight = 1
+" let g:cpp_member_variable_highlight = 1
 "let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
 "let g:cpp_experimental_template_highlight = 1
