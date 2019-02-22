@@ -45,7 +45,7 @@ else
 endif
 	
 Plug 'majutsushi/tagbar'
-" Plug 'vim-scripts/EasyGrep'
+Plug 'vim-scripts/EasyGrep'
 " Plug 'Yggdroot/indentLine'
 Plug 'vim-scripts/Mark--Karkat'
 " Plug 'scrooloose/nerdtree'
@@ -130,7 +130,7 @@ set ignorecase
 set t_Co=256
 
 set background=light
-colorscheme WhitePaper
+colorscheme PaperColor
 "--------------------------------------------------------------------------------
 " 编程相关的设置
 "--------------------------------------------------------------------------------
@@ -335,9 +335,9 @@ let g:SearchOnSelect_active = 1
 "let g:cpp_class_scope_highlight = 1
 " let g:cpp_member_variable_highlight = 1
 "let g:cpp_class_decl_highlight = 1
-let g:cpp_experimental_simple_template_highlight = 1
+" let g:cpp_experimental_simple_template_highlight = 1
 "let g:cpp_experimental_template_highlight = 1
-let g:cpp_concepts_highlight = 1
+" let g:cpp_concepts_highlight = 1
 
 "--------------------------------------------------------------------------------
 "" YankRing, 可视化多选择剪切板
