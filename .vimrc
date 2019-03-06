@@ -61,7 +61,8 @@ Plug 'aceofall/gtags.vim'
 "Plug 'vim-scripts/YankRing.vim'
 "Plug 'Shougo/neocomplcache.vim'
 if has("python") || has("python3")
-	Plug 'BarretRen/LeaderF'
+	" Plug 'BarretRen/LeaderF'
+	Plug 'Yggdroot/LeaderF'
 else
 	Plug 'kien/ctrlp.vim'
 endif
