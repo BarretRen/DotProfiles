@@ -356,6 +356,7 @@ if has("python") || has("python3")
 	let g:Lf_ShortcutB = '<c-b>' " list buffer
 	let g:Lf_ShowRelativePath = 0
 	let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
+    let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
 	let g:Lf_WildIgnore = {
 		\ 'dir': ['.svn','.git','.hg'],
 		\ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.D','*.cmd','*.ti']
