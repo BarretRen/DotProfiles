@@ -130,7 +130,7 @@ set ignorecase
 set t_Co=256
 
 set background=light
-colorscheme PaperColor
+colorscheme Bgreen "PaperColor
 "--------------------------------------------------------------------------------
 " 编程相关的设置
 "--------------------------------------------------------------------------------
