@@ -130,7 +130,7 @@ set ignorecase
 set t_Co=256
 
 set background=light
-colorscheme Bgreen "PaperColor
+colorscheme PaperColor
 "--------------------------------------------------------------------------------
 " 编程相关的设置
 "--------------------------------------------------------------------------------
@@ -244,19 +244,6 @@ nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<cr><cr>
 nmap <C-_>i :cs find i <C-R>=expand("<cfile>")<cr><cr>
 nmap <C-_>d :cs find d <C-R>=expand("<cword>")<cr><cr>
 "设置自动更新cscope索引文件的快捷键
-if strridx(getcwd(),"tmp") == -1
-    if strridx(getcwd(),"repo2") == -1
-        nmap <F9> :AsyncRun find /repo/barretr/fdt1265 -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.cc' -o -iname '*.hh' -o -iname "*.idl" > ./cscope.files<CR>
-    else
-        nmap <F9> :AsyncRun find /repo2/barretr/workspace/fdt1265 -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.cc' -o -iname '*.hh' -o -iname "*.idl" > ./cscope.files<CR>
-    endif
-else
-    if strridx(getcwd(),"repo2") == -1
-        nmap <F9> :AsyncRun find /repo/barretr/fdt1265_tmp -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.cc' -o -iname '*.hh' -o -iname "*.idl" > ./cscope.files<CR>
-    else
-        nmap <F9> :AsyncRun find /repo2/barretr/workspace/fdt1265_tmp -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.cc' -o -iname '*.hh' -o -iname "*.idl" > ./cscope.files<CR>
-    endif
-endif
 nmap <F10> :AsyncRun gtags -f cscope.files<CR>
 
 "--------------------------------------------------------------------------------
