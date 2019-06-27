@@ -61,7 +61,7 @@ Plug 'aceofall/gtags.vim'
 "Plug 'vim-scripts/YankRing.vim'
 "Plug 'Shougo/neocomplcache.vim'
 if has("python") || has("python3")
-    Plug 'BarretRen/LeaderF'
+    Plug 'Yggdroot/LeaderF'
 else
 	Plug 'kien/ctrlp.vim'
 endif
@@ -342,6 +342,7 @@ if has("python") || has("python3")
 	let g:Lf_ShortcutF = '<c-p>' " search file
 	let g:Lf_ShortcutB = '<c-b>' " list buffer
 	let g:Lf_ShowRelativePath = 0
+    let g:Lf_DefaultMode = 'NameOnly'
 	let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
     let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
 	let g:Lf_WildIgnore = {
