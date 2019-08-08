@@ -46,20 +46,13 @@ endif
 	
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/EasyGrep'
-" Plug 'Yggdroot/indentLine'
 Plug 'vim-scripts/Mark--Karkat'
-" Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-" Plug 'vim-scripts/a.vim'
 Plug 'https://github.com/skywind3000/asyncrun.vim.git'
-" Plug 'jlanzarotta/bufexplorer'
 Plug 'BarretRen/vim-colorscheme'
 Plug 'BarretRen/SearchOnSelectVim'
-" Plug 'jiangmiao/auto-pairs'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'aceofall/gtags.vim'
-"Plug 'vim-scripts/YankRing.vim'
-"Plug 'Shougo/neocomplcache.vim'
 if has("python") || has("python3")
     Plug 'Yggdroot/LeaderF'
 else
@@ -208,18 +201,6 @@ let g:tagbar_iconchars = ['+', '-']
 nmap <F5> :TagbarToggle<CR>
 
 "--------------------------------------------------------------------------------
-"" BufExplorer
-"--------------------------------------------------------------------------------
-let g:bufExplorerDefaultHelp=0       " Do not show default help.
-let g:bufExplorerShowRelativePath=1  " Show relative paths.
-let g:bufExplorerSortBy='mru'        " Sort by most recently used.
-let g:bufExplorerSplitRight=0        " Split left.
-let g:bufExplorerSplitVertical=1     " Split vertically.
-let g:bufExplorerSplitVertSize = 30  " Split width
-let g:bufExplorerUseCurrentWindow=1  " Open in new windo
-nmap bu \bs
-
-"--------------------------------------------------------------------------------
 " gtags
 "--------------------------------------------------------------------------------
 let GtagsCscope_Auto_Load = 1
@@ -230,7 +211,7 @@ let GtagsCscope_Absolute_Path = 1
 "--------------------------------------------------------------------------------
 " cscope
 "--------------------------------------------------------------------------------
-":set cscopequickfix=s-,g-,c-,d-,i-,t-,e-,f-   "是否使用 quickfix 窗口来显示 cscope 结果
+" :set cscopequickfix=s-,g-,c-,d-,i-,t-,e-,f-   "是否使用 quickfix 窗口来显示 cscope 结果
 :set cscopetag
 set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
 " 按下面这种组合键有技巧,按了<C-_>后要马上按下一个键,否则屏幕一闪
@@ -243,8 +224,6 @@ nmap <C-_>e :cs find e <C-R>=expand("<cword>")<cr><cr>
 nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<cr><cr>
 nmap <C-_>i :cs find i <C-R>=expand("<cfile>")<cr><cr>
 nmap <C-_>d :cs find d <C-R>=expand("<cword>")<cr><cr>
-"设置自动更新cscope索引文件的快捷键
-nmap <F10> :AsyncRun gtags -f cscope.files<CR>
 
 "--------------------------------------------------------------------------------
 " EasyGrep
@@ -257,15 +236,6 @@ let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
 let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
 nmap <F7> \vv
 nmap <F8> \vr
-
-"--------------------------------------------------------------------------------
-" IndentLines:显示对齐线
-"--------------------------------------------------------------------------------
-nmap <F11> :IndentLinesToggle<cr>
-let g:indentLine_char = '|'
-let g:indentLine_color_term = 239
-let g:indentLine_setColors = 0
-let g:indentLine_enabled = 0
 
 "--------------------------------------------------------------------------------
 " mark插件
@@ -304,36 +274,16 @@ vmap <C-\> \ci
 "--------------------------------------------------------------------------------
 let g:SearchOnSelect_active = 1
 
-"--------------------------------------------------------------------------------
-" neocomplcache补全
-"--------------------------------------------------------------------------------
-" Disable AutoComplPop.
-"let g:acp_enableAtStartup = 0
-" " Use neocomplcache.
-"let g:neocomplcache_enable_at_startup = 1
-" " Use smartcase.
-"let g:neocomplcache_enable_smart_case = 1
-" " Set minimum syntax keyword length.
-"let g:neocomplcache_min_syntax_length = 3"
 
 "--------------------------------------------------------------------------------
 " vim-cpp-enhanced-highlight,C++关键字高亮
 "--------------------------------------------------------------------------------
-"let g:cpp_class_scope_highlight = 1
-" let g:cpp_member_variable_highlight = 1
-"let g:cpp_class_decl_highlight = 1
-" let g:cpp_experimental_simple_template_highlight = 1
-"let g:cpp_experimental_template_highlight = 1
-" let g:cpp_concepts_highlight = 1
-
-"--------------------------------------------------------------------------------
-"" YankRing, 可视化多选择剪切板
-"--------------------------------------------------------------------------------
-""显示yankring中的内容
-"nmap ys :YRShow<CR>
-"nmap yc :YRClear<CR>
-"let g:yankring_replace_n_pkey = ''
-"let g:yankring_replace_n_nkey = ''
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
 
 "--------------------------------------------------------------------------------
 " LeaderF and ctrlp
