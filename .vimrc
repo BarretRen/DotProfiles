@@ -30,7 +30,7 @@ set termencoding=utf-8 "ssh term 使用的编码
 "下面两行用于防止gvim提示和软件显示出现问题
 set fenc=utf-8 "文件新建编码
 if g:iswindows
-    set guifont=Courier_New:h10
+    set guifont=Courier_New:h12
 else
     set guifont=Courier_New\ 10 "字体设置在终端下无效
 endif
@@ -146,6 +146,8 @@ set foldlevel=10       " Don't autofold anything (but I can still fold manually)
 "--------------------------------------------------------------------------------
 " 快捷键
 "--------------------------------------------------------------------------------
+" Mouse behavior (the Windows way)
+behave mswin
 "复制粘贴快捷键
 if g:isGUI
     vmap <C-c> "+yy
