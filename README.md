@@ -23,20 +23,19 @@
 ### Installation
 
 **Linux**
-
-
-	git clone https://github.com/Renxiuhu/VimProfiles.git 
-	cp -r VimProfiles/* ~/
-	vim
+* git clone https://github.com/Renxiuhu/VimProfiles.git 
+* cp -r .vim .vimrc ~/
+* vim
+* 执行如下vim命令，更新管理器和插件：PlugUpgrade, PlugInstall
 
 
 **Windows**
 
-- git clone https://github.com/Renxiuhu/VimProfiles.git
-- 	将库中内容复制到用户个人目录中(.tmux.conf是关于TMUX的配置，可以删除）
-- 	将.vimrc重命名为_vimrc
-- 	启动vim
-
+* git clone https://github.com/Renxiuhu/VimProfiles.git
+* 将库中内容复制到用户个人目录中(.tmux.conf是关于TMUX的配置，可以删除）
+* 将.vimrc重命名为_vimrc, 将.vim重命名为vimfiles
+* 启动vim
+* 执行如下vim命令，更新管理器和插件：PlugUpgrade, PlugInstall
 
 
 ### Usage
@@ -65,8 +64,6 @@
 | b  u            | 打开buffer list                               |
 | f  u            | 打开当前文件函数列表                            |
 | m               | 标记光标下词语                                 |
-| y  s            | 打开剪切板，查看历史记录                      |
-| y  c            | 清空剪切板                                    |
 | Ctrl n          | 新建buffer                                    |
 | Ctrl c          | 复制                                          |
 | Ctrl x          | 剪切                                          | 
