@@ -4,6 +4,7 @@
 
 ### Changelog
 
+* 2019/12/9: 添加minibuffexplorer配置，删除ctrlp
 * 2019/12/6: 更新colorscheme为Bwhite
 * 2018/1/29: 添加python-mode插件，未修改该插件快捷键
 * 2018/1/23: 去除csapprox插件，用处不大

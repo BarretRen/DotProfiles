@@ -30,7 +30,7 @@ set termencoding=utf-8 "ssh term 使用的编码
 "下面两行用于防止gvim提示和软件显示出现问题
 set fenc=utf-8 "文件新建编码
 if g:iswindows
-    set guifont=Courier_New:h12
+    set guifont=Courier_New:h11
 else
     set guifont=Courier_New\ 10 "字体设置在终端下无效
 endif
@@ -43,7 +43,7 @@ if g:iswindows
 else
 	call plug#begin('~/.vim/bundle')
 endif
-	
+
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/EasyGrep'
 Plug 'vim-scripts/Mark--Karkat'
@@ -53,10 +53,9 @@ Plug 'BarretRen/vim-colorscheme'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'aceofall/gtags.vim'
+Plug 'BarretRen/minibufexpl.vim'
 if has("python") || has("python3")
     Plug 'Yggdroot/LeaderF'
-else
-	Plug 'kien/ctrlp.vim'
 endif
 
 call plug#end()
@@ -142,12 +141,12 @@ set foldlevel=10       " Don't autofold anything (but I can still fold manually)
 "set foldopen-=search   " don't open folds when you search into them
 "set foldopen-=undo     " don't open folds when you undo stuff
 "set foldcolumn=4
-"autocmd BufWritePre * :%s/\s\+$//e "保存时删除行尾空格
+" autocmd BufWritePre * :%s/\s\+$//e "保存时删除行尾空格
 "--------------------------------------------------------------------------------
 " 快捷键
 "--------------------------------------------------------------------------------
 " Mouse behavior (the Windows way)
-behave mswin
+" behave mswin
 "复制粘贴快捷键
 if g:isGUI
     vmap <C-c> "+yy
@@ -275,7 +274,7 @@ vmap <C-\> \ci
 " SearchOnSelectVim
 "--------------------------------------------------------------------------------
 let g:SearchOnSelect_active = 1
-
+let g:miniBufExplAutoStart = 1
 
 "--------------------------------------------------------------------------------
 " vim-cpp-enhanced-highlight,C++关键字高亮
@@ -286,6 +285,15 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
+
+"--------------------------------------------------------------------------------
+" minibuf explorer
+"--------------------------------------------------------------------------------
+let g:miniBufExplorerHideWhenDiff = 1 "diff时不显示
+let g:miniBufExplorerAutoStart = 1 "自动开启
+let g:miniBufExplUseSingleClick = 1 "单击切换
+let g:miniBufExplShowBufNumbers = 0
+
 
 "--------------------------------------------------------------------------------
 " LeaderF and ctrlp
@@ -302,43 +310,6 @@ if has("python") || has("python3")
 		\ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.D','*.cmd','*.ti']
 		\}
 	nmap fu :LeaderfBufTag<cr>
-else
-"按键映射
-	let g:ctrlp_map = '<c-p>'
-	" let g:ctrlp_cmd = 'CtrlP'
-	let g:ctrlp_working_path_mode = 'ra'
-	let g:ctrlp_regexp = 1
-	let g:ctrlp_match_window_bottom=1
-	let g:ctrlp_max_height=15
-	let g:ctrlp_match_window_reversed=0
-	let g:ctrlp_mruf_max=500
-	let g:ctrlp_follow_symlinks=1
-	"设置扫描文件最大数目（不限制)
-	let g:ctrlp_max_files = 0
-	"加快hg库文件扫描速度
-    if g:iswindows
-        let g:ctrlp_user_command = {
-	        \ 'types': {
-		        \ 1: ['.git', 'cd %s && git ls-files'],
-		        \ 2: ['.hg', 'hg --cwd %s files .'],
-		        \ },
-	        \ 'fallback': 'dir %s /-n /b /s /a-d'
-	    \ }
-    else
-        let g:ctrlp_user_command = {
-	        \ 'types': {
-		        \ 1: ['.git', 'cd %s && git ls-files'],
-		        \ 2: ['.hg', 'hg --cwd %s files .'],
-		        \ },
-	        \ 'fallback': 'find %s -type f'
-	    \ }
-    endif
-	let g:ctrlp_custom_ignore = {
-		\ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
-		\ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
-		\ }
-	set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-	set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 endif
 "##################################################################
 "########################## End Of Vimrc ##########################
