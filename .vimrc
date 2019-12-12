@@ -45,7 +45,7 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/EasyGrep'
 Plug 'vim-scripts/Mark--Karkat'
 Plug 'scrooloose/nerdcommenter'
-Plug 'https://github.com/skywind3000/asyncrun.vim.git'
+"Plug 'https://github.com/skywind3000/asyncrun.vim.git'
 Plug 'BarretRen/vim-colorscheme'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -89,6 +89,7 @@ nmap <C-n> :new<cr> "新建文件
 "去除声音和闪屏
 set vb t_vb=
 au GuiEnter * set t_vb=
+autocmd GUIEnter * simalt ~x  "自动最大化
 "--------------------------------------------------------------------------------
 " 状态栏配置
 "--------------------------------------------------------------------------------
@@ -119,7 +120,7 @@ set ignorecase
 set t_Co=256
 
 set background=light
-colorscheme Bwhite
+colorscheme Bblack
 "--------------------------------------------------------------------------------
 " 编程相关的设置
 "--------------------------------------------------------------------------------
@@ -169,7 +170,7 @@ nmap <F12> :bro ol<cr>  "浏览文件打开记录
 nmap <F2> :bd<cr>    "关闭minibufexplorer中的某个文件
 nmap ln :set nu!<cr>
 nmap fx :copen<cr>
-nmap as :AsyncRun
+" nmap as :AsyncRun
 "nmap t :terminal<cr>
 " vimmerge 快捷键
 map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
@@ -209,7 +210,7 @@ let GtagsCscope_Absolute_Path = 1
 "--------------------------------------------------------------------------------
 " cscope
 "--------------------------------------------------------------------------------
-" :set cscopequickfix=s-,g-,c-,d-,i-,t-,e-,f-   "是否使用 quickfix 窗口来显示 cscope 结果
+:set cscopequickfix=s-,g-,c-,d-,i-,t-,e-,f-   "是否使用 quickfix 窗口来显示 cscope 结果
 :set cscopetag
 set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
 " 按下面这种组合键有技巧,按了<C-_>后要马上按下一个键,否则屏幕一闪
@@ -222,6 +223,9 @@ nmap <C-_>e :cs find e <C-R>=expand("<cword>")<cr><cr>
 nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<cr><cr>
 nmap <C-_>i :cs find i <C-R>=expand("<cfile>")<cr><cr>
 nmap <C-_>d :cs find d <C-R>=expand("<cword>")<cr><cr>
+"设置quickfix窗口前进后退
+nmap cn :cn<cr>
+nmap cp :cp<cr>
 
 "--------------------------------------------------------------------------------
 " EasyGrep
