@@ -85,7 +85,6 @@ set nocompatible
 set nobackup
 set noundofile
 set noswapfile
-nmap <C-n> :new<cr> "新建文件
 "去除声音和闪屏
 set vb t_vb=
 au GuiEnter * set t_vb=
@@ -143,6 +142,7 @@ set foldlevel=10       " Don't autofold anything (but I can still fold manually)
 "--------------------------------------------------------------------------------
 " 快捷键
 "--------------------------------------------------------------------------------
+nmap <C-n> :new<cr> "新建文件
 " Mouse behavior (the Windows way)
 " behave mswin
 "复制粘贴快捷键
@@ -162,6 +162,7 @@ endif
 nmap wv     <C-w>v     " 垂直分割当前窗口
 nmap wc     <C-w>c     " 关闭当前窗口
 nmap wx     <C-w>s     " 水平分割当前窗口
+nmap fx :copen<cr>     "打开quickfix窗口
 
 " 保存，退出，历史文件等快捷键
 nmap <F4> :w<cr>    "保存文件修改
@@ -169,7 +170,6 @@ nmap <F3> :q<cr>    "退出vim
 nmap <F12> :bro ol<cr>  "浏览文件打开记录
 nmap <F2> :bd<cr>    "关闭minibufexplorer中的某个文件
 nmap ln :set nu!<cr>
-nmap fx :copen<cr>
 " nmap as :AsyncRun
 "nmap t :terminal<cr>
 " vimmerge 快捷键
@@ -210,7 +210,7 @@ let GtagsCscope_Absolute_Path = 1
 "--------------------------------------------------------------------------------
 " cscope
 "--------------------------------------------------------------------------------
-:set cscopequickfix=s-,g-,c-,d-,i-,t-,e-,f-   "是否使用 quickfix 窗口来显示 cscope 结果
+" :set cscopequickfix=s-,g-,c-,d-,i-,t-,e-,f-   "是否使用 quickfix 窗口来显示 cscope 结果
 :set cscopetag
 set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
 " 按下面这种组合键有技巧,按了<C-_>后要马上按下一个键,否则屏幕一闪
@@ -246,10 +246,12 @@ nmap <F8> \vr
 nmap m lbve\m
 
 "--------------------------------------------------------------------------------
-" NERDTree
+" netrw
 "--------------------------------------------------------------------------------
-"nmap <F5> :exec("NERDTree ".expand('%:h'))<CR>
-let NERDTreeIgnore=['desktop.ini$']
+nmap nw :Vex<cr>       "文件浏览器
+let g:netrw_browse_split = 4
+let g:netrw_banner = 0  "隐藏横幅
+let g:netrw_winsize = 25 "宽度
 
 "--------------------------------------------------------------------------------
 "" nerdcommenter 注释插件
