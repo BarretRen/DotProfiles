@@ -46,7 +46,7 @@ Plug 'vim-scripts/EasyGrep'
 Plug 'vim-scripts/Mark--Karkat'
 Plug 'scrooloose/nerdcommenter'
 "Plug 'https://github.com/skywind3000/asyncrun.vim.git'
-Plug 'BarretRen/vim-colorscheme'
+Plug 'BarretRen/barret-vimcolor'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'aceofall/gtags.vim'
@@ -119,7 +119,27 @@ set ignorecase
 set t_Co=256
 
 set background=light
-colorscheme Bblack
+colorscheme Bwhite
+let g:Bwhite_Theme_Options = {
+    \   'theme': {
+    \     'default': {
+    \       'allow_bold': 1,
+    \       'allow_italic': 1,
+    \       'transparent_background': 0
+    \     }
+    \   },
+    \   'language': {
+    \     'python': {
+    \       'highlight_builtins' : 1
+    \     },
+    \     'c': {
+    \       'highlight_builtins' : 1
+    \     },
+    \     'cpp': {
+    \       'highlight_standard_library': 1
+    \     }
+    \   }
+    \ }
 "--------------------------------------------------------------------------------
 " 编程相关的设置
 "--------------------------------------------------------------------------------
