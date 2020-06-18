@@ -24,7 +24,7 @@ endif
 "--------------------------------------------------------------------------------
 set enc=utf-8  "vim内部编码
 set termencoding=utf-8 "ssh term 使用的编码
-"下面两行用于防止gvim提示和软件显示出现问题
+" 下面两行用于防止gvim提示和软件显示出现问题
 set fenc=utf-8 "文件新建编码
 if g:iswindows
     set guifont=Courier_New:h11
@@ -51,6 +51,7 @@ Plug 'BarretRen/SearchOnSelectVim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'aceofall/gtags.vim'
 Plug 'BarretRen/minibufexpl.vim'
+" Plug 'rking/ag.vim'
 if has("python") || has("python3")
     Plug 'Yggdroot/LeaderF'
 endif
@@ -124,7 +125,7 @@ let g:Bwhite_Theme_Options = {
     \   'theme': {
     \     'default': {
     \       'allow_bold': 1,
-    \       'allow_italic': 1,
+    \       'allow_italic': 0,
     \       'transparent_background': 0
     \     }
     \   },
@@ -191,7 +192,7 @@ nmap <F12> :bro ol<cr>  "浏览文件打开记录
 nmap <F2> :bd<cr>    "关闭minibufexplorer中的某个文件
 nmap ln :set nu!<cr>
 " nmap as :AsyncRun
-"nmap t :terminal<cr>
+nmap <C-t> :terminal<cr>
 " vimmerge 快捷键
 map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
 map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
@@ -298,6 +299,18 @@ vmap <C-\> \ci
 "--------------------------------------------------------------------------------
 let g:SearchOnSelect_active = 1
 let g:miniBufExplAutoStart = 1
+
+"--------------------------------------------------------------------------------
+" AG search
+"--------------------------------------------------------------------------------
+" let g:ag_prg = 'ag --nogroup --nocolor --column'
+" let g:ag_working_path_mode="r"
+" let g:ag_highlight=1 "高亮
+" nmap gw :call Search_Word()<cr>
+" function Search_Word()
+    " let w = expand("<cword>")
+    " execute "Ag " . w
+" endfunction
 
 "--------------------------------------------------------------------------------
 " vim-cpp-enhanced-highlight,C++关键字高亮
