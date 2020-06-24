@@ -4,6 +4,7 @@
 
 ### Changelog
 
+* 2020/06/24: 修改LeaderF配置，gtags配置
 * 2019/12/9: 添加minibuffexplorer配置，删除ctrlp
 * 2019/12/6: 更新colorscheme为Bwhite
 * 2018/1/29: 添加python-mode插件，未修改该插件快捷键
@@ -64,6 +65,7 @@
 | t               | vim中打开shell                                |
 | b  u            | 打开buffer list                               |
 | f  u            | 打开当前文件函数列表                            |
+| f  s            | 在当前目录下搜索光标下文本                     |
 | m               | 标记光标下词语                                 |
 | Ctrl n          | 新建buffer                                    |
 | Ctrl c          | 复制                                          |

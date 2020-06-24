@@ -51,7 +51,6 @@ Plug 'BarretRen/SearchOnSelectVim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'aceofall/gtags.vim'
 Plug 'BarretRen/minibufexpl.vim'
-" Plug 'rking/ag.vim'
 if has("python") || has("python3")
     Plug 'Yggdroot/LeaderF'
 endif
@@ -301,18 +300,6 @@ let g:SearchOnSelect_active = 1
 let g:miniBufExplAutoStart = 1
 
 "--------------------------------------------------------------------------------
-" AG search
-"--------------------------------------------------------------------------------
-" let g:ag_prg = 'ag --nogroup --nocolor --column'
-" let g:ag_working_path_mode="r"
-" let g:ag_highlight=1 "高亮
-" nmap gw :call Search_Word()<cr>
-" function Search_Word()
-    " let w = expand("<cword>")
-    " execute "Ag " . w
-" endfunction
-
-"--------------------------------------------------------------------------------
 " vim-cpp-enhanced-highlight,C++关键字高亮
 "--------------------------------------------------------------------------------
 let g:cpp_class_scope_highlight = 1
@@ -332,12 +319,13 @@ let g:miniBufExplShowBufNumbers = 0
 
 
 "--------------------------------------------------------------------------------
-" LeaderF and ctrlp
+" LeaderF
 "--------------------------------------------------------------------------------
 if has("python") || has("python3")
 	let g:Lf_ShortcutF = '<c-p>' " search file
 	let g:Lf_ShortcutB = '<c-b>' " list buffer
 	let g:Lf_ShowRelativePath = 0
+    let g:Lf_ReverseOrder = 1  "最优结果在最下面显示
     let g:Lf_DefaultMode = 'NameOnly'
 	let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
     let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
@@ -345,7 +333,10 @@ if has("python") || has("python3")
 		\ 'dir': ['.svn','.git','.hg'],
 		\ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.D','*.cmd','*.ti']
 		\}
-	nmap fu :LeaderfBufTag<cr>
+	"列出当前文件函数列表
+    nmap fu :LeaderfFunction<cr>
+    "当前目录搜索光标下文本
+    nmap fs :Leaderf rg <C-R>=expand("<cword>")<cr><cr>
 endif
 "##################################################################
 "########################## End Of Vimrc ##########################
