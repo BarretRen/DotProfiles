@@ -336,7 +336,7 @@ if has("python") || has("python3")
 	"列出当前文件函数列表
     nmap fu :LeaderfFunction<cr>
     "当前目录搜索光标下文本
-    nmap fs :Leaderf rg <C-R>=expand("<cword>")<cr><cr>
+    nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
 endif
 "##################################################################
 "########################## End Of Vimrc ##########################
