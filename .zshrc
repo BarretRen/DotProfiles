@@ -95,3 +95,8 @@ export TERM="screen-256color"
 # export LANG="zh_CN.UTF-8"
 # export LC_ALL="zh_CN.UTF-8"
 # PATH set
+
+alias buildfdt="find /repo/barretr/fdt1265/sw/vobs/dsl/sw/flat -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.cc' -o -iname '*.hh' -o -iname '*.idl' | grep -vi '/VoIP/' | grep -vi '/LinuxPorting/' | sort > ./cscope.files  && gtags -f ./cscope.files && rm ./cscope.files"
+alias buildtmp="find /repo/barretr/fdt1265_tmp/sw/vobs/dsl/sw/flat -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.cc' -o -iname '*.hh' -o -iname '*.idl' | grep -vi '/VoIP/' | grep -vi '/LinuxPorting/' | sort > ./cscope.files  && gtags -f ./cscope.files && rm ./cscope.files"
+alias buildcvp="find /repo/barretr/cvpsw -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.cc' -o -iname '*.hh' -o -iname '*.idl' | grep -vi '/VoIP/' | grep -vi '/LinuxPorting/' | sort > ./cscope.files  && gtags -f /repo/barretr/cvpsw/cscope.files && rm ./cscope.files"
+alias buildcvm="find /repo/barretr/cvmsw -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.cc' -o -iname '*.hh' -o -iname '*.idl' | grep -vi '/VoIP/' | grep -vi '/LinuxPorting/' | sort > ./cscope.files  && gtags -f /repo/barretr/cvmsw/cscope.files && rm ./cscope.files"
