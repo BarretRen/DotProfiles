@@ -49,7 +49,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'BarretRen/barret-vimcolor'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'aceofall/gtags.vim'
+" Plug 'aceofall/gtags.vim'
 Plug 'BarretRen/minibufexpl.vim'
 if has("python") || has("python3")
     Plug 'Yggdroot/LeaderF'
@@ -118,7 +118,7 @@ set ignorecase
 "Vim colorscheme
 set t_Co=256
 
-set background=light
+set background=dark
 colorscheme Bwhite
 let g:Bwhite_Theme_Options = {
     \   'theme': {
@@ -222,27 +222,27 @@ nmap <F5> :TagbarToggle<CR>
 "--------------------------------------------------------------------------------
 " gtags
 "--------------------------------------------------------------------------------
-let GtagsCscope_Auto_Load = 1
-let CtagsCscope_Auto_Map = 1
-let GtagsCscope_Quiet = 1
-let GtagsCscope_Absolute_Path = 1
+" let GtagsCscope_Auto_Load = 1
+" let CtagsCscope_Auto_Map = 1
+" let GtagsCscope_Quiet = 1
+" let GtagsCscope_Absolute_Path = 1
 
 "--------------------------------------------------------------------------------
 " cscope
 "--------------------------------------------------------------------------------
 " :set cscopequickfix=s-,g-,c-,d-,i-,t-,e-,f-   "是否使用 quickfix 窗口来显示 cscope 结果
-:set cscopetag
-set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
+" :set cscopetag
+" set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
 " 按下面这种组合键有技巧,按了<C-_>后要马上按下一个键,否则屏幕一闪
 " 就回到nomal状态了
 " <C-_>s的按法是先按"Ctrl+Shift+-",然后很快再按"s"
-nmap <C-_>s :cs find s <C-R>=expand("<cword>")<cr><cr>
-nmap <C-_>g :cs find g <C-R>=expand("<cword>")<cr><cr>
-nmap <C-_>c :cs find c <C-R>=expand("<cword>")<cr><cr>
-nmap <C-_>e :cs find e <C-R>=expand("<cword>")<cr><cr>
-nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<cr><cr>
-nmap <C-_>i :cs find i <C-R>=expand("<cfile>")<cr><cr>
-nmap <C-_>d :cs find d <C-R>=expand("<cword>")<cr><cr>
+" nmap <C-_>s :cs find s <C-R>=expand("<cword>")<cr><cr>
+" nmap <C-_>g :cs find g <C-R>=expand("<cword>")<cr><cr>
+" nmap <C-_>c :cs find c <C-R>=expand("<cword>")<cr><cr>
+" nmap <C-_>e :cs find e <C-R>=expand("<cword>")<cr><cr>
+" nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<cr><cr>
+" nmap <C-_>i :cs find i <C-R>=expand("<cfile>")<cr><cr>
+" nmap <C-_>d :cs find d <C-R>=expand("<cword>")<cr><cr>
 "设置quickfix窗口前进后退
 nmap cn :cn<cr>
 nmap cp :cp<cr>
@@ -334,9 +334,18 @@ if has("python") || has("python3")
 		\ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.D','*.cmd','*.ti']
 		\}
 	"列出当前文件函数列表
-    nmap fu :LeaderfFunction<cr>
+    nmap fu :LeaderfBufTag<cr>
     "当前目录搜索光标下文本
     nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
+    "leaderf + gtags
+    let g:Lf_GtagsAutoGenerate = 1
+    let g:Lf_GtagsSource = 2
+    " let g:Lf_Gtagslabel = 'native-pygments'
+    noremap fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+    noremap fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+    noremap fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+    noremap fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+    noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 endif
 "##################################################################
 "########################## End Of Vimrc ##########################
