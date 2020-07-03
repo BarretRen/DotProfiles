@@ -4,6 +4,7 @@
 
 ### Changelog
 
+* 2020/07/03: 更新Tmux标签栏背景色配置
 * 2020/06/30: 使用LeaderF自动生成gtags索引，使用leaderF gtags代替cscope
 * 2020/06/24: 修改LeaderF配置，gtags配置
 * 2019/12/9: 添加minibuffexplorer配置，删除ctrlp
