@@ -118,7 +118,7 @@ set ignorecase
 "Vim colorscheme
 set t_Co=256
 
-set background=dark
+set background=light
 colorscheme Bwhite
 let g:Bwhite_Theme_Options = {
     \   'theme': {
@@ -325,7 +325,7 @@ if has("python") || has("python3")
 	let g:Lf_ShortcutF = '<c-p>' " search file
 	let g:Lf_ShortcutB = '<c-b>' " list buffer
 	let g:Lf_ShowRelativePath = 0
-    let g:Lf_ReverseOrder = 1  "最优结果在最下面显示
+    " let g:Lf_ReverseOrder = 1  "最优结果在最下面显示
     let g:Lf_DefaultMode = 'NameOnly'
 	let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
     let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
@@ -338,12 +338,17 @@ if has("python") || has("python3")
     "当前目录搜索光标下文本
     nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
     "leaderf + gtags
-    let g:Lf_GtagsAutoGenerate = 1
+    " let g:Lf_GtagsAutoGenerate = 1
     let g:Lf_GtagsSource = 2
+    let g:Lf_GtagsfilesCmd = {
+            \ '.git': 'git ls-files --recurse-submodules',
+            \ '.hg': "rg --no-messages --files | grep -E '(*\.c|*\.h|*\.cpp|*\.hpp|*\.cc|*\.hh|*\.idl)$' | grep -vi '/VoIP/' | grep -vi '/LinuxPorting/' | grep -vi '/MIPSLinuxPorting/'",
+            \ 'default': 'rg --no-messages --files'
+            \}
     " let g:Lf_Gtagslabel = 'native-pygments'
     noremap fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
     noremap fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-    noremap fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+    noremap fo :<C-U><C-R>=printf("Leaderf! gtags -d")<CR>
     noremap fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
     noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 endif
