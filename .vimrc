@@ -333,12 +333,14 @@ if has("python") || has("python3")
 		\ 'dir': ['.svn','.git','.hg'],
 		\ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.D','*.cmd','*.ti']
 		\}
+    let g:Lf_DefaultExternalTool = "rg"
+    let g:Lf_UseVersionControlTool = 0
 	"列出当前文件函数列表
     nmap fu :LeaderfBufTag<cr>
     "当前目录搜索光标下文本
     nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
     "leaderf + gtags
-    " let g:Lf_GtagsAutoGenerate = 1
+    let g:Lf_GtagsAutoGenerate = 1
     let g:Lf_GtagsSource = 2
     let g:Lf_GtagsfilesCmd = {
             \ '.git': 'git ls-files --recurse-submodules',
