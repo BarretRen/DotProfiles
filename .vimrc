@@ -49,8 +49,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'BarretRen/barret-vimcolor'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'octol/vim-cpp-enhanced-highlight'
-" Plug 'aceofall/gtags.vim'
 Plug 'BarretRen/minibufexpl.vim'
+Plug 'Yggdroot/indentLine'
 if has("python") || has("python3")
     Plug 'Yggdroot/LeaderF'
 endif
@@ -92,7 +92,22 @@ autocmd GUIEnter * simalt ~x  "自动最大化
 "--------------------------------------------------------------------------------
 " 状态栏配置
 "--------------------------------------------------------------------------------
-set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c]
+" statusline settings
+let g:currentmode={
+       \ 'n'  : 'NORMAL ',
+       \ 'v'  : 'VISUAL ',
+       \ 'V'  : 'V·Line ',
+       \ '' : 'V·Block ',
+       \ 'i'  : 'INSERT ',
+       \ 'R'  : 'R ',
+       \ 'Rv' : 'V·Replace ',
+       \ 'c'  : 'Command ',
+       \}
+set statusline=
+" Show current mode
+set statusline+=[\ %{toupper(g:currentmode[mode()])}]
+set statusline+=[%F]%y%r%m%*%=[Line:%l/%L]
+
 set laststatus=2    " always show the status line
 "set ruler           " 在编辑过程中，在右下角显示光标位置的状态行
 set guioptions-=m " 隐藏菜单栏
@@ -317,6 +332,11 @@ let g:miniBufExplorerAutoStart = 1 "自动开启
 let g:miniBufExplUseSingleClick = 1 "单击切换
 let g:miniBufExplShowBufNumbers = 0
 
+"--------------------------------------------------------------------------------
+" Indentline
+"--------------------------------------------------------------------------------
+let g:indentLine_setColors = 0
+let g:indentLine_char_list = ['|']
 
 "--------------------------------------------------------------------------------
 " LeaderF

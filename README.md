@@ -4,6 +4,7 @@
 
 ### Changelog
 
+* 2020/07/17: 添加indentline插件，修改statusline配置
 * 2020/07/06: 添加hg repo的gtags自定义update命令
 * 2020/07/03: 更新Tmux标签栏背景色配置
 * 2020/06/30: 使用LeaderF自动生成gtags索引，使用leaderF gtags代替cscope
