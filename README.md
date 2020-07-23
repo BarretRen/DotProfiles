@@ -4,6 +4,7 @@
 
 ### Changelog
 
+* 2020/07/23: 修改statusline配置，添加当前函数tag显示
 * 2020/07/17: 添加indentline插件，修改statusline配置
 * 2020/07/06: 添加hg repo的gtags自定义update命令
 * 2020/07/03: 更新Tmux标签栏背景色配置

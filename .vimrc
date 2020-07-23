@@ -108,10 +108,12 @@ set statusline+=%#MarkWord3# "use color in colortheme
 set statusline+=[\ %{toupper(g:currentmode[mode()])}]
 set statusline+=%*  "reset to default color
 set statusline+=[%F]%r%m%=%y%*
+set statusline+=%#ErrorMsg#
+set statusline+=%{tagbar#currenttag('[%s]','')}
 set statusline+=%#SpellRare#
-set statusline+=[\ Line:%l/%L\ ]
-set statusline+=%#MarkWord3#
-set statusline+=[%{&fileencoding}]
+set statusline+=[Row:%l/%L\ %p%%]
+" set statusline+=%#MarkWord3#
+" set statusline+=[%{&fileencoding}]
 
 set laststatus=2    " always show the status line
 "set ruler           " 在编辑过程中，在右下角显示光标位置的状态行
