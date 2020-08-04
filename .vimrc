@@ -115,15 +115,15 @@ set statusline+=[Row:%l/%L\ %p%%]
 " set statusline+=%#MarkWord3#
 " set statusline+=[%{&fileencoding}]
 
-noremap <C-l> :call TagbarToggleStatusline()<CR>
-function! TagbarToggleStatusline()
-    let tStatusline = '%{tagbar#currenttag(''[%s]'','''')}'
-    if stridx(&statusline, tStatusline) != -1
-        let &statusline = substitute(&statusline, '\V'.tStatusline, '', '')
-    else
-        let &statusline = substitute(&statusline, '\ze%=', tStatusline, '')
-    endif
-endfunction
+" noremap <C-l> :call TagbarToggleStatusline()<CR>
+" function! TagbarToggleStatusline()
+    " let tStatusline = '%{tagbar#currenttag(''[%s]'','''')}'
+    " if stridx(&statusline, tStatusline) != -1
+        " let &statusline = substitute(&statusline, '\V'.tStatusline, '', '')
+    " else
+        " let &statusline = substitute(&statusline, '\ze%=', tStatusline, '')
+    " endif
+" endfunction
 
 set laststatus=2    " always show the status line
 "set ruler           " 在编辑过程中，在右下角显示光标位置的状态行
@@ -387,9 +387,10 @@ if has("python") || has("python3")
     " let g:Lf_Gtagslabel = 'native-pygments'
     noremap fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
     noremap fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-    noremap fo :<C-U><C-R>=printf("Leaderf! gtags -d")<CR>
+    noremap fo :<C-U><C-R>=printf("Leaderf! gtags -d ")<CR>
     noremap fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
     noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+    noremap fg :<C-U><C-R>=printf("Leaderf gtags --update")<CR><CR>
 endif
 "##################################################################
 "########################## End Of Vimrc ##########################
