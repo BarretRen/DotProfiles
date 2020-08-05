@@ -250,7 +250,7 @@ autocmd BufReadPost *
 						\	exe "normal g'\"" |
 								\ endif
 if g:iswindows
-exec 'cd ' . fnameescape('E:\') "默认起始目录
+exec 'cd ' . fnameescape('E:\')
 endif
 
 "###############################################################################
