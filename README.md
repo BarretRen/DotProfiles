@@ -4,6 +4,7 @@
 
 ### Changelog
 
+* 2020/08/5: 去除leaderF gtags配置，有bug，会自动启动很多gtags进程。添加windows复制粘贴快捷键
 * 2020/07/23: 修改statusline配置，添加当前函数tag显示
 * 2020/07/17: 添加indentline插件，修改statusline配置
 * 2020/07/06: 添加hg repo的gtags自定义update命令

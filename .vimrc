@@ -27,9 +27,9 @@ set termencoding=utf-8 "ssh term 使用的编码
 " 下面两行用于防止gvim提示和软件显示出现问题
 set fenc=utf-8 "文件新建编码
 if g:iswindows
-    set guifont=Courier_New:h11
+    set guifont=Cascadia_Code:h12
 else
-    set guifont=Courier_New\ 10 "字体设置在终端下无效
+    set guifont=Cascadia_Code\ 10 "字体设置在终端下无效
 endif
 
 "###############################################################################
@@ -52,7 +52,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'BarretRen/minibufexpl.vim'
 Plug 'Yggdroot/indentLine'
 if has("python") || has("python3")
-    Plug 'Yggdroot/LeaderF'
+   Plug 'Yggdroot/LeaderF'
 endif
 
 call plug#end()
@@ -110,7 +110,7 @@ set statusline+=%*  "reset to default color
 set statusline+=[%F]%r%m%=%y%*
 " set statusline+=%#ErrorMsg#
 " set statusline+=%{tagbar#currenttag('[%s]','')}
-set statusline+=%#SpellRare#
+set statusline+=%#MarkWord2#
 set statusline+=[Row:%l/%L\ %p%%]
 " set statusline+=%#MarkWord3#
 " set statusline+=[%{&fileencoding}]
@@ -126,9 +126,11 @@ set statusline+=[Row:%l/%L\ %p%%]
 " endfunction
 
 set laststatus=2    " always show the status line
-"set ruler           " 在编辑过程中，在右下角显示光标位置的状态行
+" set ruler           " 在编辑过程中，在右下角显示光标位置的状态行
+if !g:iswindows
 set guioptions-=m " 隐藏菜单栏
 set guioptions-=T " 隐藏工具栏
+endif
 "set guioptions-=L " 隐藏左侧滚动条
 "set guioptions-=r " 隐藏右侧滚动条
 set guioptions-=b " 隐藏底部滚动条
@@ -195,13 +197,22 @@ set foldlevel=10       " Don't autofold anything (but I can still fold manually)
 " 快捷键
 "--------------------------------------------------------------------------------
 nmap <C-n> :new<cr> "新建文件
-" Mouse behavior (the Windows way)
-" behave mswin
 "复制粘贴快捷键
-if g:isGUI
-    vmap <C-c> "+yy
-    vmap <C-x> "+yd
-    nmap <C-v> "+yp
+if has("clipboard")
+    " CTRL-X and SHIFT-Del are Cut
+    vnoremap <C-X> "+x
+    vnoremap <S-Del> "+x
+
+    " CTRL-C and CTRL-Insert are Copy
+    vnoremap <C-C> "+y
+    vnoremap <C-Insert> "+y
+
+    " CTRL-V and SHIFT-Insert are Paste
+    map <C-V>		"+gP
+    map <S-Insert>		"+gP
+
+    cmap <C-V>		<C-R>+
+    cmap <S-Insert>		<C-R>+
     nmap <C-a> ggvG$
 else
     vmap <C-c> "yy
@@ -238,7 +249,9 @@ autocmd BufReadPost *
 			\ if line("'\"")>0&&line("'\"")<=line("$") |
 						\	exe "normal g'\"" |
 								\ endif
-
+if g:iswindows
+exec 'cd ' . fnameescape('E:\') "默认起始目录
+endif
 
 "###############################################################################
 " 各插件配置
@@ -254,27 +267,27 @@ nmap <F5> :TagbarToggle<CR>
 "--------------------------------------------------------------------------------
 " gtags
 "--------------------------------------------------------------------------------
-" let GtagsCscope_Auto_Load = 1
-" let CtagsCscope_Auto_Map = 1
-" let GtagsCscope_Quiet = 1
-" let GtagsCscope_Absolute_Path = 1
+let GtagsCscope_Auto_Load = 1
+let CtagsCscope_Auto_Map = 1
+let GtagsCscope_Quiet = 1
+let GtagsCscope_Absolute_Path = 1
 
 "--------------------------------------------------------------------------------
 " cscope
 "--------------------------------------------------------------------------------
 " :set cscopequickfix=s-,g-,c-,d-,i-,t-,e-,f-   "是否使用 quickfix 窗口来显示 cscope 结果
-" :set cscopetag
-" set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
+:set cscopetag
+set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
 " 按下面这种组合键有技巧,按了<C-_>后要马上按下一个键,否则屏幕一闪
 " 就回到nomal状态了
 " <C-_>s的按法是先按"Ctrl+Shift+-",然后很快再按"s"
-" nmap <C-_>s :cs find s <C-R>=expand("<cword>")<cr><cr>
-" nmap <C-_>g :cs find g <C-R>=expand("<cword>")<cr><cr>
-" nmap <C-_>c :cs find c <C-R>=expand("<cword>")<cr><cr>
-" nmap <C-_>e :cs find e <C-R>=expand("<cword>")<cr><cr>
-" nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<cr><cr>
-" nmap <C-_>i :cs find i <C-R>=expand("<cfile>")<cr><cr>
-" nmap <C-_>d :cs find d <C-R>=expand("<cword>")<cr><cr>
+nmap <C-_>s :cs find s <C-R>=expand("<cword>")<cr><cr>
+nmap <C-_>g :cs find g <C-R>=expand("<cword>")<cr><cr>
+nmap <C-_>c :cs find c <C-R>=expand("<cword>")<cr><cr>
+nmap <C-_>e :cs find e <C-R>=expand("<cword>")<cr><cr>
+nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<cr><cr>
+nmap <C-_>i :cs find i <C-R>=expand("<cfile>")<cr><cr>
+nmap <C-_>d :cs find d <C-R>=expand("<cword>")<cr><cr>
 "设置quickfix窗口前进后退
 nmap cn :cn<cr>
 nmap cp :cp<cr>
@@ -378,19 +391,14 @@ if has("python") || has("python3")
     nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
     "leaderf + gtags
     " let g:Lf_GtagsAutoGenerate = 1
-    let g:Lf_GtagsSource = 2
-    let g:Lf_GtagsfilesCmd = {
-            \ '.git': 'git ls-files --recurse-submodules',
-            \ '.hg': "rg --no-messages --files | grep -E '(*\.c|*\.h|*\.cpp|*\.hpp|*\.cc|*\.hh|*\.idl)$' | grep -vi '/VoIP/' | grep -vi '/LinuxPorting/' | grep -vi '/MIPSLinuxPorting/'",
-            \ 'default': 'rg --no-messages --files'
-            \}
+    " let g:Lf_GtagsSource = 2
     " let g:Lf_Gtagslabel = 'native-pygments'
-    noremap fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-    noremap fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-    noremap fo :<C-U><C-R>=printf("Leaderf! gtags -d ")<CR>
-    noremap fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-    noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-    noremap fg :<C-U><C-R>=printf("Leaderf gtags --update")<CR><CR>
+    " noremap fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+    " noremap fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+    " noremap fo :<C-U><C-R>=printf("Leaderf! gtags -d ")<CR>
+    " noremap fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+    " noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+    " noremap fg :<C-U><C-R>=printf("Leaderf gtags --update")<CR><CR>
 endif
 "##################################################################
 "########################## End Of Vimrc ##########################
