@@ -50,7 +50,8 @@ Plug 'BarretRen/barret-vimcolor'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'BarretRen/minibufexpl.vim'
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
+Plug 'aceofall/gtags.vim'
 if has("python") || has("python3")
    Plug 'Yggdroot/LeaderF'
 endif
@@ -92,25 +93,25 @@ autocmd GUIEnter * simalt ~x  "自动最大化
 "--------------------------------------------------------------------------------
 " 状态栏配置
 "--------------------------------------------------------------------------------
-let g:currentmode={
-       \ 'n'  : 'NORMAL ',
-       \ 'v'  : 'VISUAL ',
-       \ 'V'  : 'V·Line ',
-       \ '' : 'V·Block ',
-       \ 'i'  : 'INSERT ',
-       \ 'R'  : 'R ',
-       \ 'Rv' : 'V·Replace ',
-       \ 'c'  : 'Command ',
-       \}
+" let g:currentmode={
+       " \ 'n'  : 'NORMAL ',
+       " \ 'v'  : 'VISUAL ',
+       " \ 'V'  : 'V·Line ',
+       " \ '' : 'V·Block ',
+       " \ 'i'  : 'INSERT ',
+       " \ 'R'  : 'R ',
+       " \ 'Rv' : 'V·Replace ',
+       " \ 'c'  : 'Command ',
+       " \}
 set statusline=
 " Show current mode
-set statusline+=%#MarkWord3# "use color in colortheme
-set statusline+=[\ %{toupper(g:currentmode[mode()])}]
-set statusline+=%*  "reset to default color
+" set statusline+=%#MarkWord3# "use color in colortheme
+" set statusline+=[\ %{toupper(g:currentmode[mode()])}]
+" set statusline+=%*  "reset to default color
 set statusline+=[%F]%r%m%=%y%*
 " set statusline+=%#ErrorMsg#
 " set statusline+=%{tagbar#currenttag('[%s]','')}
-set statusline+=%#MarkWord2#
+set statusline+=%#MarkWord3#
 set statusline+=[Row:%l/%L\ %p%%]
 " set statusline+=%#MarkWord3#
 " set statusline+=[%{&fileencoding}]
@@ -278,19 +279,14 @@ let GtagsCscope_Absolute_Path = 1
 " :set cscopequickfix=s-,g-,c-,d-,i-,t-,e-,f-   "是否使用 quickfix 窗口来显示 cscope 结果
 :set cscopetag
 set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
-" 按下面这种组合键有技巧,按了<C-_>后要马上按下一个键,否则屏幕一闪
-" 就回到nomal状态了
-" <C-_>s的按法是先按"Ctrl+Shift+-",然后很快再按"s"
-nmap <C-_>s :cs find s <C-R>=expand("<cword>")<cr><cr>
-nmap <C-_>g :cs find g <C-R>=expand("<cword>")<cr><cr>
-nmap <C-_>c :cs find c <C-R>=expand("<cword>")<cr><cr>
-nmap <C-_>e :cs find e <C-R>=expand("<cword>")<cr><cr>
-nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<cr><cr>
-nmap <C-_>i :cs find i <C-R>=expand("<cfile>")<cr><cr>
-nmap <C-_>d :cs find d <C-R>=expand("<cword>")<cr><cr>
+" find symbol,defination, caller
+nmap fr :cs find s <C-R>=expand("<cword>")<cr><cr>
+nmap fd :cs find g <C-R>=expand("<cword>")<cr><cr>
+nmap fc :cs find c <C-R>=expand("<cword>")<cr><cr>
+nmap ff :<C-U><C-R>=printf("cs find f ")<CR>
 "设置quickfix窗口前进后退
-nmap cn :cn<cr>
-nmap cp :cp<cr>
+" nmap cn :cn<cr>
+" nmap cp :cp<cr>
 
 "--------------------------------------------------------------------------------
 " EasyGrep
@@ -317,6 +313,7 @@ nmap nw :Vex<cr>       "文件浏览器
 let g:netrw_browse_split = 4
 let g:netrw_banner = 0  "隐藏横幅
 let g:netrw_winsize = 25 "宽度
+let g:netrw_liststyle = 3
 
 "--------------------------------------------------------------------------------
 "" nerdcommenter 注释插件
