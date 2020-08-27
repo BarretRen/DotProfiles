@@ -235,7 +235,14 @@ nmap <F12> :bro ol<cr>  "浏览文件打开记录
 nmap <F2> :bd<cr>    "关闭minibufexplorer中的某个文件
 nmap ln :set nu!<cr>
 " nmap as :AsyncRun
-nmap <C-t> :terminal<cr>
+if g:isGUI
+    noremap <C-Z> u
+    noremap <C-Y> <C-R>
+else
+    noremap <C-Y> <C-R>
+    nmap <C-t> :terminal<cr>
+endif
+
 " vimmerge 快捷键
 map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
 map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
