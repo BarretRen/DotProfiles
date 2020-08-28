@@ -1,8 +1,14 @@
 ## Introduction
 
-个人工作总结的VIM配置，基本满足工作编程需要，快捷键基于个人使用习惯，供大家参考。
+个人工作总结的Linux上软件配置，基本满足工作编程需要，包含如下软件的配置
+* Vim
+* zsh
+* tmux
+* tm: 自动创建tmux的脚本
 
-### Changelog
+> 快捷键基于个人使用习惯，供大家参考。
+
+## Changelog
 
 * 2020/08/5: 去除leaderF gtags配置，有bug，会自动启动很多gtags进程。添加windows复制粘贴快捷键
 * 2020/07/23: 修改statusline配置，添加当前函数tag显示
@@ -18,6 +24,7 @@
 * 2018/1/18: 添加YankRing插件，修改快捷键
 * 2018/1/5: 初次提交
 
+## Vim 配置基本介绍
 ### screenshot
 
 **UI**
@@ -47,7 +54,6 @@
 
 
 ### Usage
-
 
 **Key Mapping:**
 
