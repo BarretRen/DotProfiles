@@ -1,11 +1,4 @@
 #!/bin/zsh
-##
-## name     : tmuxen, tmux environment made easy
-## author   : Xu Xiaodong <xxdlhy@gmail.com>
-## license  : GPL
-## created  : 2012 Jul 01
-## modified : 2016 Nov 12
-##
 
 #cmd=$(which tmux) # tmux path
 cmd='/home/barretr/tools/tmuxN/bin/tmux'
