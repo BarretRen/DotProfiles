@@ -154,12 +154,12 @@ set ignorecase
 set t_Co=256
 
 set background=light
-colorscheme Bwhite
+colorscheme Bone
 let g:Bwhite_Theme_Options = {
     \   'theme': {
     \     'default': {
     \       'allow_bold': 1,
-    \       'allow_italic': 0,
+    \       'allow_italic': 1,
     \       'transparent_background': 0
     \     }
     \   },
@@ -354,9 +354,8 @@ let g:miniBufExplAutoStart = 1
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
-let g:cpp_experimental_simple_template_highlight = 1
-let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
+let g:cpp_no_function_highlight = 1
 
 "--------------------------------------------------------------------------------
 " minibuf explorer
@@ -392,7 +391,7 @@ if has("python") || has("python3")
 	"列出当前文件函数列表
     nmap fu :LeaderfBufTag<cr>
     "当前目录搜索光标下文本
-    nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
+    " nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
     "leaderf + gtags
     " let g:Lf_GtagsAutoGenerate = 1
     " let g:Lf_GtagsSource = 2
