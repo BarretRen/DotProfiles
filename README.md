@@ -10,6 +10,7 @@
 
 ## Changelog
 
+* 2020/09/4: update tmux statusline configurations 
 * 2020/09/3: update tm script to suooprt multiple tmux session
 * 2020/09/2: update VIM colorscheme and syntax highlight
 * 2020/08/5: 去除leaderF gtags配置，有bug，会自动启动很多gtags进程。添加windows复制粘贴快捷键
