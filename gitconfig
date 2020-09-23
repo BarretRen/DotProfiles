@@ -1,0 +1,23 @@
+[user]
+    name = Barret Ren
+    email = barret.ren@outlook.com
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    br = branch
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    logn = log --name-only
+[http]
+	proxy = http://barretr:Shidandan1230.@135.251.33.16:80
+[push]
+	default = simple
+[i18n]
+	commitencoding = utf-8
+	logoutputencoding = utf-8
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+	interactive = auto
