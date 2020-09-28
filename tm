@@ -21,6 +21,12 @@ if [ -z $cmd ]; then
     exit 1
 fi
 
+# list all tmux session
+if [ $session = "ls" ]; then
+    $cmd ls
+    exit 0
+fi
+
 $cmd has -t $session 2> /dev/null
 
 if [ $? -ne 0 ]; then
