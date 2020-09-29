@@ -10,6 +10,7 @@
 
 ## Changelog
 
+* 2020/09/29: add vim Autoformat pulgin
 * 2020/09/8: update tmux statusline configurations 
 * 2020/09/4: update tmux statusline configurations 
 * 2020/09/3: update tm script to support multiple tmux session

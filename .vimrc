@@ -36,9 +36,9 @@ endif
 " 插件管理
 "###############################################################################
 if g:iswindows
-	call plug#begin('~/vimfiles/bundle')
+    call plug#begin('~/vimfiles/bundle')
 else
-	call plug#begin('~/.vim/bundle')
+    call plug#begin('~/.vim/bundle')
 endif
 
 Plug 'majutsushi/tagbar'
@@ -52,8 +52,9 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'BarretRen/minibufexpl.vim'
 " Plug 'Yggdroot/indentLine'
 Plug 'aceofall/gtags.vim'
+Plug 'Chiel92/vim-autoformat' "自动格式化
 if has("python") || has("python3")
-   Plug 'Yggdroot/LeaderF'
+    Plug 'Yggdroot/LeaderF'
 endif
 
 call plug#end()
@@ -94,15 +95,15 @@ autocmd GUIEnter * simalt ~x  "自动最大化
 " 状态栏配置
 "--------------------------------------------------------------------------------
 " let g:currentmode={
-       " \ 'n'  : 'NORMAL ',
-       " \ 'v'  : 'VISUAL ',
-       " \ 'V'  : 'V·Line ',
-       " \ '' : 'V·Block ',
-       " \ 'i'  : 'INSERT ',
-       " \ 'R'  : 'R ',
-       " \ 'Rv' : 'V·Replace ',
-       " \ 'c'  : 'Command ',
-       " \}
+" \ 'n'  : 'NORMAL ',
+" \ 'v'  : 'VISUAL ',
+" \ 'V'  : 'V·Line ',
+" \ '' : 'V·Block ',
+" \ 'i'  : 'INSERT ',
+" \ 'R'  : 'R ',
+" \ 'Rv' : 'V·Replace ',
+" \ 'c'  : 'Command ',
+" \}
 set statusline=
 " Show current mode
 " set statusline+=%#MarkWord3# "use color in colortheme
@@ -118,19 +119,19 @@ set statusline+=[Row:%l/%L\ %p%%]
 
 " noremap <C-l> :call TagbarToggleStatusline()<CR>
 " function! TagbarToggleStatusline()
-    " let tStatusline = '%{tagbar#currenttag(''[%s]'','''')}'
-    " if stridx(&statusline, tStatusline) != -1
-        " let &statusline = substitute(&statusline, '\V'.tStatusline, '', '')
-    " else
-        " let &statusline = substitute(&statusline, '\ze%=', tStatusline, '')
-    " endif
+" let tStatusline = '%{tagbar#currenttag(''[%s]'','''')}'
+" if stridx(&statusline, tStatusline) != -1
+" let &statusline = substitute(&statusline, '\V'.tStatusline, '', '')
+" else
+" let &statusline = substitute(&statusline, '\ze%=', tStatusline, '')
+" endif
 " endfunction
 
 set laststatus=2    " always show the status line
 " set ruler           " 在编辑过程中，在右下角显示光标位置的状态行
 if !g:iswindows
-set guioptions-=m " 隐藏菜单栏
-set guioptions-=T " 隐藏工具栏
+    set guioptions-=m " 隐藏菜单栏
+    set guioptions-=T " 隐藏工具栏
 endif
 "set guioptions-=L " 隐藏左侧滚动条
 "set guioptions-=r " 隐藏右侧滚动条
@@ -141,9 +142,9 @@ set guioptions-=b " 隐藏底部滚动条
 "--------------------------------------------------------------------------------
 set hlsearch        " 高亮显示搜索结果
 set incsearch       " 查询时非常方便，如要查找book单词，当输入到/b时，会自动找到
-                    " 第一个b开头的单词，当输入到/bo时，会自动找到第一个bo开头的
-                    " 单词，依次类推，进行查找时，使用此设置会快速找到答案，当你
-                    " 找要匹配的单词时，别忘记回车
+" 第一个b开头的单词，当输入到/bo时，会自动找到第一个bo开头的
+" 单词，依次类推，进行查找时，使用此设置会快速找到答案，当你
+" 找要匹配的单词时，别忘记回车
 set gdefault        " 替换时所有的行内匹配都被替换，而不是只有第一个
 set ignorecase
 
@@ -154,27 +155,27 @@ set ignorecase
 set t_Co=256
 
 set background=light
-colorscheme Bone
+colorscheme Bgreen
 let g:Bwhite_Theme_Options = {
-    \   'theme': {
-    \     'default': {
-    \       'allow_bold': 1,
-    \       'allow_italic': 1,
-    \       'transparent_background': 0
-    \     }
-    \   },
-    \   'language': {
-    \     'python': {
-    \       'highlight_builtins' : 1
-    \     },
-    \     'c': {
-    \       'highlight_builtins' : 1
-    \     },
-    \     'cpp': {
-    \       'highlight_standard_library': 1
-    \     }
-    \   }
-    \ }
+            \   'theme': {
+            \     'default': {
+            \       'allow_bold': 1,
+            \       'allow_italic': 1,
+            \       'transparent_background': 0
+            \     }
+            \   },
+            \   'language': {
+            \     'python': {
+            \       'highlight_builtins' : 1
+            \     },
+            \     'c': {
+            \       'highlight_builtins' : 1
+            \     },
+            \     'cpp': {
+            \       'highlight_standard_library': 1
+            \     }
+            \   }
+            \ }
 "--------------------------------------------------------------------------------
 " 编程相关的设置
 "--------------------------------------------------------------------------------
@@ -209,11 +210,11 @@ if has("clipboard")
     vnoremap <C-Insert> "+y
 
     " CTRL-V and SHIFT-Insert are Paste
-    map <C-V>		"+gP
-    map <S-Insert>		"+gP
+    map <C-V>       "+gP
+    map <S-Insert>      "+gP
 
-    cmap <C-V>		<C-R>+
-    cmap <S-Insert>		<C-R>+
+    cmap <C-V>      <C-R>+
+    cmap <S-Insert>     <C-R>+
     nmap <C-a> ggvG$
 else
     vmap <C-c> "yy
@@ -254,11 +255,11 @@ map <silent> <leader>4 :diffget 4<CR> :diffupdate<CR>
 "--------------------------------------------------------------------------------
 "让vim记忆上次编辑的位置
 autocmd BufReadPost *
-			\ if line("'\"")>0&&line("'\"")<=line("$") |
-						\	exe "normal g'\"" |
-								\ endif
+            \ if line("'\"")>0&&line("'\"")<=line("$") |
+            \   exe "normal g'\"" |
+            \ endif
 if g:iswindows
-exec 'cd ' . fnameescape('E:\')
+    exec 'cd ' . fnameescape('E:\')
 endif
 
 "###############################################################################
@@ -372,23 +373,32 @@ let g:indentLine_setColors = 0
 let g:indentLine_char_list = ['|']
 
 "--------------------------------------------------------------------------------
+" autoformat
+"--------------------------------------------------------------------------------
+" au BufWrite * :Autoformat "自动格式化
+let g:formatdef_astyle_c = '"astyle --mode=c --options=/home/barretr/.astylerc"'
+let g:formatters_c = ['astyle_c', 'clangformat']
+let g:formatdef_astyle_cpp = '"astyle --mode=c --options=/home/barretr/.astylerc"'
+let g:formatters_cpp = ['astyle_cpp', 'clangformat']
+
+"--------------------------------------------------------------------------------
 " LeaderF
 "--------------------------------------------------------------------------------
 if has("python") || has("python3")
-	let g:Lf_ShortcutF = '<c-p>' " search file
-	let g:Lf_ShortcutB = '<c-b>' " list buffer
-	let g:Lf_ShowRelativePath = 0
+    let g:Lf_ShortcutF = '<c-p>' " search file
+    let g:Lf_ShortcutB = '<c-b>' " list buffer
+    let g:Lf_ShowRelativePath = 0
     " let g:Lf_ReverseOrder = 1  "最优结果在最下面显示
     let g:Lf_DefaultMode = 'NameOnly'
-	let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
+    let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
     let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
-	let g:Lf_WildIgnore = {
-		\ 'dir': ['.svn','.git','.hg'],
-		\ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.D','*.cmd','*.ti']
-		\}
+    let g:Lf_WildIgnore = {
+                \ 'dir': ['.svn','.git','.hg'],
+                \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.D','*.cmd','*.ti']
+                \}
     let g:Lf_DefaultExternalTool = "rg"
     let g:Lf_UseVersionControlTool = 0
-	"列出当前文件函数列表
+    "列出当前文件函数列表
     nmap fu :LeaderfBufTag<cr>
     "当前目录搜索光标下文本
     " nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
