@@ -10,6 +10,7 @@
 
 ## Changelog
 
+* 2020/12/08: change vim colorscheme to solarized
 * 2020/09/29: add vim Autoformat pulgin
 * 2020/09/8: update tmux statusline configurations 
 * 2020/09/4: update tmux statusline configurations 
@@ -40,7 +41,7 @@
 
 ![screenshot](search.png)
 
-### Installation
+### Vim profile Installation
 
 **Linux**
 * git clone https://github.com/Renxiuhu/VimProfiles.git 
@@ -58,7 +59,7 @@
 * 执行如下vim命令，更新管理器和插件：PlugUpgrade, PlugInstall
 
 
-### Usage
+### Vim shutcuts
 
 **Key Mapping:**
 

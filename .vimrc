@@ -154,13 +154,14 @@ set ignorecase
 "Vim colorscheme
 set t_Co=256
 
-set background=light
-colorscheme Bgreen
+set background=dark
+colorscheme solarized
+let g:solarized_termtrans = 1
 let g:Bwhite_Theme_Options = {
             \   'theme': {
             \     'default': {
-            \       'allow_bold': 1,
-            \       'allow_italic': 1,
+            \       'allow_bold': 0,
+            \       'allow_italic': 0,
             \       'transparent_background': 0
             \     }
             \   },
