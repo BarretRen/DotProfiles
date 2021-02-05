@@ -154,29 +154,28 @@ set ignorecase
 "Vim colorscheme
 set t_Co=256
 
-set background=dark
-colorscheme solarized
-let g:solarized_termtrans = 1
-let g:Bwhite_Theme_Options = {
-            \   'theme': {
-            \     'default': {
-            \       'allow_bold': 0,
-            \       'allow_italic': 0,
-            \       'transparent_background': 0
-            \     }
-            \   },
-            \   'language': {
-            \     'python': {
-            \       'highlight_builtins' : 1
-            \     },
-            \     'c': {
-            \       'highlight_builtins' : 1
-            \     },
-            \     'cpp': {
-            \       'highlight_standard_library': 1
-            \     }
-            \   }
-            \ }
+set background=light
+colorscheme Bwhite
+" let g:Bwhite_Theme_Options = {
+            " \   'theme': {
+            " \     'default': {
+            " \       'allow_bold': 0,
+            " \       'allow_italic': 0,
+            " \       'transparent_background': 0
+            " \     }
+            " \   },
+            " \   'language': {
+            " \     'python': {
+            " \       'highlight_builtins' : 1
+            " \     },
+            " \     'c': {
+            " \       'highlight_builtins' : 1
+            " \     },
+            " \     'cpp': {
+            " \       'highlight_standard_library': 1
+            " \     }
+            " \   }
+            " \ }
 "--------------------------------------------------------------------------------
 " 编程相关的设置
 "--------------------------------------------------------------------------------
@@ -199,7 +198,7 @@ set foldlevel=10       " Don't autofold anything (but I can still fold manually)
 "--------------------------------------------------------------------------------
 " 快捷键
 "--------------------------------------------------------------------------------
-nmap <C-n> :new<cr> "新建文件
+" nmap <C-n> :new<cr> "新建文件
 "复制粘贴快捷键
 if has("clipboard")
     " CTRL-X and SHIFT-Del are Cut
@@ -211,7 +210,7 @@ if has("clipboard")
     vnoremap <C-Insert> "+y
 
     " CTRL-V and SHIFT-Insert are Paste
-    map <C-V>       "+gP
+    map <C-V>       "0P
     map <S-Insert>      "+gP
 
     cmap <C-V>      <C-R>+
@@ -272,6 +271,7 @@ endif
 let g:tagbar_width = 30
 let g:tagbar_singleclick = 1 "点击一次跳转
 let g:tagbar_iconchars = ['+', '-']
+let g:tagbar_position = 'left'
 nmap <F5> :TagbarToggle<CR>
 
 "--------------------------------------------------------------------------------
@@ -417,4 +417,3 @@ endif
 "##################################################################
 "########################## End Of Vimrc ##########################
 "##################################################################
-
