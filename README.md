@@ -9,7 +9,7 @@
 > 快捷键基于个人使用习惯，供大家参考。
 
 ## Changelog
-
+* 2020/05/26: change vim colorscheme to my customed PaperColor
 * 2020/12/08: change vim colorscheme to solarized
 * 2020/09/29: add vim Autoformat pulgin
 * 2020/09/8: update tmux statusline configurations 
