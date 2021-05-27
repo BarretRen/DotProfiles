@@ -71,7 +71,7 @@ set wrap           " 自动换行
 set linebreak       " 整词换行
 set whichwrap=b,s,<,>,[,]       " 光标从行首和行末时可以跳到另一行去
 "set list                       " 显示制表符
-"set listchars=tab:>-,trail:-     " 将制表符显示为'>---',将行尾空格显示为'-'
+set listchars=tab:>-,trail:-     " 将制表符显示为'>---',将行尾空格显示为'-'
 "set autochdir                   " 自动设置目录为正在编辑的文件所在的目录
 set hidden          " 没有保存的缓冲区可以自动被隐藏
 set scrolloff=5
@@ -219,7 +219,7 @@ endif
 " 多窗口操作的快捷键
 nmap wv     <C-w>v     " 垂直分割当前窗口
 nmap wc     <C-w>c     " 关闭当前窗口
-nmap wx     <C-w>s     " 水平分割当前窗口
+nmap wh     <C-w>s     " 水平分割当前窗口
 nmap fx :copen<cr>     "打开quickfix窗口
 
 " 保存，退出，历史文件等快捷键
