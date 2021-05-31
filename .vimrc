@@ -129,7 +129,7 @@ set statusline+=[Row:%l/%L\ %p%%]
 
 set laststatus=2    " always show the status line
 " set ruler           " 在编辑过程中，在右下角显示光标位置的状态行
-if !g:iswindows
+if g:iswindows
     set guioptions-=m " 隐藏菜单栏
     set guioptions-=T " 隐藏工具栏
 endif
