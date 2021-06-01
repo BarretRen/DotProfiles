@@ -27,7 +27,7 @@ set termencoding=utf-8 "ssh term 使用的编码
 " 下面两行用于防止gvim提示和软件显示出现问题
 set fenc=utf-8 "文件新建编码
 if g:iswindows
-    set guifont=Cascadia_Code:h12
+    set guifont=Cascadia_Code:h11
 else
     set guifont=Cascadia_Code\ 10 "字体设置在终端下无效
 endif
@@ -396,16 +396,8 @@ if has("python") || has("python3")
     nmap fu :LeaderfBufTag<cr>
     "当前目录搜索光标下文本
     " nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
-    "leaderf + gtags
-    " let g:Lf_GtagsAutoGenerate = 1
-    " let g:Lf_GtagsSource = 2
-    " let g:Lf_Gtagslabel = 'native-pygments'
-    " noremap fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-    " noremap fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-    " noremap fo :<C-U><C-R>=printf("Leaderf! gtags -d ")<CR>
-    " noremap fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-    " noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-    " noremap fg :<C-U><C-R>=printf("Leaderf gtags --update")<CR><CR>
+    "gtags
+    let g:Lf_GtagsAutoUpdate = 0
 endif
 "##################################################################
 "########################## End Of Vimrc ##########################
