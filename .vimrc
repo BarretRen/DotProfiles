@@ -43,7 +43,8 @@ endif
 
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/EasyGrep'
-Plug 'vim-scripts/Mark--Karkat'
+Plug 'inkarkat/vim-mark'
+Plug 'inkarkat/vim-ingo-library'
 Plug 'scrooloose/nerdcommenter'
 "Plug 'https://github.com/skywind3000/asyncrun.vim.git'
 Plug 'BarretRen/papercolor-theme'
@@ -307,6 +308,9 @@ nmap <F8> \vr
 "--------------------------------------------------------------------------------
 " 给不同的单词高亮，表明不同的变量
 nmap m lbve\m
+nmap <Leader>M <Plug>MarkToggle
+nmap <Leader>N <Plug>MarkAllClear
+let g:mwDefaultHighlightingPalette = 'extended'
 
 "--------------------------------------------------------------------------------
 " netrw

@@ -9,7 +9,9 @@
 > 快捷键基于个人使用习惯，供大家参考。
 
 ## Changelog
-* 2021/06/01: disable leaderF auto gtags update
+* 2021/06/01:
+    * disable leaderF auto gtags update
+    * use new markword plugin which can mark more than 6 words
 * 2021/05/27: update tmux renumber-windows
 * 2021/05/26: change vim colorscheme to my customed PaperColor
 * 2020/12/08: change vim colorscheme to solarized
