@@ -383,6 +383,10 @@ let g:formatters_cpp = ['astyle_cpp', 'clangformat']
 " LeaderF
 "--------------------------------------------------------------------------------
 if has("python") || has("python3")
+    " popup mode
+    let g:Lf_WindowPosition = 'popup'
+    let g:Lf_PreviewInPopup = 1
+
     let g:Lf_ShortcutF = '<c-p>' " search file
     let g:Lf_ShortcutB = '<c-b>' " list buffer
     let g:Lf_ShowRelativePath = 0
@@ -394,7 +398,7 @@ if has("python") || has("python3")
                 \ 'dir': ['.svn','.git','.hg'],
                 \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.D','*.cmd','*.ti']
                 \}
-    let g:Lf_DefaultExternalTool = "rg"
+    " let g:Lf_DefaultExternalTool = "rg"
     let g:Lf_UseVersionControlTool = 0
     "列出当前文件函数列表
     nmap fu :LeaderfBufTag<cr>
