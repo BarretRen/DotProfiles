@@ -88,6 +88,12 @@ set nocompatible
 set nobackup
 set noundofile
 set noswapfile
+"设置viminfo
+if g:iswindows
+    set viminfo='20,<20,s10,h,rA:,rB:,/10,:10
+else
+    set viminfo='20,<20,s10,h,/10,:10
+endif
 "去除声音和闪屏
 set vb t_vb=
 au GuiEnter * set t_vb=
