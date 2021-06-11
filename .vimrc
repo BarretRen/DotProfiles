@@ -121,7 +121,7 @@ set statusline+=[%F]%r%m%=%y%*
 " set statusline+=%#ErrorMsg#
 " set statusline+=%{tagbar#currenttag('[%s]','')}
 set statusline+=%#MarkWord3#
-set statusline+=[Row:%l/%L\ %p%%]
+set statusline+=[Row:%l/%L\ Col:%v\ %p%%]
 " set statusline+=%#MarkWord3#
 " set statusline+=[%{&fileencoding}]
 
