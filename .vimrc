@@ -53,6 +53,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'BarretRen/minibufexpl.vim'
 " Plug 'Yggdroot/indentLine'
 Plug 'aceofall/gtags.vim'
+Plug 'voldikss/vim-floaterm'
 Plug 'Chiel92/vim-autoformat' "自动格式化
 if has("python") || has("python3")
     Plug 'Yggdroot/LeaderF'
@@ -386,12 +387,19 @@ let g:formatdef_astyle_cpp = '"astyle --mode=c --options=/home/barretr/.astylerc
 let g:formatters_cpp = ['astyle_cpp', 'clangformat']
 
 "--------------------------------------------------------------------------------
+" floaterm
+"--------------------------------------------------------------------------------
+let g:floaterm_keymap_toggle = '<F9>'
+let g:floaterm_wintype = 'vsplit'
+
+"--------------------------------------------------------------------------------
 " LeaderF
 "--------------------------------------------------------------------------------
 if has("python") || has("python3")
     " popup mode
     let g:Lf_WindowPosition = 'popup'
     let g:Lf_PreviewInPopup = 1
+    let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
 
     let g:Lf_ShortcutF = '<c-p>' " search file
     let g:Lf_ShortcutB = '<c-b>' " list buffer
