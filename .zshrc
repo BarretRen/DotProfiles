@@ -95,6 +95,10 @@ export TERM="screen-256color"
 # export LANG="zh_CN.UTF-8"
 # export LC_ALL="zh_CN.UTF-8"
 # PATH set
+if [ -x /usr/bin/dircolors ]; then
+        test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+        alias ls='ls --color=auto'
+fi
 
 alias buildfdt="find /repo/barretr/fdt1265/sw/vobs/dsl/sw/flat -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.cc' -o -iname '*.hh' -o -iname '*.idl' | grep -vi '/VoIP/' | grep -vi '/LinuxPorting/' | sort > ./cscope.files  && gtags -f ./cscope.files && rm ./cscope.files"
 alias buildtmp="find /repo/barretr/fdt1265_tmp/sw/vobs/dsl/sw/flat -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.cc' -o -iname '*.hh' -o -iname '*.idl' | grep -vi '/VoIP/' | grep -vi '/LinuxPorting/' | sort > ./cscope.files  && gtags -f ./cscope.files && rm ./cscope.files"
