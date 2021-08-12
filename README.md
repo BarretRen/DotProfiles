@@ -9,6 +9,9 @@
 > 快捷键基于个人使用习惯，供大家参考。
 
 ## Changelog
+* 2021/08/12:
+   * support vim mouse in Windows Terminal
+   * set tmux pane history path
 * 2021/06/01:
     * disable leaderF auto gtags update
     * use new markword plugin which can mark more than 6 words
