@@ -68,6 +68,7 @@ set shortmess=atI "去掉欢迎界面
 set nu!             " 显示行号,默认启动，ln开关控制
 set mouse=a      "任何模式使用鼠标
 "set mouse=nv      "只在普通和可视模式使用鼠标
+set ttymouse=sgr
 set wrap           " 自动换行
 "set nowrap         " 不自动换行
 set linebreak       " 整词换行
