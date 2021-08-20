@@ -252,6 +252,9 @@ map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
 map <silent> <leader>3 :diffget 3<CR> :diffupdate<CR>
 map <silent> <leader>4 :diffget 4<CR> :diffupdate<CR>
 
+"16进制模式
+nmap hx :%!xxd<cr>
+
 "--------------------------------------------------------------------------------
 " 其他配置
 "--------------------------------------------------------------------------------
