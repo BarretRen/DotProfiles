@@ -115,7 +115,7 @@ set statusline=
 " set statusline+=%#MarkWord3# "use color in colortheme
 " set statusline+=[\ %{toupper(g:currentmode[mode()])}]
 " set statusline+=%*  "reset to default color
-set statusline+=[%F]%r%m%=%y%*
+set statusline+=[%F]%r%m[Buf:%n]%=%y%*
 " set statusline+=%#ErrorMsg#
 " set statusline+=%{tagbar#currenttag('[%s]','')}
 set statusline+=%#MarkWord3#
@@ -400,6 +400,7 @@ if has("python") || has("python3")
     " popup mode
     let g:Lf_WindowPosition = 'popup'
     let g:Lf_PreviewInPopup = 1
+    let Lf_PopupWidth = 0.8
     let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
 
     let g:Lf_ShortcutF = '<c-p>' " search file
