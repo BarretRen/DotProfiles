@@ -1,6 +1,25 @@
 [user]
-    name = Barret Ren
-    email = barret.ren@outlook.com
+	name = Barret Ren
+	email = barret.ren@outlook.com
+[color]
+	status = auto
+	branch = auto
+	diff = auto
+	ui = true
+	pager = true
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
 [alias]
     st = status
     ci = commit
@@ -8,16 +27,15 @@
     br = branch
     unstage = reset HEAD --
     last = log -1 HEAD
-    logn = log --name-only
-[http]
-	proxy = http://barretr:Shidandan1230.@135.251.33.16:80
+	logn = log --name-only
 [push]
 	default = simple
-[i18n]
-	commitencoding = utf-8
-	logoutputencoding = utf-8
-[color]
-	status = auto
-	diff = auto
-	branch = auto
-	interactive = auto
+[http]
+    proxy = proxy.lbs.alcatel-lucent.com:8000
+[credential]
+	helper = manager
+[core]
+	autocrlf = false
+	quotepath = false
+[gui]
+	recentrepo = E:/Local Code/RustCode
