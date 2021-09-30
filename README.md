@@ -51,20 +51,29 @@
 ### Vim profile Installation
 
 **Linux**
-* git clone https://github.com/Renxiuhu/VimProfiles.git 
-* cp -r .vim .vimrc ~/
-* vim
-* 执行如下vim命令，更新管理器和插件：PlugUpgrade, PlugInstall
+```bash
+git clone https://github.com/BarretRen/LinuxEnvProfiles.git
+cd LinuxEnvProfiles
+cp -r .vim .vimrc ~/
+vim
+```
+执行如下vim命令，更新管理器和插件：PlugUpgrade, PlugInstall
 
 
 **Windows**
 
-* git clone https://github.com/Renxiuhu/VimProfiles.git
+* git clone https://github.com/BarretRen/LinuxEnvProfiles.git
 * 将库中内容复制到用户个人目录中(.tmux.conf是关于TMUX的配置，可以删除）
 * 将.vimrc重命名为_vimrc, 将.vim重命名为vimfiles
 * 启动vim
 * 执行如下vim命令，更新管理器和插件：PlugUpgrade, PlugInstall
 
+### nvim如何使用
+```bash
+mkdir -p ~/.config/nvim/
+cd ~/.config/nvim
+cp ~/.vimrc ./init.vim
+```
 
 ### Vim shutcuts
 
@@ -79,6 +88,7 @@
 | F6              | 打开tagbar                                   |
 | F7              | 查找光标位置的词语                             |
 | F8              | 替换光标位置的词语                             |
+| F9              | 打开terminal                                  |
 | F11             | 开关代码缩进线                                 |
 | F12             | 打开文件历史记录                               |
 | w  v            | 垂直分割当前窗口                               |
