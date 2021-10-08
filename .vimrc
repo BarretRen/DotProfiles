@@ -314,6 +314,8 @@ let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
 let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
 nmap <F7> \vv
 nmap <F8> \vr
+vmap <F7> \vv
+vmap <F8> \vr
 
 "--------------------------------------------------------------------------------
 " mark插件
