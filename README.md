@@ -9,6 +9,7 @@
 > 快捷键基于个人使用习惯，供大家参考。
 
 ## Changelog
+* 2021/10/09: update Minibufexpl color setting
 * 2021/08/12:
    * support vim mouse in Windows Terminal
    * set tmux pane history path

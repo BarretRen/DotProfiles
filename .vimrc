@@ -36,9 +36,9 @@ endif
 " 插件管理
 "###############################################################################
 if g:iswindows
-    call plug#begin('~/vimfiles/bundle')
+    call plug#begin('~/vimfiles/plugs')
 else
-    call plug#begin('~/.vim/bundle')
+    call plug#begin('~/.vim/plugs')
 endif
 
 Plug 'majutsushi/tagbar'
@@ -53,7 +53,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'BarretRen/minibufexpl.vim'
 " Plug 'Yggdroot/indentLine'
 Plug 'aceofall/gtags.vim'
-Plug 'voldikss/vim-floaterm'
+Plug 'skywind3000/vim-terminal-help'
 Plug 'Chiel92/vim-autoformat' "自动格式化
 if has("python") || has("python3")
     Plug 'Yggdroot/LeaderF'
@@ -120,6 +120,7 @@ set statusline=
 " set statusline+=[\ %{toupper(g:currentmode[mode()])}]
 " set statusline+=%*  "reset to default color
 set statusline+=[%F]%r%m[Buf:%n]%=%y%*
+set statusline+=[%{&fileformat}]
 " set statusline+=%#ErrorMsg#
 " set statusline+=%{tagbar#currenttag('[%s]','')}
 set statusline+=%#MarkWord3#
@@ -216,7 +217,6 @@ if has("clipboard")
     map <C-V>       "0P
     map <S-Insert>      "+gP
 
-    cmap <C-V>      <C-R>+
     cmap <S-Insert>     <C-R>+
     nmap <C-a> ggvG$
 else
@@ -376,7 +376,14 @@ let g:cpp_no_function_highlight = 1
 let g:miniBufExplorerHideWhenDiff = 1 "diff时不显示
 let g:miniBufExplorerAutoStart = 1 "自动开启
 let g:miniBufExplUseSingleClick = 1 "单击切换
-let g:miniBufExplShowBufNumbers = 0
+let g:miniBufExplShowBufNumbers = 1
+let g:did_minibufexplorer_syntax_inits = 1
+hi MBENormal               guifg=#928374 guibg=fg ctermbg=244
+hi MBEChanged              guifg=#CD5907 guibg=fg ctermbg=208
+hi MBEVisibleNormal        guifg=#8ec07c guibg=fg ctermbg=72
+hi MBEVisibleChanged       guifg=#CC241D guibg=fg ctermbg=124
+hi MBEVisibleActiveNormal  guifg=#AFD700 guibg=fg ctermbg=142
+hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg ctermbg=167
 
 "--------------------------------------------------------------------------------
 " Indentline
