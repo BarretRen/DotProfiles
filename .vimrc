@@ -296,10 +296,15 @@ let GtagsCscope_Absolute_Path = 1
 :set cscopetag
 set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
 " find symbol,defination, caller
-nmap fr :cs find s <C-R>=expand("<cword>")<cr><cr>
-nmap fd :cs find g <C-R>=expand("<cword>")<cr><cr>
-nmap fc :cs find c <C-R>=expand("<cword>")<cr><cr>
-nmap ff :<C-U><C-R>=printf("cs find f ")<CR>
+if g:iswindows
+    nmap fr :Gtags -r <C-R>=expand("<cword>")<cr><cr>
+    nmap fd :Gtags <C-R>=expand("<cword>")<cr><cr>
+else
+    nmap fr :cs find s <C-R>=expand("<cword>")<cr><cr>
+    nmap fd :cs find g <C-R>=expand("<cword>")<cr><cr>
+    nmap fc :cs find c <C-R>=expand("<cword>")<cr><cr>
+    nmap ff :<C-U><C-R>=printf("cs find f ")<CR>
+endif
 "设置quickfix窗口前进后退
 " nmap cn :cn<cr>
 " nmap cp :cp<cr>
@@ -428,7 +433,8 @@ if has("python") || has("python3")
     " let g:Lf_DefaultExternalTool = "rg"
     let g:Lf_UseVersionControlTool = 0
     "列出当前文件函数列表
-    nmap fu :LeaderfBufTag<cr>
+    nmap bt :LeaderfBufTag<cr>
+    nmap fu :Leaderf --nowrap function<cr>
     "当前目录搜索光标下文本
     " nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
     "gtags
