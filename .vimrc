@@ -50,7 +50,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'BarretRen/papercolor-theme'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'BarretRen/minibufexpl.vim'
+" Plug 'BarretRen/minibufexpl.vim'
 " Plug 'Yggdroot/indentLine'
 Plug 'aceofall/gtags.vim'
 Plug 'skywind3000/vim-terminal-help'
@@ -58,6 +58,7 @@ Plug 'Chiel92/vim-autoformat' "自动格式化
 if has("python") || has("python3")
     Plug 'Yggdroot/LeaderF'
 endif
+Plug 'ap/vim-buftabline'
 
 call plug#end()
 
@@ -378,12 +379,15 @@ let g:miniBufExplorerAutoStart = 1 "自动开启
 let g:miniBufExplUseSingleClick = 1 "单击切换
 let g:miniBufExplShowBufNumbers = 1
 let g:did_minibufexplorer_syntax_inits = 1
-hi MBENormal               guifg=#928374 guibg=fg ctermbg=244
-hi MBEChanged              guifg=#CD5907 guibg=fg ctermbg=208
-hi MBEVisibleNormal        guifg=#8ec07c guibg=fg ctermbg=72
-hi MBEVisibleChanged       guifg=#CC241D guibg=fg ctermbg=124
-hi MBEVisibleActiveNormal  guifg=#AFD700 guibg=fg ctermbg=142
-hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg ctermbg=167
+
+"--------------------------------------------------------------------------------
+" bufTabline
+"--------------------------------------------------------------------------------
+let g:buftabline_numbers = 1
+let g:buftabline_show = 1
+let g:buftabline_indicators = 1
+nmap <m-n> :bnext<CR>
+nmap <m-p> :bprev<CR>
 
 "--------------------------------------------------------------------------------
 " Indentline
@@ -399,12 +403,6 @@ let g:formatdef_astyle_c = '"astyle --mode=c --options=/home/barretr/.astylerc"'
 let g:formatters_c = ['astyle_c', 'clangformat']
 let g:formatdef_astyle_cpp = '"astyle --mode=c --options=/home/barretr/.astylerc"'
 let g:formatters_cpp = ['astyle_cpp', 'clangformat']
-
-"--------------------------------------------------------------------------------
-" floaterm
-"--------------------------------------------------------------------------------
-let g:floaterm_keymap_toggle = '<F9>'
-let g:floaterm_wintype = 'vsplit'
 
 "--------------------------------------------------------------------------------
 " LeaderF
