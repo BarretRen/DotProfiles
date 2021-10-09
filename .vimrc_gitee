@@ -432,7 +432,7 @@ if has("python") || has("python3")
     let g:Lf_UseVersionControlTool = 0
     "列出当前文件函数列表
     nmap bt :LeaderfBufTag<cr>
-    nmap fu :Leaderf --nowrap function<cr>
+    nmap fu :LeaderfFunction<cr>
     "当前目录搜索光标下文本
     " nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
     "gtags
