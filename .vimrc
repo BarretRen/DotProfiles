@@ -41,7 +41,7 @@ else
     call plug#begin('~/.vim/plugs')
 endif
 
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/EasyGrep'
 Plug 'inkarkat/vim-mark'
 Plug 'inkarkat/vim-ingo-library'
@@ -59,6 +59,7 @@ if has("python") || has("python3")
     Plug 'Yggdroot/LeaderF'
 endif
 Plug 'ap/vim-buftabline'
+Plug 'liuchengxu/vista.vim'
 
 call plug#end()
 
@@ -275,11 +276,22 @@ endif
 "--------------------------------------------------------------------------------
 " Tagbar :比TagList好用，分类更清晰，推荐
 "--------------------------------------------------------------------------------
-let g:tagbar_width = 30
-let g:tagbar_singleclick = 1 "点击一次跳转
-let g:tagbar_iconchars = ['+', '-']
-let g:tagbar_position = 'left'
-nmap <F5> :TagbarToggle<CR>
+" let g:tagbar_width = 30
+" let g:tagbar_singleclick = 1 "点击一次跳转
+" let g:tagbar_iconchars = ['+', '-']
+" let g:tagbar_position = 'left'
+
+"--------------------------------------------------------------------------------
+" Vista: 代替Tagbar
+"--------------------------------------------------------------------------------
+let g:vista_default_executive = 'ctags'
+let g:vista_sidebar_position = 'vertical topleft'
+let g:vista_sidebar_open_cmd = '30vsplit'
+let g:vista_echo_cursor_strategy = 'scroll'
+let g:vista_executive_for = {
+  \ 'cpp': 'vim_lsp',
+  \ }
+nmap <F5> :Vista!!<CR>
 
 "--------------------------------------------------------------------------------
 " gtags
