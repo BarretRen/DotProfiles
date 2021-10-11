@@ -27,9 +27,9 @@ set termencoding=utf-8 "ssh term 使用的编码
 " 下面两行用于防止gvim提示和软件显示出现问题
 set fenc=utf-8 "文件新建编码
 if g:iswindows
-    set guifont=Cascadia_Code:h11
+    set guifont=Cascadia\ Code:h11
 else
-    set guifont=Cascadia_Code\ 11 "字体设置在终端下无效
+    set guifont=Cascadia\ Code\ 11 "字体设置在终端下无效
 endif
 
 "###############################################################################
