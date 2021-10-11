@@ -2,13 +2,13 @@
 
 个人工作总结的Linux上软件配置，基本满足工作编程需要，包含如下软件的配置
 * Vim
+* NeoVim
 * zsh
 * tmux
 * tm: 自动创建tmux的脚本
 
-> 快捷键基于个人使用习惯，供大家参考。
-
 ## Changelog
+* 2021/10/11: add configuration for nvim
 * 2021/10/11: remove fucking vista.vim which can't support cpp
 * 2021/10/09: replace Minibufexpl with BufTabline
 * 2021/08/12:
@@ -39,7 +39,7 @@
 * 2018/1/18: 添加YankRing插件，修改快捷键
 * 2018/1/5: 初次提交
 
-## Vim 配置基本介绍
+## Vim/NeoVim基本配置
 ### screenshot
 
 **UI**
@@ -64,33 +64,37 @@ vim
 
 **Windows**
 
-* git clone https://github.com/BarretRen/LinuxEnvProfiles.git
-* 将库中内容复制到用户个人目录中(.tmux.conf是关于TMUX的配置，可以删除）
-* 将.vimrc重命名为_vimrc, 将.vim重命名为vimfiles
+* clone repo
+* 将.vimrc与.vim复制到用户个人目录中
+* 将.vimrc重命名为`_vimrc`, 将.vim重命名为vimfiles
 * 启动vim
 * 执行如下vim命令，更新管理器和插件：PlugUpgrade, PlugInstall
 
-### nvim如何使用
+### NeoVim profile Installation
+
+**Linux**
 ```bash
-mkdir -p ~/.config/nvim/
-cd ~/.config/nvim
-cp ~/.vimrc ./init.vim
+git clone https://github.com/BarretRen/LinuxEnvProfiles.git
+cd LinuxEnvProfiles
+cp nvim ~/.config
 ```
 
-### Vim shutcuts
+**Windosw**
+* clone repo
+* 将nvim复制到`~/AppData/Local`
+* 执行如下vim命令，更新管理器和插件：PlugUpgrade, PlugInstall
 
-**Key Mapping:**
+### Vim shutcuts
+> 快捷键基于个人使用习惯，供大家参考。
 
 | 按键             | 含义          |
 | -------------   |:-------------|
 | F2              | 关闭当前buffer                                |
 | F3              | 退出vim                                       |
 | F4              | 保存文件                                      |
-| F5              | 打开文件浏览器                                |
-| F6              | 打开tagbar                                   |
+| F5              | 打开TagBar                                |
 | F7              | 查找光标位置的词语                             |
 | F8              | 替换光标位置的词语                             |
-| F9              | 打开terminal                                  |
 | F11             | 开关代码缩进线                                 |
 | F12             | 打开文件历史记录                               |
 | w  v            | 垂直分割当前窗口                               |
@@ -104,6 +108,7 @@ cp ~/.vimrc ./init.vim
 | f  u            | 打开当前文件函数列表                            |
 | f  s            | 在当前目录下搜索光标下文本                     |
 | m               | 标记光标下词语                                 |
+| \  N            | 去除所有标记                                 |
 | Ctrl n          | 新建buffer                                    |
 | Ctrl c          | 复制                                          |
 | Ctrl x          | 剪切                                          | 
@@ -111,8 +116,19 @@ cp ~/.vimrc ./init.vim
 | Ctrl a          | 全选                                          |
 | Ctrl \          | 注释、反注释                                   |
 | Ctrl p          | 打开文件搜索                                   |
+| Ctrl b          | 打开buffer列表                                   |
 | f    r          | 搜索光标下符号出现位置（需要gtags支持） |
 | f    d          | 搜索光标下符号定义位置（需要gtags支持） |
 | f    c          | 搜索光标下函数被调用的位置（需要gtags支持） |
+| h    x          | 16进制编辑模式 |
+| c    o          | 打开quickfix |
+| c    c          | 关闭quickfix |
+| c    n          | quickfix下一个 |
+| c    p          | quickfix前一个 |
+| d    f          | 打开defx文件浏览插件 |
+| Alt  n          | 后一个buffer |
+| Alt  p          | 前一个buffer |
+| b    t          | 打开当前文件的tag列表 |
+| f    u          | 打开当前文件的函数列表 |
 
 --------------------------------------------------------------------------------

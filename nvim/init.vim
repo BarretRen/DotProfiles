@@ -35,11 +35,7 @@ endif
 "###############################################################################
 " 插件管理
 "###############################################################################
-if g:iswindows
-    call plug#begin('~/vimfiles/plugs')
-else
-    call plug#begin('~/.vim/plugs')
-endif
+call plug#begin('~/.config/nvim/plugs')
 
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/EasyGrep'
@@ -59,6 +55,7 @@ if has("python3")
     Plug 'Yggdroot/LeaderF'
 endif
 Plug 'ap/vim-buftabline'
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -69,7 +66,7 @@ set shortmess=atI "去掉欢迎界面
 set nu!             " 显示行号,默认启动，ln开关控制
 set mouse=a      "任何模式使用鼠标
 "set mouse=nv      "只在普通和可视模式使用鼠标
-set ttymouse=sgr
+" set ttymouse=sgr
 set cc=120 "行长度参考线
 set wrap           " 自动换行
 "set nowrap         " 不自动换行
@@ -312,13 +309,30 @@ nmap <Leader>N <Plug>MarkAllClear
 let g:mwDefaultHighlightingPalette = 'extended'
 
 "--------------------------------------------------------------------------------
-" netrw: vim自带目录浏览
+" defx 新一代文件浏览
 "--------------------------------------------------------------------------------
-nmap nw :Vex<cr>       "文件浏览器
-let g:netrw_browse_split = 4
-let g:netrw_banner = 0  "隐藏横幅
-let g:netrw_winsize = 25 "宽度
-let g:netrw_liststyle = 3
+nmap df :Defx .<cr>       "文件浏览器
+" 设置defx树的一些格式
+call defx#custom#option('_', {
+    \ 'columns': 'icons:indent:filename:size',
+    \ 'winwidth': 30,
+    \ 'split': 'vertical',
+    \ 'direction': 'topleft',
+    \ 'show_ignored_files': 0,
+    \ 'resume': 1,
+    \ })
+" 所有快捷键在这里设置
+autocmd FileType defx call s:defx_my_settings()
+function! s:defx_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR>     defx#do_action('drop')
+    nnoremap <silent><buffer><expr> N        defx#do_action('new_file')
+    nnoremap <silent><buffer><expr> R        defx#do_action('rename')
+    nnoremap <silent><buffer><expr> l        defx#do_action('open_tree')
+    nnoremap <silent><buffer><expr> o        defx#do_action('open_directory')
+    nnoremap <silent><buffer><expr> e        defx#do_action('open', 'vsplit')
+    nnoremap <silent><buffer><expr> q        defx#do_action('quit')
+    nnoremap <silent><buffer><expr> u        defx#do_action('cd', ['..'])
+endfunction
 
 "--------------------------------------------------------------------------------
 "" nerdcommenter 注释插件
@@ -413,7 +427,7 @@ if has("python3")
     let g:Lf_UseVersionControlTool = 0
     "列出当前文件函数列表
     nmap bt :LeaderfBufTag<cr>
-    nmap fu :LeaderfFunction<cr>
+    nmap fu :LeaderfFunction!<cr>
     "当前目录搜索光标下文本
     " nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
     "gtags
