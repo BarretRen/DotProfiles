@@ -102,42 +102,15 @@ endif
 set vb t_vb=
 au GuiEnter * set t_vb=
 autocmd GUIEnter * simalt ~x  "自动最大化
+
 "--------------------------------------------------------------------------------
 " 状态栏配置
 "--------------------------------------------------------------------------------
-" let g:currentmode={
-" \ 'n'  : 'NORMAL ',
-" \ 'v'  : 'VISUAL ',
-" \ 'V'  : 'V·Line ',
-" \ '' : 'V·Block ',
-" \ 'i'  : 'INSERT ',
-" \ 'R'  : 'R ',
-" \ 'Rv' : 'V·Replace ',
-" \ 'c'  : 'Command ',
-" \}
 set statusline=
-" Show current mode
-" set statusline+=%#MarkWord3# "use color in colortheme
-" set statusline+=[\ %{toupper(g:currentmode[mode()])}]
-" set statusline+=%*  "reset to default color
 set statusline+=[%F]%r%m[Buf:%n]%=%y%*
 set statusline+=[%{&fileformat}]
-" set statusline+=%#ErrorMsg#
-" set statusline+=%{tagbar#currenttag('[%s]','')}
 set statusline+=%#MarkWord3#
 set statusline+=[Row:%l/%L\ Col:%v\ %p%%]
-" set statusline+=%#MarkWord3#
-" set statusline+=[%{&fileencoding}]
-
-" noremap <C-l> :call TagbarToggleStatusline()<CR>
-" function! TagbarToggleStatusline()
-" let tStatusline = '%{tagbar#currenttag(''[%s]'','''')}'
-" if stridx(&statusline, tStatusline) != -1
-" let &statusline = substitute(&statusline, '\V'.tStatusline, '', '')
-" else
-" let &statusline = substitute(&statusline, '\ze%=', tStatusline, '')
-" endif
-" endfunction
 
 set laststatus=2    " always show the status line
 " set ruler           " 在编辑过程中，在右下角显示光标位置的状态行
@@ -158,7 +131,7 @@ set incsearch       " 查询时非常方便，如要查找book单词，当输入
 " 单词，依次类推，进行查找时，使用此设置会快速找到答案，当你
 " 找要匹配的单词时，别忘记回车
 set gdefault        " 替换时所有的行内匹配都被替换，而不是只有第一个
-set ignorecase
+set ignorecase "忽略大小写
 
 "--------------------------------------------------------------------------------
 " 主题设置
@@ -181,6 +154,7 @@ let g:PaperColor_Theme_Options = {
   \     }
   \   }
   \ }
+
 "--------------------------------------------------------------------------------
 " 编程相关的设置
 "--------------------------------------------------------------------------------
@@ -194,12 +168,15 @@ set shiftwidth=4    " 换行时行间交错使用4个空格
 set autoindent      " 自动对齐
 set ai!             " 设置自动缩进
 set foldmethod=indent "代码折叠
-"set foldmethod=syntax
 set foldlevel=10       " Don't autofold anything (but I can still fold manually)
 "set foldopen-=search   " don't open folds when you search into them
 "set foldopen-=undo     " don't open folds when you undo stuff
 "set foldcolumn=4
 " autocmd BufWritePre * :%s/\s\+$//e "保存时删除行尾空格
+
+"16进制模式
+nmap hx :%!xxd<cr>
+
 "--------------------------------------------------------------------------------
 " 快捷键
 "--------------------------------------------------------------------------------
@@ -231,7 +208,6 @@ endif
 nmap wv     <C-w>v     " 垂直分割当前窗口
 nmap wc     <C-w>c     " 关闭当前窗口
 nmap wh     <C-w>s     " 水平分割当前窗口
-nmap fx :copen<cr>     "打开quickfix窗口
 
 " 保存，退出，历史文件等快捷键
 nmap <F4> :w<cr>    "保存文件修改
@@ -239,7 +215,7 @@ nmap <F3> :q<cr>    "退出vim
 nmap <F12> :bro ol<cr>  "浏览文件打开记录
 nmap <F2> :bd<cr>    "关闭minibufexplorer中的某个文件
 nmap ln :set nu!<cr>
-" nmap as :AsyncRun
+
 if g:isGUI
     noremap <C-Z> u
     noremap <C-Y> <C-R>
@@ -254,9 +230,6 @@ map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
 map <silent> <leader>3 :diffget 3<CR> :diffupdate<CR>
 map <silent> <leader>4 :diffget 4<CR> :diffupdate<CR>
 
-"16进制模式
-nmap hx :%!xxd<cr>
-
 "--------------------------------------------------------------------------------
 " 其他配置
 "--------------------------------------------------------------------------------
@@ -265,9 +238,9 @@ autocmd BufReadPost *
             \ if line("'\"")>0&&line("'\"")<=line("$") |
             \   exe "normal g'\"" |
             \ endif
-if g:iswindows
-    exec 'cd ' . fnameescape('E:\')
-endif
+" if g:iswindows
+    " exec 'cd ' . fnameescape('E:\')
+" endif
 
 "###############################################################################
 " 各插件配置
@@ -305,9 +278,15 @@ else
     nmap fc :cs find c <C-R>=expand("<cword>")<cr><cr>
     nmap ff :<C-U><C-R>=printf("cs find f ")<CR>
 endif
+
+"--------------------------------------------------------------------------------
+" quickfix
+"--------------------------------------------------------------------------------
+nmap co :copen<cr>     "打开quickfix窗口
+nmap cc :cclose<cr>
 "设置quickfix窗口前进后退
-" nmap cn :cn<cr>
-" nmap cp :cp<cr>
+nmap cn :cn<cr>
+nmap cp :cp<cr>
 
 "--------------------------------------------------------------------------------
 " EasyGrep
@@ -379,11 +358,11 @@ let g:cpp_no_function_highlight = 1
 "--------------------------------------------------------------------------------
 " minibuf explorer
 "--------------------------------------------------------------------------------
-let g:miniBufExplorerHideWhenDiff = 1 "diff时不显示
-let g:miniBufExplorerAutoStart = 1 "自动开启
-let g:miniBufExplUseSingleClick = 1 "单击切换
-let g:miniBufExplShowBufNumbers = 1
-let g:did_minibufexplorer_syntax_inits = 1
+" let g:miniBufExplorerHideWhenDiff = 1 "diff时不显示
+" let g:miniBufExplorerAutoStart = 1 "自动开启
+" let g:miniBufExplUseSingleClick = 1 "单击切换
+" let g:miniBufExplShowBufNumbers = 1
+" let g:did_minibufexplorer_syntax_inits = 1
 
 "--------------------------------------------------------------------------------
 " bufTabline
@@ -397,8 +376,8 @@ nmap <m-p> :bprev<CR>
 "--------------------------------------------------------------------------------
 " Indentline
 "--------------------------------------------------------------------------------
-let g:indentLine_setColors = 0
-let g:indentLine_char_list = ['|']
+" let g:indentLine_setColors = 0
+" let g:indentLine_char_list = ['|']
 
 "--------------------------------------------------------------------------------
 " autoformat
