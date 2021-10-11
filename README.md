@@ -9,6 +9,7 @@
 > 快捷键基于个人使用习惯，供大家参考。
 
 ## Changelog
+* 2021/10/11: remove fucking vista.vim which can't support cpp
 * 2021/10/09: replace Minibufexpl with BufTabline
 * 2021/08/12:
    * support vim mouse in Windows Terminal
