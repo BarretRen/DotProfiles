@@ -29,13 +29,17 @@ set fenc=utf-8 "文件新建编码
 if g:iswindows
     set guifont=Cascadia_Code:h11
 else
-    set guifont=Cascadia_Code\ 10 "字体设置在终端下无效
+    set guifont=Cascadia_Code\ 11 "字体设置在终端下无效
 endif
 
 "###############################################################################
 " 插件管理
 "###############################################################################
-call plug#begin('~/.config/nvim/plugs')
+if g:iswindows
+    call plug#begin('~/AppData/Local/nvim/plugs')
+else
+    call plug#begin('~/.config/nvim/plugs')
+endif
 
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/EasyGrep'
