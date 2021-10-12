@@ -103,8 +103,8 @@ autocmd GUIEnter * simalt ~x  "自动最大化
 " 状态栏配置
 "--------------------------------------------------------------------------------
 set statusline=
-set statusline+=[%F]%r%m[Buf:%n]%=%y%*
-set statusline+=[%{&fileformat}]
+set statusline+=[%F]%r%m%=%#IncSearch#%y%*
+set statusline+=%#IncSearch#[%{&fileformat}]
 set statusline+=%#MarkWord3#
 set statusline+=[Row:%l/%L\ Col:%v\ %p%%]
 
