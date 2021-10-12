@@ -37,24 +37,24 @@ else
 endif
 
 Plug 'majutsushi/tagbar'
+Plug 'aceofall/gtags.vim'
 Plug 'vim-scripts/EasyGrep'
 Plug 'inkarkat/vim-mark'
 Plug 'inkarkat/vim-ingo-library'
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdcommenter'
-"Plug 'https://github.com/skywind3000/asyncrun.vim.git'
 Plug 'BarretRen/papercolor-theme'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 " Plug 'BarretRen/minibufexpl.vim'
 " Plug 'Yggdroot/indentLine'
-Plug 'aceofall/gtags.vim'
-Plug 'skywind3000/vim-terminal-help'
+Plug 'ap/vim-buftabline'
 Plug 'Chiel92/vim-autoformat' "自动格式化
+Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
+Plug 'skywind3000/vim-terminal-help'
 if has("python3")
     Plug 'Yggdroot/LeaderF'
 endif
-Plug 'ap/vim-buftabline'
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -133,7 +133,12 @@ set ignorecase "忽略大小写
 " 主题设置
 "--------------------------------------------------------------------------------
 "Vim colorscheme
-set t_Co=256
+if (has('nvim'))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+endif
+if (has('termguicolors'))
+  set termguicolors
+endif
 
 set background=light
 colorscheme PaperColor
@@ -383,6 +388,7 @@ let g:cpp_no_function_highlight = 1
 let g:buftabline_numbers = 1
 let g:buftabline_show = 1
 let g:buftabline_indicators = 1
+let g:buftabline_plug_max = 0
 nmap <m-n> :bnext<CR>
 nmap <m-p> :bprev<CR>
 
@@ -400,6 +406,24 @@ let g:formatdef_astyle_c = '"astyle --mode=c --options=/home/barretr/.astylerc"'
 let g:formatters_c = ['astyle_c', 'clangformat']
 let g:formatdef_astyle_cpp = '"astyle --mode=c --options=/home/barretr/.astylerc"'
 let g:formatters_cpp = ['astyle_cpp', 'clangformat']
+
+"--------------------------------------------------------------------------------
+" terminal-help
+"--------------------------------------------------------------------------------
+let g:terminal_height = 30
+
+"--------------------------------------------------------------------------------
+" registers
+"--------------------------------------------------------------------------------
+let g:registers_tab_symbol = "\t" "'·' by default
+let g:registers_space_symbol = "." "' ' by default
+let g:registers_delay = 500 "0 by default, milliseconds to wait before opening the popup window
+let g:registers_register_key_sleep = 1 "0 by default, seconds to wait before closing the window when a register key is pressed
+let g:registers_show_empty_registers = 0 "1 by default, an additional line with the registers without content
+let g:registers_trim_whitespace = 0 "1 by default, don't show whitespace at the begin and end of the registers
+let g:registers_hide_only_whitespace = 1 "0 by default, don't show registers filled exclusively with whitespace
+let g:registers_window_border = "single" "'none' by default, can be 'none', 'single','double', 'rounded', 'solid', or 'shadow' (requires Neovim 0.5.0+)
+let g:registers_window_min_height = 10 "3 by default, minimum height of the window when there is the cursor at the bottom
 
 "--------------------------------------------------------------------------------
 " LeaderF
