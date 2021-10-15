@@ -105,8 +105,8 @@ autocmd GUIEnter * simalt ~x  "自动最大化
 " 状态栏配置
 "--------------------------------------------------------------------------------
 set statusline=
-set statusline+=[%F]%r%m[Buf:%n]%=%y%*
-set statusline+=[%{&fileformat}]
+set statusline+=[%F]%r%m%=%#IncSearch#%y%*
+set statusline+=%#IncSearch#[%{&fileformat}]
 set statusline+=%#MarkWord3#
 set statusline+=[Row:%l/%L\ Col:%v\ %p%%]
 
@@ -135,7 +135,11 @@ set ignorecase "忽略大小写
 " 主题设置
 "--------------------------------------------------------------------------------
 "Vim colorscheme
-set t_Co=256
+if (has('termguicolors'))
+  set termguicolors
+  let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+  let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+endif
 
 set background=light
 colorscheme PaperColor
@@ -368,6 +372,7 @@ let g:cpp_no_function_highlight = 1
 let g:buftabline_numbers = 1
 let g:buftabline_show = 1
 let g:buftabline_indicators = 1
+let g:buftabline_plug_max = 0
 nmap <m-n> :bnext<CR>
 nmap <m-p> :bprev<CR>
 
@@ -410,7 +415,7 @@ let g:Lf_WildIgnore = {
 let g:Lf_UseVersionControlTool = 0
 "列出当前文件函数列表
 nmap bt :LeaderfBufTag<cr>
-nmap fu :LeaderfFunction<cr>
+nmap fu :LeaderfFunction!<cr>
 "当前目录搜索光标下文本
 " nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
 "gtags
