@@ -129,16 +129,18 @@ set incsearch       " 查询时非常方便，如要查找book单词，当输入
 " 单词，依次类推，进行查找时，使用此设置会快速找到答案，当你
 " 找要匹配的单词时，别忘记回车
 set gdefault        " 替换时所有的行内匹配都被替换，而不是只有第一个
-set ignorecase "忽略大小写
+" set ignorecase "忽略大小写
 
 "--------------------------------------------------------------------------------
 " 主题设置
 "--------------------------------------------------------------------------------
 "Vim colorscheme
-if (has('termguicolors'))
-  set termguicolors
-  let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
-  let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+if has("termguicolors")
+    " fix bug for vim
+    " let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+    " let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+    " enable true color
+    set termguicolors
 endif
 
 set background=light
