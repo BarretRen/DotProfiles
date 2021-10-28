@@ -35,6 +35,7 @@ if [ $? -ne 0 ]; then
     cmd selectw -t $session:1
 fi
 
+stty sane
 cmd att -t $session
 
 exit 0
