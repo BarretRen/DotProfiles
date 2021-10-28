@@ -91,7 +91,7 @@ FINISH="%{$terminfo[sgr0]%}"
 PROMPT=$(echo "$CYAN%n@$YELLOW%M:$_BLUE%/$RED>
 >$FINISH ")
 
-export TERM="screen-256color"
+export TERM="xterm-256color"
 # export LANG="zh_CN.UTF-8"
 # export LC_ALL="zh_CN.UTF-8"
 # PATH set
