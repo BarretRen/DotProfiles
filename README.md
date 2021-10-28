@@ -8,6 +8,7 @@
 * tm: 自动创建tmux的脚本
 
 ## Changelog
+* 2021/10/28: update vim
 * 2021/10/11: add configuration for nvim
 * 2021/10/11: remove fucking vista.vim which can't support cpp
 * 2021/10/09: replace Minibufexpl with BufTabline
@@ -128,7 +129,7 @@ cp nvim ~/.config
 | d    f          | 打开defx文件浏览插件 |
 | Alt  n          | 后一个buffer |
 | Alt  p          | 前一个buffer |
-| b    t          | 打开当前文件的tag列表 |
+| t    g          | 打开当前文件的tag列表 |
 | f    u          | 打开当前文件的函数列表 |
 
 --------------------------------------------------------------------------------

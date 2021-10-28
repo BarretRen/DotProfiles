@@ -394,13 +394,19 @@ let g:formatdef_astyle_cpp = '"astyle --mode=c --options=/home/barretr/.astylerc
 let g:formatters_cpp = ['astyle_cpp', 'clangformat']
 
 "--------------------------------------------------------------------------------
+" vim-terminal-help
+"--------------------------------------------------------------------------------
+let g:terminal_close = 1
+let g:terminal_height = 30
+
+"--------------------------------------------------------------------------------
 " LeaderF
 "--------------------------------------------------------------------------------
 " popup mode
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
-let Lf_PopupWidth = 0.8
-let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
+" let Lf_PopupWidth = 0.8
+" let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
 
 let g:Lf_ShortcutF = '<c-p>' " search file
 let g:Lf_ShortcutB = '<c-b>' " list buffer
@@ -416,7 +422,7 @@ let g:Lf_WildIgnore = {
 " let g:Lf_DefaultExternalTool = "rg"
 let g:Lf_UseVersionControlTool = 0
 "列出当前文件函数列表
-nmap bt :LeaderfBufTag<cr>
+nmap tg :LeaderfBufTag<cr>
 nmap fu :LeaderfFunction!<cr>
 "当前目录搜索光标下文本
 " nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>

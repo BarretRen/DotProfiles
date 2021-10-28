@@ -410,6 +410,7 @@ let g:formatters_cpp = ['astyle_cpp', 'clangformat']
 "--------------------------------------------------------------------------------
 " terminal-help
 "--------------------------------------------------------------------------------
+let g:terminal_close = 1
 let g:terminal_height = 30
 
 "--------------------------------------------------------------------------------
@@ -428,34 +429,32 @@ let g:registers_window_min_height = 10 "3 by default, minimum height of the wind
 "--------------------------------------------------------------------------------
 " LeaderF
 "--------------------------------------------------------------------------------
-if has("python3")
-    " popup mode
-    let g:Lf_WindowPosition = 'popup'
-    let g:Lf_PreviewInPopup = 1
-    let Lf_PopupWidth = 0.8
-    let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+" let Lf_PopupWidth = 0.8
+" let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
 
-    let g:Lf_ShortcutF = '<c-p>' " search file
-    let g:Lf_ShortcutB = '<c-b>' " list buffer
-    let g:Lf_ShowRelativePath = 0
-    " let g:Lf_ReverseOrder = 1  "最优结果在最下面显示
-    let g:Lf_DefaultMode = 'NameOnly'
-    let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
-    let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
-    let g:Lf_WildIgnore = {
-                \ 'dir': ['.svn','.git','.hg'],
-                \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.D','*.cmd','*.ti']
-                \}
-    " let g:Lf_DefaultExternalTool = "rg"
-    let g:Lf_UseVersionControlTool = 0
-    "列出当前文件函数列表
-    nmap bt :LeaderfBufTag<cr>
-    nmap fu :LeaderfFunction!<cr>
-    "当前目录搜索光标下文本
-    " nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
-    "gtags
-    let g:Lf_GtagsAutoUpdate = 0
-endif
+let g:Lf_ShortcutF = '<c-p>' " search file
+let g:Lf_ShortcutB = '<c-b>' " list buffer
+let g:Lf_ShowRelativePath = 0
+" let g:Lf_ReverseOrder = 1  "最优结果在最下面显示
+let g:Lf_DefaultMode = 'NameOnly'
+let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
+let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
+let g:Lf_WildIgnore = {
+            \ 'dir': ['.svn','.git','.hg'],
+            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.D','*.cmd','*.ti']
+            \}
+" let g:Lf_DefaultExternalTool = "rg"
+let g:Lf_UseVersionControlTool = 0
+"列出当前文件函数列表
+nmap tg :LeaderfBufTag<cr>
+nmap fu :LeaderfFunction!<cr>
+"当前目录搜索光标下文本
+" nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
+"gtags
+let g:Lf_GtagsAutoUpdate = 0
 "##################################################################
 "########################## End Of Vimrc ##########################
 "##################################################################
