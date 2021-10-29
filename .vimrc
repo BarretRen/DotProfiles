@@ -57,6 +57,7 @@ Plug 'skywind3000/vim-terminal-help'
 Plug 'Chiel92/vim-autoformat' "自动格式化
 Plug 'Yggdroot/LeaderF'
 Plug 'ap/vim-buftabline'
+Plug 'junegunn/vim-peekaboo'
 
 call plug#end()
 
@@ -136,9 +137,6 @@ set gdefault        " 替换时所有的行内匹配都被替换，而不是只�
 "--------------------------------------------------------------------------------
 "Vim colorscheme
 if has("termguicolors")
-    " fix bug for vim
-    " let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
-    " let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
     " enable true color
     set termguicolors
 endif
@@ -403,7 +401,7 @@ let g:terminal_height = 30
 " LeaderF
 "--------------------------------------------------------------------------------
 " popup mode
-let g:Lf_WindowPosition = 'popup'
+" let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 " let Lf_PopupWidth = 0.8
 " let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
@@ -424,6 +422,8 @@ let g:Lf_UseVersionControlTool = 0
 "列出当前文件函数列表
 nmap tg :LeaderfBufTag<cr>
 nmap fu :LeaderfFunction!<cr>
+"当前文件搜索符合的行
+nmap fl :LeaderfLine<cr>
 "当前目录搜索光标下文本
 " nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
 "gtags

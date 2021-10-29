@@ -37,24 +37,20 @@ else
 endif
 
 Plug 'majutsushi/tagbar'
-Plug 'aceofall/gtags.vim'
 Plug 'vim-scripts/EasyGrep'
 Plug 'inkarkat/vim-mark'
 Plug 'inkarkat/vim-ingo-library'
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'BarretRen/papercolor-theme'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 " Plug 'BarretRen/minibufexpl.vim'
 " Plug 'Yggdroot/indentLine'
-Plug 'ap/vim-buftabline'
-Plug 'Chiel92/vim-autoformat' "自动格式化
-Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
+Plug 'aceofall/gtags.vim'
 Plug 'skywind3000/vim-terminal-help'
-if has("python3")
-    Plug 'Yggdroot/LeaderF'
-endif
+Plug 'Chiel92/vim-autoformat' "自动格式化
+Plug 'Yggdroot/LeaderF'
+Plug 'ap/vim-buftabline'
 
 call plug#end()
 
@@ -313,30 +309,13 @@ nmap <Leader>N <Plug>MarkAllClear
 let g:mwDefaultHighlightingPalette = 'extended'
 
 "--------------------------------------------------------------------------------
-" defx 新一代文件浏览
+" netrw: vim自带目录浏览
 "--------------------------------------------------------------------------------
-nmap df :Defx .<cr>       "文件浏览器
-" 设置defx树的一些格式
-call defx#custom#option('_', {
-    \ 'columns': 'icons:indent:filename:size',
-    \ 'winwidth': 30,
-    \ 'split': 'vertical',
-    \ 'direction': 'topleft',
-    \ 'show_ignored_files': 0,
-    \ 'resume': 1,
-    \ })
-" 所有快捷键在这里设置
-autocmd FileType defx call s:defx_my_settings()
-function! s:defx_my_settings() abort
-    nnoremap <silent><buffer><expr> <CR>     defx#do_action('drop')
-    nnoremap <silent><buffer><expr> N        defx#do_action('new_file')
-    nnoremap <silent><buffer><expr> R        defx#do_action('rename')
-    nnoremap <silent><buffer><expr> l        defx#do_action('open_tree')
-    nnoremap <silent><buffer><expr> o        defx#do_action('open_directory')
-    nnoremap <silent><buffer><expr> e        defx#do_action('open', 'vsplit')
-    nnoremap <silent><buffer><expr> q        defx#do_action('quit')
-    nnoremap <silent><buffer><expr> u        defx#do_action('cd', ['..'])
-endfunction
+nmap nw :Vex<cr>       "文件浏览器
+let g:netrw_browse_split = 4
+let g:netrw_banner = 0  "隐藏横幅
+let g:netrw_winsize = 25 "宽度
+let g:netrw_liststyle = 3
 
 "--------------------------------------------------------------------------------
 "" nerdcommenter 注释插件
@@ -408,29 +387,16 @@ let g:formatdef_astyle_cpp = '"astyle --mode=c --options=/home/barretr/.astylerc
 let g:formatters_cpp = ['astyle_cpp', 'clangformat']
 
 "--------------------------------------------------------------------------------
-" terminal-help
+" vim-terminal-help
 "--------------------------------------------------------------------------------
 let g:terminal_close = 1
 let g:terminal_height = 30
 
 "--------------------------------------------------------------------------------
-" registers
-"--------------------------------------------------------------------------------
-let g:registers_tab_symbol = "\t" "'·' by default
-let g:registers_space_symbol = "." "' ' by default
-let g:registers_delay = 500 "0 by default, milliseconds to wait before opening the popup window
-let g:registers_register_key_sleep = 1 "0 by default, seconds to wait before closing the window when a register key is pressed
-let g:registers_show_empty_registers = 0 "1 by default, an additional line with the registers without content
-let g:registers_trim_whitespace = 0 "1 by default, don't show whitespace at the begin and end of the registers
-let g:registers_hide_only_whitespace = 1 "0 by default, don't show registers filled exclusively with whitespace
-let g:registers_window_border = "single" "'none' by default, can be 'none', 'single','double', 'rounded', 'solid', or 'shadow' (requires Neovim 0.5.0+)
-let g:registers_window_min_height = 10 "3 by default, minimum height of the window when there is the cursor at the bottom
-
-"--------------------------------------------------------------------------------
 " LeaderF
 "--------------------------------------------------------------------------------
 " popup mode
-let g:Lf_WindowPosition = 'popup'
+" let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 " let Lf_PopupWidth = 0.8
 " let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
@@ -451,6 +417,8 @@ let g:Lf_UseVersionControlTool = 0
 "列出当前文件函数列表
 nmap tg :LeaderfBufTag<cr>
 nmap fu :LeaderfFunction!<cr>
+"当前文件搜索符合的行
+nmap fl :LeaderfLine<cr>
 "当前目录搜索光标下文本
 " nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
 "gtags
