@@ -30,12 +30,8 @@
 	logn = log --name-only
 [push]
 	default = simple
-[http]
-    proxy = proxy.lbs.alcatel-lucent.com:8000
 [credential]
 	helper = manager
 [core]
 	autocrlf = false
 	quotepath = false
-[gui]
-	recentrepo = E:/Local Code/RustCode

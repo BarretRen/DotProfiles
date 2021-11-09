@@ -424,6 +424,8 @@ nmap tg :LeaderfBufTag<cr>
 nmap fu :LeaderfFunction!<cr>
 "当前文件搜索符合的行
 nmap fl :LeaderfLine<cr>
+"历史文件列表
+nmap hf :LeaderfMru<cr>
 "当前目录搜索光标下文本
 " nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
 "gtags
