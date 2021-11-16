@@ -94,6 +94,14 @@ endif
 set vb t_vb=
 au GuiEnter * set t_vb=
 autocmd GUIEnter * simalt ~x  "自动最大化
+" 设置Esc超时时间为100ms,尽快生效
+set ttimeout
+set ttimeoutlen=100
+" 高亮光标所在行
+set cursorline
+set cursorlineopt=number
+" 当文件在外部被修改，自动更新该文件
+set autoread
 
 "--------------------------------------------------------------------------------
 " 状态栏配置
@@ -211,6 +219,7 @@ nmap <F4> :w<cr>    "保存文件修改
 nmap <F3> :q<cr>    "退出vim
 nmap <F12> :bro ol<cr>  "浏览文件打开记录
 nmap <F2> :bd<cr>    "关闭minibufexplorer中的某个文件
+set pastetoggle=<F9> "插入粘贴模式
 nmap ln :set nu!<cr>
 
 if g:isGUI
@@ -226,6 +235,11 @@ map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
 map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
 map <silent> <leader>3 :diffget 3<CR> :diffupdate<CR>
 map <silent> <leader>4 :diffget 4<CR> :diffupdate<CR>
+
+" 常规模式下输入 cS 清除行尾空格
+nmap cS :%s/\s\+$//g<CR>:noh<CR>
+" 常规模式下输入 cM 清除行尾 ^M 符号
+nmap cM :%s/\r$//g<CR>:noh<CR>
 
 "--------------------------------------------------------------------------------
 " 其他配置
@@ -419,6 +433,10 @@ nmap tg :LeaderfBufTag<cr>
 nmap fu :LeaderfFunction!<cr>
 "当前文件搜索符合的行
 nmap fl :LeaderfLine<cr>
+"历史文件列表
+nmap hf :LeaderfMru<cr>
+" quickfix
+nmap fx :LeaderfQuickFix<cr>
 "当前目录搜索光标下文本
 " nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
 "gtags
