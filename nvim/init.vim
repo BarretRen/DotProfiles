@@ -51,6 +51,7 @@ Plug 'skywind3000/vim-terminal-help'
 Plug 'Chiel92/vim-autoformat' "自动格式化
 Plug 'Yggdroot/LeaderF'
 Plug 'ap/vim-buftabline'
+Plug 'junegunn/vim-peekaboo'
 
 call plug#end()
 
@@ -99,7 +100,6 @@ set ttimeout
 set ttimeoutlen=100
 " 高亮光标所在行
 set cursorline
-set cursorlineopt=number
 " 当文件在外部被修改，自动更新该文件
 set autoread
 
@@ -114,13 +114,6 @@ set statusline+=[Row:%l/%L\ Col:%v\ %p%%]
 
 set laststatus=2    " always show the status line
 " set ruler           " 在编辑过程中，在右下角显示光标位置的状态行
-if g:iswindows
-    set guioptions-=m " 隐藏菜单栏
-    set guioptions-=T " 隐藏工具栏
-endif
-"set guioptions-=L " 隐藏左侧滚动条
-"set guioptions-=r " 隐藏右侧滚动条
-set guioptions-=b " 隐藏底部滚动条
 
 "--------------------------------------------------------------------------------
 " 查找/替换相关的设置
@@ -132,19 +125,17 @@ set incsearch       " 查询时非常方便，如要查找book单词，当输入
 " 找要匹配的单词时，别忘记回车
 set gdefault        " 替换时所有的行内匹配都被替换，而不是只有第一个
 set ignorecase "忽略大小写
+set smartcase  "如果搜索模式包含大写字符，不使用 'ignorecase' 选项
 
 "--------------------------------------------------------------------------------
 " 主题设置
 "--------------------------------------------------------------------------------
 "Vim colorscheme
-if (has('nvim'))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
-endif
 if (has('termguicolors'))
   set termguicolors
 endif
 
-set background=light
+set background=dark
 colorscheme PaperColor
 let g:PaperColor_Theme_Options = {
   \   'language': {
