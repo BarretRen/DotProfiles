@@ -191,7 +191,8 @@ if has("clipboard")
     map <C-V>       "0P
     map <S-Insert>      "+gP
 
-    cmap <S-Insert>     <C-R>+
+    " cmap <S-Insert>     <C-R>+
+    inoremap <silent>  <S-Insert>  <C-R>+
     nmap <C-a> ggvG$
 else
     vmap <C-c> "yy
@@ -401,10 +402,10 @@ let g:terminal_height = 30
 " LeaderF
 "--------------------------------------------------------------------------------
 " popup mode
-" let g:Lf_WindowPosition = 'popup'
+let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
-" let Lf_PopupWidth = 0.8
-" let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
+let Lf_PopupWidth = 0.8
+let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
 
 let g:Lf_ShortcutF = '<c-p>' " search file
 let g:Lf_ShortcutB = '<c-b>' " list buffer
