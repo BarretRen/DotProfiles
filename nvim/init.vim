@@ -135,7 +135,7 @@ if (has('termguicolors'))
   set termguicolors
 endif
 
-set background=dark
+set background=light
 colorscheme PaperColor
 let g:PaperColor_Theme_Options = {
   \   'language': {
@@ -421,8 +421,8 @@ let g:Lf_WildIgnore = {
 " let g:Lf_DefaultExternalTool = "rg"
 let g:Lf_UseVersionControlTool = 0
 "列出当前文件函数列表
-nmap tg :LeaderfBufTag<cr>
-nmap fu :LeaderfFunction!<cr>
+nmap tg :LeaderfBufTag!<cr>
+nmap fu :LeaderfFunction<cr>
 "当前文件搜索符合的行
 nmap fl :LeaderfLine<cr>
 "历史文件列表

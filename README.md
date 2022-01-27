@@ -8,6 +8,7 @@
 * tm: 自动创建tmux的脚本
 
 ## Changelog
+* 2022/01/27: update nvim
 * 2021/10/28: update vim
 * 2021/10/11: add configuration for nvim
 * 2021/10/11: remove fucking vista.vim which can't support cpp
