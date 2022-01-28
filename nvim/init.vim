@@ -56,7 +56,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'aceofall/gtags.vim'
 Plug 'skywind3000/vim-terminal-help'
 Plug 'Chiel92/vim-autoformat' "自动格式化
-Plug 'Yggdroot/LeaderF'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'ap/vim-buftabline'
 Plug 'junegunn/vim-peekaboo'
 
