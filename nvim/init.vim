@@ -50,7 +50,7 @@ Plug 'inkarkat/vim-ingo-library'
 Plug 'scrooloose/nerdcommenter'
 Plug 'BarretRen/papercolor-theme'
 Plug 'BarretRen/SearchOnSelectVim'
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'BarretRen/minibufexpl.vim'
 " Plug 'Yggdroot/indentLine'
 Plug 'aceofall/gtags.vim'
@@ -353,22 +353,21 @@ let g:SearchOnSelect_active = 1
 let g:miniBufExplAutoStart = 1
 
 "--------------------------------------------------------------------------------
-" vim-cpp-enhanced-highlight,C++关键字高亮
+" nvim-treesitter关键字高亮
 "--------------------------------------------------------------------------------
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_concepts_highlight = 1
-let g:cpp_no_function_highlight = 1
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
 
-"--------------------------------------------------------------------------------
-" minibuf explorer
-"--------------------------------------------------------------------------------
-" let g:miniBufExplorerHideWhenDiff = 1 "diff时不显示
-" let g:miniBufExplorerAutoStart = 1 "自动开启
-" let g:miniBufExplUseSingleClick = 1 "单击切换
-" let g:miniBufExplShowBufNumbers = 1
-" let g:did_minibufexplorer_syntax_inits = 1
+    -- list of language that will be disabled
+    -- disable = { "c", "rust" },
+
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
 
 "--------------------------------------------------------------------------------
 " bufTabline
