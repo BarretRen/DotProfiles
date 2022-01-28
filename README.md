@@ -1,13 +1,13 @@
 ## Introduction
 
 个人工作总结的Linux上软件配置，基本满足工作编程需要，包含如下软件的配置
-* Vim
 * NeoVim
 * zsh
 * tmux
 * tm: 自动创建tmux的脚本
 
 ## Changelog
+* 2022/01/29: only support nvim, remove vimrc
 * 2022/01/28: update nvim and vim configurations
 * 2021/10/28: update vim
 * 2021/10/11: add configuration for nvim
@@ -41,7 +41,7 @@
 * 2018/1/18: 添加YankRing插件，修改快捷键
 * 2018/1/5: 初次提交
 
-## Vim/NeoVim基本配置
+## NeoVim基本配置
 ### screenshot
 
 **UI**
@@ -51,26 +51,6 @@
 **search**
 
 ![screenshot](search.png)
-
-### Vim profile Installation
-
-**Linux**
-```bash
-git clone https://github.com/BarretRen/LinuxEnvProfiles.git
-cd LinuxEnvProfiles
-cp -r .vim .vimrc ~/
-vim
-```
-执行如下vim命令，更新管理器和插件：PlugUpgrade, PlugInstall
-
-
-**Windows**
-
-* clone repo
-* 将.vimrc与.vim复制到用户个人目录中
-* 将.vimrc重命名为`_vimrc`, 将.vim重命名为vimfiles
-* 启动vim
-* 执行如下vim命令，更新管理器和插件：PlugUpgrade, PlugInstall
 
 ### NeoVim profile Installation
 
@@ -103,12 +83,10 @@ cp nvim ~/.config
 | w  x            | 水平分割当前窗口                               |
 | w  c            | 关闭当前窗口                                   |
 | l  n            | 开关行号                                      |
-| f  x            | 打开quickfix窗口                              |
-| a  s            | 调用AsyncRun执行异步操作                       |
-| t               | vim中打开shell                                |
-| b  u            | 打开buffer list                               |
+| f  x            | 打开leaderf quickfix                              |
+| Alt =           | vim中打开shell                                |
 | f  u            | 打开当前文件函数列表                            |
-| f  s            | 在当前目录下搜索光标下文本                     |
+| t  g            | 打开当前文件tag列表                            |
 | m               | 标记光标下词语                                 |
 | \  N            | 去除所有标记                                 |
 | Ctrl n          | 新建buffer                                    |
@@ -130,7 +108,5 @@ cp nvim ~/.config
 | d    f          | 打开defx文件浏览插件 |
 | Alt  n          | 后一个buffer |
 | Alt  p          | 前一个buffer |
-| t    g          | 打开当前文件的tag列表 |
-| f    u          | 打开当前文件的函数列表 |
 
 --------------------------------------------------------------------------------
