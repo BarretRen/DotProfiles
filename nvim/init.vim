@@ -27,6 +27,13 @@ set termencoding=utf-8 "ssh term 使用的编码
 " 下面两行用于防止gvim提示和软件显示出现问题
 set fenc=utf-8 "文件新建编码
 
+"--------------------------------------------------------------------------------
+" GUI设置
+"--------------------------------------------------------------------------------
+"去除声音和闪屏
+set vb t_vb=
+au GuiEnter * set t_vb=
+
 "###############################################################################
 " 插件管理
 "###############################################################################
@@ -91,10 +98,6 @@ if g:iswindows
 else
     set viminfo='20,<20,s10,h,/10,:10
 endif
-"去除声音和闪屏
-set vb t_vb=
-au GuiEnter * set t_vb=
-autocmd GUIEnter * simalt ~x  "自动最大化
 " 设置Esc超时时间为100ms,尽快生效
 set ttimeout
 set ttimeoutlen=100
@@ -135,7 +138,7 @@ if (has('termguicolors'))
   set termguicolors
 endif
 
-set background=light
+set background=dark
 colorscheme PaperColor
 let g:PaperColor_Theme_Options = {
   \   'language': {

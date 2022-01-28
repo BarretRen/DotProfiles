@@ -26,10 +26,25 @@ set enc=utf-8  "vim内部编码
 set termencoding=utf-8 "ssh term 使用的编码
 " 下面两行用于防止gvim提示和软件显示出现问题
 set fenc=utf-8 "文件新建编码
+
+"--------------------------------------------------------------------------------
+" GUI设置
+"--------------------------------------------------------------------------------
 if g:iswindows
     set guifont=Cascadia_Code:h11
 else
     set guifont=Cascadia_Code\ 10 "字体设置在终端下无效
+endif
+"去除声音和闪屏
+set vb t_vb=
+au GuiEnter * set t_vb=
+autocmd GUIEnter * simalt ~x  "自动最大化
+if g:isGUI
+    set guioptions-=m " 隐藏菜单栏
+    set guioptions-=T " 隐藏工具栏
+    "set guioptions-=L " 隐藏左侧滚动条
+    "set guioptions-=r " 隐藏右侧滚动条
+    set guioptions-=b " 隐藏底部滚动条
 endif
 
 "###############################################################################
@@ -46,7 +61,6 @@ Plug 'vim-scripts/EasyGrep'
 Plug 'inkarkat/vim-mark'
 Plug 'inkarkat/vim-ingo-library'
 Plug 'scrooloose/nerdcommenter'
-"Plug 'https://github.com/skywind3000/asyncrun.vim.git'
 Plug 'BarretRen/papercolor-theme'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -97,16 +111,11 @@ if g:iswindows
 else
     set viminfo='20,<20,s10,h,/10,:10
 endif
-"去除声音和闪屏
-set vb t_vb=
-au GuiEnter * set t_vb=
-autocmd GUIEnter * simalt ~x  "自动最大化
 " 设置Esc超时时间为100ms,尽快生效
 set ttimeout
 set ttimeoutlen=100
 " 高亮光标所在行
 set cursorline
-set cursorlineopt=number
 " 当文件在外部被修改，自动更新该文件
 set autoread
 
@@ -121,13 +130,6 @@ set statusline+=[Row:%l/%L\ Col:%v\ %p%%]
 
 set laststatus=2    " always show the status line
 " set ruler           " 在编辑过程中，在右下角显示光标位置的状态行
-if g:iswindows
-    set guioptions-=m " 隐藏菜单栏
-    set guioptions-=T " 隐藏工具栏
-endif
-"set guioptions-=L " 隐藏左侧滚动条
-"set guioptions-=r " 隐藏右侧滚动条
-set guioptions-=b " 隐藏底部滚动条
 
 "--------------------------------------------------------------------------------
 " 查找/替换相关的设置
@@ -145,9 +147,8 @@ set smartcase  "如果搜索模式包含大写字符，不使用 'ignorecase' �
 " 主题设置
 "--------------------------------------------------------------------------------
 "Vim colorscheme
-if has("termguicolors")
-    " enable true color
-    set termguicolors
+if (has('termguicolors'))
+  set termguicolors
 endif
 
 set background=dark
@@ -206,7 +207,8 @@ if has("clipboard")
     map <C-V>       "0P
     map <S-Insert>      "+gP
 
-    cmap <S-Insert>     <C-R>+
+    " cmap <S-Insert>     <C-R>+
+    inoremap <silent>  <S-Insert>  <C-R>+
     nmap <C-a> ggvG$
 else
     vmap <C-c> "yy
@@ -416,10 +418,10 @@ let g:terminal_height = 30
 " LeaderF
 "--------------------------------------------------------------------------------
 " popup mode
-" let g:Lf_WindowPosition = 'popup'
+let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
-" let Lf_PopupWidth = 0.8
-" let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
+let Lf_PopupWidth = 0.8
+let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
 
 let g:Lf_ShortcutF = '<c-p>' " search file
 let g:Lf_ShortcutB = '<c-b>' " list buffer
@@ -435,8 +437,8 @@ let g:Lf_WildIgnore = {
 " let g:Lf_DefaultExternalTool = "rg"
 let g:Lf_UseVersionControlTool = 0
 "列出当前文件函数列表
-nmap tg :LeaderfBufTag<cr>
-nmap fu :LeaderfFunction!<cr>
+nmap tg :LeaderfBufTag!<cr>
+nmap fu :LeaderfFunction<cr>
 "当前文件搜索符合的行
 nmap fl :LeaderfLine<cr>
 "历史文件列表
