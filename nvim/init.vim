@@ -48,7 +48,7 @@ Plug 'vim-scripts/EasyGrep'
 Plug 'inkarkat/vim-mark'
 Plug 'inkarkat/vim-ingo-library'
 Plug 'scrooloose/nerdcommenter'
-" Plug 'BarretRen/papercolor-theme'
+Plug 'BarretRen/papercolor-theme'
 Plug 'lifepillar/vim-solarized8'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'nvim-treesitter/nvim-treesitter'
@@ -139,22 +139,10 @@ if (has('termguicolors'))
   set termguicolors
 endif
 
-set background=light
-let g:solarized_italics = 0
-colorscheme solarized8
-" let g:PaperColor_Theme_Options = {
-  " \   'language': {
-  " \     'python': {
-  " \       'highlight_builtins' : 1
-  " \     },
-  " \     'cpp': {
-  " \       'highlight_standard_library': 1
-  " \     },
-  " \     'c': {
-  " \       'highlight_builtins' : 1
-  " \     }
-  " \   }
-  " \ }
+set background=dark
+colorscheme PaperColor
+" let g:solarized_italics = 0
+" colorscheme solarized8
 
 "--------------------------------------------------------------------------------
 " 编程相关的设置
