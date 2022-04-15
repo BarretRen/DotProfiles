@@ -388,7 +388,7 @@ let g:formatters_cpp = ['astyle_cpp', 'clangformat']
 " vim-terminal-help
 "--------------------------------------------------------------------------------
 let g:terminal_close = 1
-let g:terminal_height = 30
+let g:terminal_height = 100
 
 "--------------------------------------------------------------------------------
 " LeaderF
@@ -397,7 +397,7 @@ let g:terminal_height = 30
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let Lf_PopupWidth = 0.8
-let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
+" let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
 
 let g:Lf_ShortcutF = '<c-p>' " search file
 let g:Lf_ShortcutB = '<c-b>' " list buffer
