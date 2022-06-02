@@ -1,37 +1,31 @@
 [user]
 	name = Barret Ren
 	email = barret.ren@outlook.com
-[color]
-	status = auto
-	branch = auto
-	diff = auto
-	ui = true
-	pager = true
-[color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
-[color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
-[color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
-[alias]
-    st = status
-    ci = commit
-    co = checkout
-    br = branch
-    unstage = reset HEAD --
-    last = log -1 HEAD
-	logn = log --name-only
-[push]
-	default = simple
-[credential]
-	helper = manager
+[branch]
+    autosetuprebase = always
 [core]
-	autocrlf = false
-	quotepath = false
+    pager = less -r
+    editor = vi
+[alias]
+    br = branch
+    brd = branch -d
+    st = status
+    ci = commit -m
+    co = checkout
+    cob = checkout -b
+    ft= fetch
+    pl = pull
+    rb = rebase
+    l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+    ll = log --stat --abbrev-commit
+    d = diff
+    dh = diff --color-words HEAD
+    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+    ui = auto
+[merge]
+    tool = kdiff3
