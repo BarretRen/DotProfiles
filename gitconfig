@@ -1,16 +1,17 @@
 [user]
-	name = Barret Ren
-	email = barret.ren@outlook.com
+    email = barretren@qq.com
+    name = Barret Ren
 [branch]
     autosetuprebase = always
 [core]
     pager = less -r
     editor = vi
+	quotepath = false
 [alias]
     br = branch
     brd = branch -d
     st = status
-    ci = commit -m
+    ci = commit
     co = checkout
     cob = checkout -b
     ft= fetch
@@ -29,3 +30,5 @@
     ui = auto
 [merge]
     tool = kdiff3
+[init]
+	defaultBranch = master
