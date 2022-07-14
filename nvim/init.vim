@@ -48,15 +48,15 @@ Plug 'vim-scripts/EasyGrep'
 Plug 'inkarkat/vim-mark'
 Plug 'inkarkat/vim-ingo-library'
 Plug 'scrooloose/nerdcommenter'
-Plug 'NLKNguyen/papercolor-theme'
-"Plug 'lifepillar/vim-solarized8'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'lifepillar/vim-solarized8'
+Plug 'EdenEast/nightfox.nvim'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'nvim-treesitter/nvim-treesitter'
-" Plug 'BarretRen/minibufexpl.vim'
 " Plug 'Yggdroot/indentLine'
 Plug 'aceofall/gtags.vim'
 Plug 'skywind3000/vim-terminal-help'
-Plug 'Chiel92/vim-autoformat' "自动格式化
+Plug 'vim-autoformat/vim-autoformat' "自动格式化
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'ap/vim-buftabline'
 
@@ -75,13 +75,13 @@ set wrap           " 自动换行
 "set nowrap         " 不自动换行
 set linebreak       " 整词换行
 set whichwrap=b,s,<,>,[,]       " 光标从行首和行末时可以跳到另一行去
-"set list                       " 显示制表符
+set list                       " 显示制表符
 set listchars=tab:>-,trail:-     " 将制表符显示为'>---',将行尾空格显示为'-'
 "set autochdir                   " 自动设置目录为正在编辑的文件所在的目录
 set hidden          " 没有保存的缓冲区可以自动被隐藏
 set scrolloff=5
 set clipboard+=unnamed   "复制到剪贴板，默认是寄存器
-set expandtab    "将Tab键转换为空格
+"set expandtab    "将Tab键转换为空格
 set tabstop=4    "设置Tab键的宽度，可以更改，如：宽度为2
 set shiftwidth=4  "换行时自动缩进宽度，可更改（宽度同tabstop）
 set smarttab      "指定按一次backspace就删除shiftwidth宽度
@@ -139,7 +139,7 @@ if (has('termguicolors'))
 endif
 
 set background=dark
-colorscheme PaperColor
+colorscheme duskfox
 " let g:solarized_italics = 0
 " colorscheme solarized8
 
@@ -409,8 +409,8 @@ let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg'],
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.D','*.cmd','*.ti']
             \}
-" let g:Lf_DefaultExternalTool = "rg"
 let g:Lf_UseVersionControlTool = 0
+let g:Lf_DefaultExternalTool = "rg"
 "列出当前文件函数列表
 nmap tg :LeaderfBufTag!<cr>
 nmap fu :LeaderfFunction<cr>

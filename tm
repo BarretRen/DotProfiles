@@ -11,8 +11,8 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
-cmd=$(which tmux) # tmux path
-#alias cmd='/home/barretr/tools/Tmux/bin/tmux -u'
+# cmd=$(which tmux) # tmux path
+alias cmd='~/.local/bin/tmux -u'
 session=$1   # session name from input
 
 if [ -z cmd ]; then
@@ -31,6 +31,7 @@ cmd has -t $session 2> /dev/null
 if [ $? -ne 0 ]; then
     cmd new -s $session -d -n Vim
     cmd neww -t $session -d -n Build
+    #cmd neww -t $session -d -n Lab
     cmd selectw -t $session:1
 fi
 
