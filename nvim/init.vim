@@ -53,12 +53,13 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'nvim-treesitter/nvim-treesitter'
-" Plug 'Yggdroot/indentLine'
+" Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'aceofall/gtags.vim'
 Plug 'skywind3000/vim-terminal-help'
 Plug 'vim-autoformat/vim-autoformat' "自动格式化
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'ap/vim-buftabline'
+Plug 'nvim-lualine/lualine.nvim'
 
 call plug#end()
 
@@ -358,6 +359,18 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+"--------------------------------------------------------------------------------
+" lualine
+"--------------------------------------------------------------------------------
+lua <<EOF
+require('lualine').setup{
+	options = { theme = "papercolor_dark" },
+	sections = {
+		lualine_c = {{'filename', path = 1}},
+		lualine_x = {'encoding', 'filetype'},
+	},
+}
+EOF
 "--------------------------------------------------------------------------------
 " bufTabline
 "--------------------------------------------------------------------------------

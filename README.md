@@ -7,6 +7,7 @@
 * tm: 自动创建tmux的脚本
 
 ## Changelog
+* 2022/07/19: add lualine for nvim
 * 2022/01/29: only support nvim, remove vimrc
 * 2022/01/28: update nvim and vim configurations
 * 2021/10/28: update vim
