@@ -50,7 +50,8 @@ Plug 'inkarkat/vim-ingo-library'
 Plug 'scrooloose/nerdcommenter'
 " Plug 'NLKNguyen/papercolor-theme'
 " Plug 'lifepillar/vim-solarized8'
-Plug 'EdenEast/nightfox.nvim'
+" Plug 'EdenEast/nightfox.nvim'
+Plug 'Mofiqul/vscode.nvim'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'lukas-reineke/indent-blankline.nvim'
@@ -140,7 +141,7 @@ if (has('termguicolors'))
 endif
 
 set background=dark
-colorscheme duskfox
+colorscheme vscode
 " let g:solarized_italics = 0
 " colorscheme solarized8
 
@@ -364,7 +365,7 @@ EOF
 "--------------------------------------------------------------------------------
 lua <<EOF
 require('lualine').setup{
-	options = { theme = "papercolor_dark" },
+	--options = { theme = "papercolor_dark" },
 	sections = {
 		lualine_c = {{'filename', path = 1}},
 		lualine_x = {'encoding', 'filetype'},
