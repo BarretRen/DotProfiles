@@ -348,6 +348,7 @@ let g:miniBufExplAutoStart = 1
 "--------------------------------------------------------------------------------
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "cpp", "yang"},
   highlight = {
     -- `false` will disable the whole extension
     enable = true,
