@@ -1,5 +1,5 @@
 ﻿"##################################################################
-"########################## start Of Vimrc ##########################
+"########################## start Of settings #####################
 "##################################################################
 
 " -----------------------------------------------------------------------------
@@ -58,9 +58,11 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'aceofall/gtags.vim'
 Plug 'skywind3000/vim-terminal-help'
 Plug 'vim-autoformat/vim-autoformat' "自动格式化
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'ap/vim-buftabline'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
 
@@ -258,23 +260,22 @@ let GtagsCscope_Auto_Load = 1
 let CtagsCscope_Auto_Map = 1
 let GtagsCscope_Quiet = 1
 let GtagsCscope_Absolute_Path = 1
+let g:Gtags_OpenQuickfixWindow = 0
+nmap fr :cexp[]<cr>:Gtags -r <C-R>=expand("<cword>")<cr><cr>:Telescope quickfix<cr>
+nmap fd :cexp[]<cr>:Gtags <C-R>=expand("<cword>")<cr><cr>:Telescope quickfix<cr>
+nmap fs :<C-U><C-R>=printf("Gtags ")<CR>
 
 "--------------------------------------------------------------------------------
 " cscope
 "--------------------------------------------------------------------------------
 " :set cscopequickfix=s-,g-,c-,d-,i-,t-,e-,f-   "是否使用 quickfix 窗口来显示 cscope 结果
-:set cscopetag
-set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
+" :set cscopetag
+" set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
 " find symbol,defination, caller
-if g:iswindows
-	nmap fr :Gtags -r <C-R>=expand("<cword>")<cr><cr>
-	nmap fd :Gtags <C-R>=expand("<cword>")<cr><cr>
-else
-	nmap fr :cs find s <C-R>=expand("<cword>")<cr><cr>
-	nmap fd :cs find g <C-R>=expand("<cword>")<cr><cr>
-	nmap fc :cs find c <C-R>=expand("<cword>")<cr><cr>
-	nmap ff :<C-U><C-R>=printf("cs find f ")<CR>
-endif
+" nmap fr :cs find s <C-R>=expand("<cword>")<cr><cr>
+" nmap fd :cs find g <C-R>=expand("<cword>")<cr><cr>
+" nmap fc :cs find c <C-R>=expand("<cword>")<cr><cr>
+" nmap ff :<C-U><C-R>=printf("cs find f ")<CR>
 
 "--------------------------------------------------------------------------------
 " quickfix
@@ -344,36 +345,6 @@ let g:SearchOnSelect_active = 1
 let g:miniBufExplAutoStart = 1
 
 "--------------------------------------------------------------------------------
-" nvim-treesitter关键字高亮
-"--------------------------------------------------------------------------------
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "yang"},
-  highlight = {
-    -- `false` will disable the whole extension
-    enable = true,
-
-    -- list of language that will be disabled
-    -- disable = { "c", "rust" },
-
-    additional_vim_regex_highlighting = false,
-  },
-}
-EOF
-
-"--------------------------------------------------------------------------------
-" lualine
-"--------------------------------------------------------------------------------
-lua <<EOF
-require('lualine').setup{
-	--options = { theme = "papercolor_dark" },
-	sections = {
-		lualine_c = {{'filename', path = 1}},
-		lualine_x = {'encoding', 'filetype'},
-	},
-}
-EOF
-"--------------------------------------------------------------------------------
 " bufTabline
 "--------------------------------------------------------------------------------
 let g:buftabline_numbers = 1
@@ -405,42 +376,53 @@ let g:terminal_close = 1
 let g:terminal_height = 100
 
 "--------------------------------------------------------------------------------
+" telescope
+"--------------------------------------------------------------------------------
+nmap <C-p> <cmd>Telescope find_files<cr>
+nmap <C-b> <cmd>Telescope buffers<cr>
+nmap <C-f> <cmd>Telescope current_buffer_fuzzy_find<cr>
+nmap <F12> <cmd>Telescope oldfiles<cr>
+nmap fu <cmd>Telescope treesitter<cr>
+nmap rg <cmd>Telescope live_grep<cr>
+nmap fx <cmd>Telescope quickfix<cr>
+
+"--------------------------------------------------------------------------------
 " LeaderF
 "--------------------------------------------------------------------------------
 " popup mode
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let Lf_PopupWidth = 0.8
+" let g:Lf_WindowPosition = 'popup'
+" let g:Lf_PreviewInPopup = 1
+" let Lf_PopupWidth = 0.8
 " let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
 
-let g:Lf_ShortcutF = '<c-p>' " search file
-let g:Lf_ShortcutB = '<c-b>' " list buffer
-let g:Lf_ShowRelativePath = 0
+" let g:Lf_ShortcutF = '<c-p>' " search file
+" let g:Lf_ShortcutB = '<c-b>' " list buffer
+" let g:Lf_ShowRelativePath = 0
 " let g:Lf_ReverseOrder = 1  "最优结果在最下面显示
-let g:Lf_DefaultMode = 'NameOnly'
-let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
-let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
-let g:Lf_WildIgnore = {
-            \ 'dir': ['.svn','.git','.hg'],
-            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.D','*.cmd','*.ti']
-            \}
-let g:Lf_UseVersionControlTool = 0
-let g:Lf_DefaultExternalTool = "rg"
+" let g:Lf_DefaultMode = 'NameOnly'
+" let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
+" let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
+" let g:Lf_WildIgnore = {
+            " \ 'dir': ['.svn','.git','.hg'],
+            " \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.D','*.cmd','*.ti']
+            " \}
+" let g:Lf_UseVersionControlTool = 0
+" let g:Lf_DefaultExternalTool = "rg"
 "列出当前文件函数列表
-nmap tg :LeaderfBufTag!<cr>
-nmap fu :LeaderfFunction<cr>
+" nmap tg :LeaderfBufTag!<cr>
+" nmap fu :LeaderfFunction<cr>
 "当前文件搜索符合的行
-nmap fl :LeaderfLine<cr>
+" nmap fl :LeaderfLine<cr>
 "历史文件列表
-nmap hf :LeaderfMru<cr>
+" nmap hf :LeaderfMru<cr>
 " quickfix
-nmap fx :LeaderfQuickFix<cr>
+" nmap fx :LeaderfQuickFix<cr>
 "当前目录搜索光标下文本
 " nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
 
 " should use `Leaderf gtags --update` first
-let g:Lf_GtagsAutoGenerate = 0
-let g:Lf_GtagsAutoUpdate = 0
+" let g:Lf_GtagsAutoGenerate = 0
+" let g:Lf_GtagsAutoUpdate = 0
 " let g:Lf_Gtagslabel = 'native-pygments'
 " let g:Lf_GtagsSource = 2
 " let g:Lf_GtagsfilesCmd = {
@@ -456,6 +438,50 @@ let g:Lf_GtagsAutoUpdate = 0
 " noremap fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
 " noremap fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
 " noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
+"--------------------------------------------------------------------------------
+" configurations for lua plugins
+"--------------------------------------------------------------------------------
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "cpp", "yang"},
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- list of language that will be disabled
+    -- disable = { "c", "rust" },
+
+    additional_vim_regex_highlighting = false,
+  },
+}
+
+require('lualine').setup{
+	--options = { theme = "papercolor_dark" },
+	sections = {
+		lualine_c = {{'filename', path = 1}},
+		lualine_x = {'encoding', 'filetype'},
+	},
+}
+
+require('telescope').setup{
+  defaults = {
+	  vimgrep_arguments = {
+          "rg",
+		  "-u",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case"
+        },
+  },
+  pickers = {
+	  find_files = { no_ignore = true },
+  },
+}
+EOF
 "##################################################################
-"########################## End Of Vimrc ##########################
+"########################## End Of Settings #######################
 "##################################################################
