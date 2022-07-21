@@ -50,12 +50,12 @@ Plug 'inkarkat/vim-ingo-library'
 Plug 'scrooloose/nerdcommenter'
 " Plug 'NLKNguyen/papercolor-theme'
 " Plug 'lifepillar/vim-solarized8'
-" Plug 'EdenEast/nightfox.nvim'
-Plug 'Mofiqul/vscode.nvim'
+Plug 'EdenEast/nightfox.nvim'
+" Plug 'Mofiqul/vscode.nvim'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'lukas-reineke/indent-blankline.nvim'
-" Plug 'aceofall/gtags.vim'
+Plug 'aceofall/gtags.vim'
 Plug 'skywind3000/vim-terminal-help'
 Plug 'vim-autoformat/vim-autoformat' "自动格式化
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
@@ -141,7 +141,7 @@ if (has('termguicolors'))
 endif
 
 set background=dark
-colorscheme vscode
+colorscheme duskfox
 " let g:solarized_italics = 0
 " colorscheme solarized8
 
@@ -254,27 +254,27 @@ nmap <F5> :TagbarToggle<CR>
 "--------------------------------------------------------------------------------
 " gtags
 "--------------------------------------------------------------------------------
-" let GtagsCscope_Auto_Load = 1
-" let CtagsCscope_Auto_Map = 1
-" let GtagsCscope_Quiet = 1
-" let GtagsCscope_Absolute_Path = 1
+let GtagsCscope_Auto_Load = 1
+let CtagsCscope_Auto_Map = 1
+let GtagsCscope_Quiet = 1
+let GtagsCscope_Absolute_Path = 1
 
 "--------------------------------------------------------------------------------
 " cscope
 "--------------------------------------------------------------------------------
 " :set cscopequickfix=s-,g-,c-,d-,i-,t-,e-,f-   "是否使用 quickfix 窗口来显示 cscope 结果
-" :set cscopetag
-" set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
+:set cscopetag
+set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
 " find symbol,defination, caller
-" if g:iswindows
-    " nmap fr :Gtags -r <C-R>=expand("<cword>")<cr><cr>
-    " nmap fd :Gtags <C-R>=expand("<cword>")<cr><cr>
-" else
-    " nmap fr :cs find s <C-R>=expand("<cword>")<cr><cr>
-    " nmap fd :cs find g <C-R>=expand("<cword>")<cr><cr>
-    " nmap fc :cs find c <C-R>=expand("<cword>")<cr><cr>
-    " nmap ff :<C-U><C-R>=printf("cs find f ")<CR>
-" endif
+if g:iswindows
+	nmap fr :Gtags -r <C-R>=expand("<cword>")<cr><cr>
+	nmap fd :Gtags <C-R>=expand("<cword>")<cr><cr>
+else
+	nmap fr :cs find s <C-R>=expand("<cword>")<cr><cr>
+	nmap fd :cs find g <C-R>=expand("<cword>")<cr><cr>
+	nmap fc :cs find c <C-R>=expand("<cword>")<cr><cr>
+	nmap ff :<C-U><C-R>=printf("cs find f ")<CR>
+endif
 
 "--------------------------------------------------------------------------------
 " quickfix
@@ -441,21 +441,21 @@ nmap fx :LeaderfQuickFix<cr>
 " should use `Leaderf gtags --update` first
 let g:Lf_GtagsAutoGenerate = 0
 let g:Lf_GtagsAutoUpdate = 0
-let g:Lf_Gtagslabel = 'native-pygments'
-let g:Lf_GtagsSource = 2
-let g:Lf_GtagsfilesCmd = {
-        \ '.git': 'rg --no-messages --files -u',
-        \ '.hg': 'rg --no-messages --files -u',
-        \ 'default': 'rg --no-messages --files -u'
-        \}
-noremap fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap fg :<C-U><C-R>=printf("Leaderf! gtags -g %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap fs :<C-U><C-R>=printf("Leaderf gtags -g ")<CR>
-noremap fa :<C-U><C-R>=printf("Leaderf gtags --all ")<CR><CR>
-noremap fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-noremap fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+" let g:Lf_Gtagslabel = 'native-pygments'
+" let g:Lf_GtagsSource = 2
+" let g:Lf_GtagsfilesCmd = {
+        " \ '.git': 'rg --no-messages --files -u',
+        " \ '.hg': 'rg --no-messages --files -u',
+        " \ 'default': 'rg --no-messages --files -u'
+        " \}
+" noremap fr :<C-U><C-R>=printf("Leaderf gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap fd :<C-U><C-R>=printf("Leaderf gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap fg :<C-U><C-R>=printf("Leaderf gtags -g %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap fs :<C-U><C-R>=printf("Leaderf gtags -g ")<CR>
+" noremap fa :<C-U><C-R>=printf("Leaderf gtags --all ")<CR><CR>
+" noremap fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+" noremap fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+" noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 "##################################################################
 "########################## End Of Vimrc ##########################
 "##################################################################
