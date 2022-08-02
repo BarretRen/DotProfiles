@@ -457,18 +457,18 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require('lualine').setup{
-	--options = { theme = "papercolor_dark" },
-	sections = {
-		lualine_c = {{'filename', path = 1}},
-		lualine_x = {'encoding', 'filetype'},
-	},
+    --options = { theme = "papercolor_dark" },
+    sections = {
+        lualine_c = {{'filename', path = 1}},
+        lualine_x = {'encoding', 'filetype'},
+    },
 }
 
 require('telescope').setup{
   defaults = {
-	  vimgrep_arguments = {
+      vimgrep_arguments = {
           "rg",
-		  "-u",
+          "-u",
           "--color=never",
           "--no-heading",
           "--with-filename",
@@ -476,9 +476,12 @@ require('telescope').setup{
           "--column",
           "--smart-case"
         },
+      path_display = {
+          "smart"
+        },
   },
   pickers = {
-	  find_files = { no_ignore = true },
+      find_files = { no_ignore = true },
   },
 }
 EOF
