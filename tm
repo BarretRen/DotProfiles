@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 ##
 ## name     : tm, tmux environment made easy
 ## author   : Barret Ren <barrret.ren@outlook.com>

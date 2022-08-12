@@ -49,7 +49,7 @@ Plug 'inkarkat/vim-mark'
 Plug 'inkarkat/vim-ingo-library'
 Plug 'scrooloose/nerdcommenter'
 " Plug 'NLKNguyen/papercolor-theme'
-" Plug 'lifepillar/vim-solarized8'
+Plug 'lifepillar/vim-solarized8'
 Plug 'EdenEast/nightfox.nvim'
 " Plug 'Mofiqul/vscode.nvim'
 Plug 'BarretRen/SearchOnSelectVim'
@@ -98,9 +98,9 @@ set noundofile
 set noswapfile
 "设置viminfo
 if g:iswindows
-    set viminfo='20,<20,s10,h,rA:,rB:,/10,:10
+    set viminfo='50,<50,s10,h,rA:,rB:,/10,:10
 else
-    set viminfo='20,<20,s10,h,/10,:10
+    set viminfo='50,<50,s10,h,/10,:10
 endif
 " 设置Esc超时时间为100ms,尽快生效
 set ttimeout
@@ -143,9 +143,9 @@ if (has('termguicolors'))
 endif
 
 set background=dark
-colorscheme duskfox
-" let g:solarized_italics = 0
-" colorscheme solarized8
+" colorscheme nordfox
+let g:solarized_italics = 0
+colorscheme solarized8
 
 "--------------------------------------------------------------------------------
 " 编程相关的设置
@@ -256,11 +256,12 @@ nmap <F5> :TagbarToggle<CR>
 "--------------------------------------------------------------------------------
 " gtags
 "--------------------------------------------------------------------------------
-let GtagsCscope_Auto_Load = 1
-let CtagsCscope_Auto_Map = 1
-let GtagsCscope_Quiet = 1
-let GtagsCscope_Absolute_Path = 1
+" let GtagsCscope_Auto_Load = 1
+" let CtagsCscope_Auto_Map = 1
+" let GtagsCscope_Quiet = 1
+" let GtagsCscope_Absolute_Path = 1
 let g:Gtags_OpenQuickfixWindow = 0
+" let g:Gtags_No_Auto_Jump = 1
 nmap fr :cexp[]<cr>:Gtags -r <C-R>=expand("<cword>")<cr><cr>:Telescope quickfix<cr>
 nmap fd :cexp[]<cr>:Gtags <C-R>=expand("<cword>")<cr><cr>:Telescope quickfix<cr>
 nmap fs :<C-U><C-R>=printf("Gtags ")<CR>
@@ -457,18 +458,18 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require('lualine').setup{
-    --options = { theme = "papercolor_dark" },
-    sections = {
-        lualine_c = {{'filename', path = 1}},
-        lualine_x = {'encoding', 'filetype'},
-    },
+	options = { theme = "papercolor_dark" },
+	sections = {
+		lualine_c = {{'filename', path = 1}},
+		lualine_x = {'encoding', 'filetype'},
+	},
 }
 
 require('telescope').setup{
   defaults = {
-      vimgrep_arguments = {
+	  vimgrep_arguments = {
           "rg",
-          "-u",
+		  "-u",
           "--color=never",
           "--no-heading",
           "--with-filename",
@@ -476,12 +477,12 @@ require('telescope').setup{
           "--column",
           "--smart-case"
         },
-      path_display = {
-          "smart"
-        },
+	  path_display = {
+		  "smart"
+	    },
   },
   pickers = {
-      find_files = { no_ignore = true },
+	  find_files = { no_ignore = true },
   },
 }
 EOF
