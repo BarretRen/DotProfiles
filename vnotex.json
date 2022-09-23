@@ -222,11 +222,11 @@
         "markdown_editor": {
             "auto_break": true,
             "code_block_line_number": true,
-            "confirm_before_clear_obsolete_images": true,
+            "confirm_before_clear_obsolete_images": false,
             "constrain_image_width": true,
             "constrain_inplace_preview_width": false,
             "edit_view_mode": "editonly",
-            "editor_overridden_font_family": "",
+            "editor_overridden_font_family": "'JetBrains Mono NL'",
             "export_resource": {
                 "resources": [
                     {
@@ -433,7 +433,7 @@
             },
             "web_graphviz": true,
             "web_plantuml": true,
-            "zoom_factor_in_read_mode": 1
+            "zoom_factor_in_read_mode": 0.6999999985098836
         },
         "text_editor": {
             "center_cursor": "never",
@@ -445,7 +445,7 @@
             "tab_stop_width": 4,
             "text_folding": true,
             "wrap_mode": "word_anywhere",
-            "zoom_delta": 0
+            "zoom_delta": -3
         },
         "vi": {
             "control_c_to_copy": false
