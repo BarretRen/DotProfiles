@@ -51,7 +51,6 @@ Plug 'scrooloose/nerdcommenter'
 " Plug 'NLKNguyen/papercolor-theme'
 Plug 'lifepillar/vim-solarized8'
 Plug 'EdenEast/nightfox.nvim'
-" Plug 'Mofiqul/vscode.nvim'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'lukas-reineke/indent-blankline.nvim'
@@ -63,6 +62,7 @@ Plug 'ap/vim-buftabline'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
@@ -142,7 +142,7 @@ if (has('termguicolors'))
   set termguicolors
 endif
 
-set background=dark
+set background=light
 " colorscheme nordfox
 let g:solarized_italics = 0
 colorscheme solarized8
@@ -386,6 +386,11 @@ nmap <F12> <cmd>Telescope oldfiles<cr>
 nmap fu <cmd>Telescope treesitter<cr>
 nmap rg <cmd>Telescope live_grep<cr>
 nmap fx <cmd>Telescope quickfix<cr>
+" lsp related
+nmap lfu <cmd>Telescope lsp_document_symbols<cr>
+nmap lfr <cmd>Telescope lsp_references<cr>
+nmap lfd <cmd>Telescope lsp_definitions<cr>
+nmap lfs <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 
 "--------------------------------------------------------------------------------
 " LeaderF
@@ -444,6 +449,8 @@ nmap fx <cmd>Telescope quickfix<cr>
 " configurations for lua plugins
 "--------------------------------------------------------------------------------
 lua <<EOF
+require'lspconfig'.clangd.setup{}
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "c", "cpp", "yang"},
   highlight = {
