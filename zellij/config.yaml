@@ -1,9 +1,0 @@
-plugins:
-    - path: tab-bar
-      tag: tab-bar
-    - path: status-bar
-      tag: status-bar
-    # - path: strider
-      # tag: strider
-
-pane_frames : false
