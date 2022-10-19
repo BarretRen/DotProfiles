@@ -48,9 +48,7 @@ Plug 'vim-scripts/EasyGrep'
 Plug 'inkarkat/vim-mark'
 Plug 'inkarkat/vim-ingo-library'
 Plug 'scrooloose/nerdcommenter'
-" Plug 'NLKNguyen/papercolor-theme'
 Plug 'lifepillar/vim-solarized8'
-Plug 'EdenEast/nightfox.nvim'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'lukas-reineke/indent-blankline.nvim'
@@ -85,7 +83,7 @@ set listchars=tab:>-,trail:-     " 将制表符显示为'>---',将行尾空格�
 set hidden          " 没有保存的缓冲区可以自动被隐藏
 set scrolloff=5
 set clipboard+=unnamed   "复制到剪贴板，默认是寄存器
-"set expandtab    "将Tab键转换为空格
+set expandtab    "将Tab键转换为空格
 set tabstop=4    "设置Tab键的宽度，可以更改，如：宽度为2
 set shiftwidth=4  "换行时自动缩进宽度，可更改（宽度同tabstop）
 set smarttab      "指定按一次backspace就删除shiftwidth宽度
@@ -143,7 +141,6 @@ if (has('termguicolors'))
 endif
 
 set background=light
-" colorscheme nordfox
 let g:solarized_italics = 0
 colorscheme solarized8
 
