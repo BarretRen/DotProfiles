@@ -54,9 +54,8 @@ Plug 'BarretRen/SearchOnSelectVim'
 Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'aceofall/gtags.vim'
-Plug 'skywind3000/vim-terminal-help'
+Plug 'numToStr/FTerm.nvim'
 Plug 'vim-autoformat/vim-autoformat' "自动格式化
-" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'ap/vim-buftabline'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -213,7 +212,6 @@ if g:isGUI
     noremap <C-Y> <C-R>
 else
     noremap <C-Y> <C-R>
-    nmap <C-t> :terminal<cr>
 endif
 
 " vimmerge 快捷键
@@ -354,12 +352,6 @@ nmap <m-n> :bnext<CR>
 nmap <m-p> :bprev<CR>
 
 "--------------------------------------------------------------------------------
-" Indentline
-"--------------------------------------------------------------------------------
-" let g:indentLine_setColors = 0
-" let g:indentLine_char_list = ['|']
-
-"--------------------------------------------------------------------------------
 " autoformat
 "--------------------------------------------------------------------------------
 " au BufWrite * :Autoformat "自动格式化
@@ -369,10 +361,10 @@ let g:formatdef_astyle_cpp = '"astyle --mode=c --options=/home/barretr/.astylerc
 let g:formatters_cpp = ['astyle_cpp', 'clangformat']
 
 "--------------------------------------------------------------------------------
-" vim-terminal-help
+" FTerm
 "--------------------------------------------------------------------------------
-let g:terminal_close = 1
-let g:terminal_height = 100
+nmap <C-t> <cmd>lua require("FTerm").toggle()<cr>
+tmap <C-t> <C-n><cmd>lua require("FTerm").toggle()<cr>
 
 "--------------------------------------------------------------------------------
 " telescope
@@ -389,59 +381,6 @@ nmap lfu <cmd>Telescope lsp_document_symbols<cr>
 nmap lfr <cmd>Telescope lsp_references<cr>
 nmap lfd <cmd>Telescope lsp_definitions<cr>
 nmap lfs <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
-
-"--------------------------------------------------------------------------------
-" LeaderF
-"--------------------------------------------------------------------------------
-" popup mode
-" let g:Lf_WindowPosition = 'popup'
-" let g:Lf_PreviewInPopup = 1
-" let Lf_PopupWidth = 0.8
-" let g:Lf_PopupPosition = [float2nr(&lines * 0.6), 0]
-
-" let g:Lf_ShortcutF = '<c-p>' " search file
-" let g:Lf_ShortcutB = '<c-b>' " list buffer
-" let g:Lf_ShowRelativePath = 0
-" let g:Lf_ReverseOrder = 1  "最优结果在最下面显示
-" let g:Lf_DefaultMode = 'NameOnly'
-" let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
-" let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
-" let g:Lf_WildIgnore = {
-            " \ 'dir': ['.svn','.git','.hg'],
-            " \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.D','*.cmd','*.ti']
-            " \}
-" let g:Lf_UseVersionControlTool = 0
-" let g:Lf_DefaultExternalTool = "rg"
-"列出当前文件函数列表
-" nmap tg :LeaderfBufTag!<cr>
-" nmap fu :LeaderfFunction<cr>
-"当前文件搜索符合的行
-" nmap fl :LeaderfLine<cr>
-"历史文件列表
-" nmap hf :LeaderfMru<cr>
-" quickfix
-" nmap fx :LeaderfQuickFix<cr>
-"当前目录搜索光标下文本
-" nmap fs :Leaderf rg -w <C-R>=expand("<cword>")<cr><cr>
-
-" should use `Leaderf gtags --update` first
-" let g:Lf_GtagsAutoGenerate = 0
-" let g:Lf_GtagsAutoUpdate = 0
-" let g:Lf_Gtagslabel = 'native-pygments'
-" let g:Lf_GtagsSource = 2
-" let g:Lf_GtagsfilesCmd = {
-        " \ '.git': 'rg --no-messages --files -u',
-        " \ '.hg': 'rg --no-messages --files -u',
-        " \ 'default': 'rg --no-messages --files -u'
-        " \}
-" noremap fr :<C-U><C-R>=printf("Leaderf gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-" noremap fd :<C-U><C-R>=printf("Leaderf gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-" noremap fg :<C-U><C-R>=printf("Leaderf gtags -g %s --auto-jump", expand("<cword>"))<CR><CR>
-" noremap fs :<C-U><C-R>=printf("Leaderf gtags -g ")<CR>
-" noremap fa :<C-U><C-R>=printf("Leaderf gtags --all ")<CR><CR>
-" noremap fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-" noremap fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-" noremap fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
 "--------------------------------------------------------------------------------
 " configurations for lua plugins
@@ -463,18 +402,18 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require('lualine').setup{
-	options = { theme = "papercolor_dark" },
-	sections = {
-		lualine_c = {{'filename', path = 1}},
-		lualine_x = {'encoding', 'filetype'},
-	},
+    options = { theme = "papercolor_dark" },
+    sections = {
+        lualine_c = {{'filename', path = 1}},
+        lualine_x = {'encoding', 'filetype'},
+    },
 }
 
 require('telescope').setup{
   defaults = {
-	  vimgrep_arguments = {
+      vimgrep_arguments = {
           "rg",
-		  "-u",
+          "-u",
           "--color=never",
           "--no-heading",
           "--with-filename",
@@ -482,12 +421,12 @@ require('telescope').setup{
           "--column",
           "--smart-case"
         },
-	  path_display = {
-		  "smart"
-	    },
+      path_display = {
+          "smart"
+        },
   },
   pickers = {
-	  find_files = { no_ignore = true },
+      find_files = { no_ignore = true },
   },
 }
 EOF
