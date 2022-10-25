@@ -377,10 +377,10 @@ nmap fu <cmd>Telescope treesitter<cr>
 nmap rg <cmd>Telescope live_grep<cr>
 nmap fx <cmd>Telescope quickfix<cr>
 " lsp related
-nmap lfu <cmd>Telescope lsp_document_symbols<cr>
-nmap lfr <cmd>Telescope lsp_references<cr>
-nmap lfd <cmd>Telescope lsp_definitions<cr>
-nmap lfs <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
+nmap lu <cmd>Telescope lsp_document_symbols<cr>
+nmap lr <cmd>Telescope lsp_references<cr>
+nmap ld <cmd>Telescope lsp_definitions<cr>
+nmap ls <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 
 "--------------------------------------------------------------------------------
 " configurations for lua plugins

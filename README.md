@@ -4,9 +4,10 @@
 * NeoVim
 * zsh
 * tmux
-* tm: 自动创建tmux的脚本
+* tmx: 自动创建tmux的脚本
 
 ## Changelog
+* 2022/10/25: add lsp and FTerm for nvim
 * 2022/07/19: add lualine for nvim
 * 2022/01/29: only support nvim, remove vimrc
 * 2022/01/28: update nvim and vim configurations
@@ -66,48 +67,5 @@ cp nvim ~/.config
 * clone repo
 * 将nvim复制到`~/AppData/Local`
 * 执行如下vim命令，更新管理器和插件：PlugUpgrade, PlugInstall
-
-### Vim shutcuts
-> 快捷键基于个人使用习惯，供大家参考。
-
-| 按键             | 含义          |
-| -------------   |:-------------|
-| F2              | 关闭当前buffer                                |
-| F3              | 退出vim                                       |
-| F4              | 保存文件                                      |
-| F5              | 打开TagBar                                |
-| F7              | 查找光标位置的词语                             |
-| F8              | 替换光标位置的词语                             |
-| F11             | 开关代码缩进线                                 |
-| F12             | 打开文件历史记录                               |
-| w  v            | 垂直分割当前窗口                               |
-| w  x            | 水平分割当前窗口                               |
-| w  c            | 关闭当前窗口                                   |
-| l  n            | 开关行号                                      |
-| f  x            | 打开leaderf quickfix                              |
-| Alt =           | vim中打开shell                                |
-| f  u            | 打开当前文件函数列表                            |
-| t  g            | 打开当前文件tag列表                            |
-| m               | 标记光标下词语                                 |
-| \  N            | 去除所有标记                                 |
-| Ctrl n          | 新建buffer                                    |
-| Ctrl c          | 复制                                          |
-| Ctrl x          | 剪切                                          | 
-| Ctrl v          | 粘贴                                          |
-| Ctrl a          | 全选                                          |
-| Ctrl \          | 注释、反注释                                   |
-| Ctrl p          | 打开文件搜索                                   |
-| Ctrl b          | 打开buffer列表                                   |
-| f    r          | 搜索光标下符号出现位置（需要gtags支持） |
-| f    d          | 搜索光标下符号定义位置（需要gtags支持） |
-| f    c          | 搜索光标下函数被调用的位置（需要gtags支持） |
-| h    x          | 16进制编辑模式 |
-| c    o          | 打开quickfix |
-| c    c          | 关闭quickfix |
-| c    n          | quickfix下一个 |
-| c    p          | quickfix前一个 |
-| d    f          | 打开defx文件浏览插件 |
-| Alt  n          | 后一个buffer |
-| Alt  p          | 前一个buffer |
 
 --------------------------------------------------------------------------------
