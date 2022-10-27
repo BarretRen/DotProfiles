@@ -1,1 +1,0 @@
-/home/shaynez/.vim/plugin/astyle.vim

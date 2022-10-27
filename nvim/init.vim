@@ -1,4 +1,4 @@
-﻿"##################################################################
+"##################################################################
 "########################## start Of settings #####################
 "##################################################################
 
@@ -76,24 +76,25 @@ set cc=120 "行长度参考线
 set wrap           " 自动换行
 "set nowrap         " 不自动换行
 set linebreak       " 整词换行
-set whichwrap=b,s,<,>,[,]       " 光标从行首和行末时可以跳到另一行去
+set whichwrap=b,s,<,>,[,],h,l     " 光标从行首和行末时可以跳到另一行去
 set list                       " 显示制表符
-set listchars=tab:>-,trail:-     " 将制表符显示为'>---',将行尾空格显示为'-'
+set listchars=space:·,tab:>-,trail:-     " 不可见字符显示样式
 "set autochdir                   " 自动设置目录为正在编辑的文件所在的目录
 set hidden          " 没有保存的缓冲区可以自动被隐藏
-set scrolloff=5
+set scrolloff=8
+set sidescrolloff=8
 set clipboard+=unnamed   "复制到剪贴板，默认是寄存器
 set expandtab    "将Tab键转换为空格
 set tabstop=4    "设置Tab键的宽度，可以更改，如：宽度为2
 set shiftwidth=4  "换行时自动缩进宽度，可更改（宽度同tabstop）
 set smarttab      "指定按一次backspace就删除shiftwidth宽度
 set backspace=2       " 设置退格键可用
-set writebackup     "保存文件前建立备份，保存成功后删除该备份
 set nocompatible
 "设置无备份文件
 set nobackup
 set noundofile
 set noswapfile
+set nowritebackup
 "设置viminfo
 if g:iswindows
     set viminfo='50,<50,s10,h,rA:,rB:,/10,:10
@@ -118,6 +119,7 @@ set statusline+=%#MarkWord3#
 set statusline+=[Row:%l/%L\ Col:%v\ %p%%]
 
 set laststatus=2    " always show the status line
+set noshowmode      "使用增强状态栏后不再需要vim的模式
 " set ruler           " 在编辑过程中，在右下角显示光标位置的状态行
 
 "--------------------------------------------------------------------------------
@@ -140,20 +142,21 @@ if (has('termguicolors'))
   set termguicolors
 endif
 
-set background=light
-let g:solarized_italics = 0
-colorscheme solarized8
+set background=dark
+colorscheme doom-one
+" let g:solarized_italics = 0
+" colorscheme solarized8
 
 "--------------------------------------------------------------------------------
 " 编程相关的设置
 "--------------------------------------------------------------------------------
-set completeopt=longest,menu    " 关掉智能补全时的预览窗口
+"自动补全不自动选中
+set completeopt=menu,menuone,noselect,noinsert,longest
 filetype plugin indent on       " 加了这句才可以用智能补全
 syntax enable             " 打开语法高亮
 "syntax on
 "set showmatch       " 设置匹配模式，类似当输入一个左括号时会匹配相应的那个右括号
 set smartindent     " 智能对齐方式
-set shiftwidth=4    " 换行时行间交错使用4个空格
 set autoindent      " 自动对齐
 set ai!             " 设置自动缩进
 set foldmethod=indent "代码折叠
@@ -202,7 +205,6 @@ nmap wh     <C-w>s     " 水平分割当前窗口
 " 保存，退出，历史文件等快捷键
 nmap <F4> :w<cr>    "保存文件修改
 nmap <F3> :q<cr>    "退出vim
-nmap <F12> :bro ol<cr>  "浏览文件打开记录
 nmap <F2> :bd<cr>    "关闭minibufexplorer中的某个文件
 set pastetoggle=<F9> "插入粘贴模式
 nmap ln :set nu!<cr>
@@ -301,7 +303,8 @@ vmap <F8> \vr
 " mark插件
 "--------------------------------------------------------------------------------
 " 给不同的单词高亮，表明不同的变量
-nmap m lbve\m
+nmap m lbve<Leader>m
+vmap m <Leader>m
 nmap <Leader>M <Plug>MarkToggle
 nmap <Leader>N <Plug>MarkAllClear
 let g:mwDefaultHighlightingPalette = 'extended'
@@ -364,7 +367,7 @@ let g:formatters_cpp = ['astyle_cpp', 'clangformat']
 " FTerm
 "--------------------------------------------------------------------------------
 nmap <C-t> <cmd>lua require("FTerm").toggle()<cr>
-tmap <C-t> <C-n><cmd>lua require("FTerm").toggle()<cr>
+tmap <C-t> <cmd>lua require("FTerm").toggle()<cr>
 
 "--------------------------------------------------------------------------------
 " telescope
