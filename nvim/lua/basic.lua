@@ -41,6 +41,8 @@ vim.opt.autoread = true
 vim.opt.wrap = true
 -- 行结尾可以跳到下一行
 vim.opt.whichwrap = 'b,s,<,>,[,],h,l'
+-- Enable break indent.
+vim.opt.breakindent = true
 -- 允许隐藏被修改过的buffer
 vim.opt.hidden = true
 -- 鼠标支持
@@ -65,7 +67,7 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 10
 -- 不可见字符的显示，这里只把空格显示为一个点
 vim.opt.list = true
-vim.opt.listchars = "space:·,tab:>-,trail:-"
+vim.opt.listchars = "tab:>-,trail:-"
 -- 补全增强
 vim.opt.wildmenu = true
 -- 显示状态栏

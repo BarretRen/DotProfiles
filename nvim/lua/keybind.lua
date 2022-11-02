@@ -3,16 +3,18 @@ vim.g.maplocalleader = "\\"
 
 local map = vim.api.nvim_set_keymap
 local opt = { noremap = true, silent = true }
+local optl = { silent = true }
 
 -- Fx键
 map("n", "<F2>", ':bd<cr>', opt)
 map("n", "<F3>", ':q<cr>', opt)
 map("n", "<F4>", ':w<cr>', opt)
 map("n", "<F5>", ':TagbarToggle<cr>', opt)
-map("n", "<F7>", '\\vv', opt)
-map("n", "<F8>", '\\vr', opt)
-map("v", "<F7>", '\\vv', opt)
-map("v", "<F8>", '\\vr', opt)
+map("n", "<F7>", '<Leader>vv', optl)
+map("n", "<F8>", '<Leader>vr', optl)
+map("v", "<F7>", '<Leader>vv', optl)
+map("v", "<F8>", '<Leader>vr', optl)
+map("n", "<F9>", ':Gitsigns blame_line<cr>', opt)
 map("n", "<F12>", ':Telescope oldfiles<cr>', opt)
 -- 16进制模式
 map("n", "hx", ':%!xxd', opt)
@@ -36,29 +38,30 @@ map("n", "cS", ":%s/\\s\\+$//g<cr>:noh<cr>", opt)
 map("n", "cM", ":%s/\\r$//g<cr>:noh<cr>", opt)
 -- gtags
 map("n", "fr", ":cexp[]<cr>:Gtags -r <C-R>=expand(\"<cword>\")<cr><cr>:Telescope quickfix<cr>", opt)
+map("n", "fs", ":cexp[]<cr>:Gtags -s <C-R>=expand(\"<cword>\")<cr><cr>:Telescope quickfix<cr>", opt)
 map("n", "fd", ":cexp[]<cr>:Gtags <C-R>=expand(\"<cword>\")<cr><cr>:Telescope quickfix<cr>", opt)
-map("n", "fs", ":<C-U><C-R>=printf(\"Gtags \")<cr>", opt)
+map("n", "fg", ":<C-U><C-R>=printf(\"Gtags \")<cr><cr>", opt)
 -- quickfix
 map("n", "co", ":copen<cr>", opt)
 map("n", "cc", ":cclose<cr>", opt)
 map("n", "cn", ":cn<cr>", opt)
 map("n", "cp", ":cp<cr>", opt)
 -- vim-mark
-map("n", "m", "lbve<Leader>m", { silent = true})
-map("v", "m", "<Leader>m", { silent = true })
+map("n", "m", "lbve<Leader>m", optl)
+map("v", "m", "<Leader>m", optl)
 map("n", "<Leader>M", "<Plug>MarkToggle", opt)
 map("n", "<Leader>N", "<Plug>MarkAllClear", opt)
 -- netrw
 map("n", "nw", ":Vex<cr>", opt)
 -- nerdcommenter
-map("n", "<C-\\>", "<Leader>ci", opt)
-map("v", "<C-\\>", "<Leader>ci", opt)
+map("n", "<C-\\>", "<Leader>ci", optl)
+map("v", "<C-\\>", "<Leader>ci", optl)
 -- bufTabline
 map("n", "<m-n>", ":bnext<cr>", opt)
 map("n", "<m-p>", ":bprev<cr>", opt)
 -- FTerm
 map("n", "<C-t>", "<cmd>lua require(\"FTerm\").toggle()<cr>", opt)
-map("v", "<C-t>", "<cmd>lua require(\"FTerm\").toggle()<cr>", opt)
+map("t", "<C-t>", "<cmd>lua require(\"FTerm\").toggle()<cr>", opt)
 -- telescope
 map("n", "<C-p>", ":Telescope find_files<cr>", opt)
 map("n", "<C-b>", ":Telescope buffers<cr>", opt)

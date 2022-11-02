@@ -17,6 +17,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'lewis6991/gitsigns.nvim'
 vim.call('plug#end')
 
 -- Tagbar
@@ -84,6 +85,7 @@ require('lualine').setup{
 
 require('telescope').setup{
   defaults = {
+      layout_config = { width = 0.9 },
       vimgrep_arguments = {
           "rg",
           "-u",
@@ -95,7 +97,7 @@ require('telescope').setup{
           "--smart-case"
         },
       path_display = {
-          "smart"
+          "truncate"
         },
   },
   pickers = {
@@ -103,3 +105,5 @@ require('telescope').setup{
   },
 }
 vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
+
+require('gitsigns').setup()
