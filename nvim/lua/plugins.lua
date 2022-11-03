@@ -106,4 +106,6 @@ require('telescope').setup{
 }
 vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
 
-require('gitsigns').setup()
+require('gitsigns').setup{
+    signcolumn = false
+}
