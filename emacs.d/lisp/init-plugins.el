@@ -7,9 +7,12 @@
   (which-key-mode))
 
 (use-package highlight-symbol
-  :ensure t
   :init (highlight-symbol-mode)
-  :bind ("C-z m" . highlight-symbol))
+  :bind
+  ("C-c m" . highlight-symbol)
+  ("C-c 1 p" . highlight-symbol-prev)
+  ("C-c 1 n" . highlight-symbol-next)
+  ("C-c n" . highlight-symbol-remove-all))
 
 ;; auto update plugins
 (use-package auto-package-update
@@ -35,9 +38,9 @@
   (ivy-mode 1)
   :bind
   (("C-s" . swiper-isearch)
-   ("C-z s" . counsel-rg)
-   ("C-z b" . counsel-buffer-or-recentf)
-   ;("C-z C-b" . counsel-ibuffer)
+   ("C-c s" . counsel-rg)
+   ("C-c b" . counsel-buffer-or-recentf)
+   ;("C-c C-b" . counsel-ibuffer)
    (:map ivy-minibuffer-map
          ("M-RET" . ivy-immediate-done))
    (:map counsel-find-file-map
@@ -79,7 +82,7 @@
 (use-package dired
   :ensure nil
   :bind
-  (("C-z C-j" . dired-jump))
+  (("C-c d" . dired-jump))
   :custom
   ;; Always delete and copy recursively
   (dired-listing-switches "-lah")
@@ -141,7 +144,7 @@
   ;:defer t
   ;:commands lsp
   ;:custom
-  ;(lsp-keymap-prefix "C-z l")
+  ;(lsp-keymap-prefix "C-c l")
   ;(lsp-auto-guess-root nil)
   ;(lsp-prefer-flymake nil) ; Use flycheck instead of flymake
   ;(lsp-enable-file-watchers nil)
@@ -154,12 +157,29 @@
 
 (use-package counsel-gtags
   :hook
-  ((c-mode c++-mode text-mode) . counsel-gtags-mode)
+  ((c-mode c++-mode java-mode text-mode) . counsel-gtags-mode)
+  :init
+  (progn
+    (setq counsel-gtags-ignore-case t))
   :bind
   (:map counsel-gtags-mode-map
-        ("M-s" . counsel-gtags-find-symbol)
-        ("M-d" . counsel-gtags-find-definition)
-        ("M-r" . counsel-gtags-find-reference)
-        ("M-f" . counsel-gtags-find-file)))
+        ("C-c C-s" . counsel-gtags-find-symbol)
+        ("C-c C-d" . counsel-gtags-find-definition)
+        ("C-c C-r" . counsel-gtags-find-reference)
+        ("C-c C-f" . counsel-gtags-find-file)
+        ("C-c C-p" . counsel-gtags-go-backward)
+        ("C-c C-n" . counsel-gtags-go-forward)))
+
+(use-package magit
+  :init
+  (progn
+    (bind-key "C-c g" 'magit-status)))
+
+(use-package tree-sitter
+  :config (global-tree-sitter-mode)
+  :hook ((c-mode c++-mode java-mode python-mode) . tree-sitter-hl-mode))
+
+(use-package tree-sitter-langs
+  :after tree-sitter)
 
 (provide 'init-plugins)

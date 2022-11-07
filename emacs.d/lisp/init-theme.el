@@ -14,6 +14,7 @@
     (call-interactively #'load-theme)))
 
 (use-package doom-modeline
+  :defer t
   :custom
   ;; Don't compact font caches during GC. Windows Laggy Issue
   (inhibit-compacting-font-caches t)
@@ -21,7 +22,7 @@
   (doom-modeline-icon nil)
   (doom-modeline-major-mode-color-icon nil)
   (doom-modeline-height 15)
-  :config
+  :init
   (doom-modeline-mode))
 
 (provide 'init-theme)
