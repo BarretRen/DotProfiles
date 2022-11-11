@@ -1,6 +1,9 @@
 -- utf8
 vim.opt.encoding = "UTF-8"
 vim.opt.fileencoding = "utf-8"
+-- 不启动netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 -- jk移动时光标下上方保留8行
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
@@ -73,6 +76,8 @@ vim.opt.wildmenu = true
 -- 显示状态栏
 vim.opt.laststatus = 2
 -- 不显示tabline
-vim.o.showtabline = 1
+vim.opt.showtabline = 1
+-- viminfo
+vim.opt.shada="'50,<50,s10,h,/10,:10"
 -- 记忆上次编辑的位置
 vim.cmd([[autocmd BufReadPost * if line("'\"")>0&&line("'\"")<=line("$") | exe "normal g'\"" | endif]])

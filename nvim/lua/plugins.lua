@@ -18,6 +18,9 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'sindrets/diffview.nvim'
+--Plug 'nvim-tree/nvim-web-devicons'
 vim.call('plug#end')
 
 -- Tagbar
@@ -83,8 +86,15 @@ require('lualine').setup{
     },
 }
 
+--local builtins = require("telescope.builtin")
+--local picker_config = { }
+--for b, _ in pairs(builtins) do
+  --picker_config[b] = { fname_width = 50 }
+--end
+
 require('telescope').setup{
   defaults = {
+      wrap_results = true,
       layout_config = { width = 0.9 },
       vimgrep_arguments = {
           "rg",
@@ -101,11 +111,25 @@ require('telescope').setup{
         },
   },
   pickers = {
-      find_files = { no_ignore = true },
+    find_files = { no_ignore = true },
+    quickfix = { fname_width = 100 },
   },
+  --pickers = vim.tbl_extend("force", picker_config, {
+  --})
 }
 vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
 
 require('gitsigns').setup{
     signcolumn = false
+}
+
+require'nvim-tree'.setup {
+    -- 不显示 git 状态图标
+    git = {
+        enable = false
+    }
+}
+
+require("diffview").setup{
+    use_icons = false,
 }

@@ -51,8 +51,8 @@ map("n", "m", "lbve<Leader>m", optl)
 map("v", "m", "<Leader>m", optl)
 map("n", "<Leader>M", "<Plug>MarkToggle", opt)
 map("n", "<Leader>N", "<Plug>MarkAllClear", opt)
--- netrw
-map("n", "nw", ":Vex<cr>", opt)
+-- Tree
+map("n", "nw", ":NvimTreeToggle<cr>", opt)
 -- nerdcommenter
 map("n", "<C-\\>", "<Leader>ci", optl)
 map("v", "<C-\\>", "<Leader>ci", optl)
@@ -74,3 +74,6 @@ map("n", "lu", ":Telescope lsp_document_symbols<cr>", opt)
 map("n", "lr", ":Telescope lsp_references<cr>", opt)
 map("n", "ld", ":Telescope lsp_definitions<cr>", opt)
 map("n", "ls", ":Telescope lsp_dynamic_workspace_symbols<cr>", opt)
+-- Diffview
+map("n", "df", ":DiffviewOpen<cr>", opt)
+map("n", "dc", ":DiffviewClose<cr>", opt)
