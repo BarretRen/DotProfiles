@@ -166,3 +166,4 @@ require'nvim-tree'.setup {
 require("diffview").setup{
     use_icons = false,
 }
+
