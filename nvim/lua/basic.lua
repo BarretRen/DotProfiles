@@ -69,7 +69,7 @@ vim.opt.completeopt = "menu,menuone,noselect,noinsert,longest"
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 10
 -- 不可见字符的显示，这里只把空格显示为一个点
-vim.opt.list = true
+vim.opt.list = false
 vim.opt.listchars = "tab:>-,trail:-"
 -- 补全增强
 vim.opt.wildmenu = true
