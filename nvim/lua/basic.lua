@@ -64,7 +64,7 @@ vim.opt.ttimeoutlen = 100
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 -- 自动补全不自动选中
-vim.opt.completeopt = "menu,menuone,noselect,noinsert,longest"
+vim.opt.completeopt = "menu,menuone,noselect"
 -- 代码缩进
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 10

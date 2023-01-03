@@ -7,6 +7,7 @@
 * tmx: 自动创建tmux的脚本
 
 ## Changelog
+* 2023/01/03: add nvim-cmp for nvim
 * 2022/10/25: add lsp and FTerm for nvim
 * 2022/07/19: add lualine for nvim
 * 2022/01/29: only support nvim, remove vimrc

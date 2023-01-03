@@ -17,6 +17,11 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/vim-vsnip'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'sindrets/diffview.nvim'
@@ -62,8 +67,6 @@ vim.g.formatdef_astyle_c = '"astyle --mode=c --options=/home/barretr/.astylerc"'
 vim.g.formatters_c = "['astyle_c', 'clangformat']"
 vim.g.formatdef_astyle_cpp = '"astyle --mode=c --options=/home/barretr/.astylerc"'
 vim.g.formatters_cpp = "['astyle_cpp', 'clangformat']"
-
-require'lspconfig'.clangd.setup{}
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "c", "cpp", "yang", "java"},
@@ -167,3 +170,46 @@ require("diffview").setup{
     use_icons = false,
 }
 
+local cmp = require'cmp'
+cmp.setup{
+    snippet = {
+        -- REQUIRED - you must specify a snippet engine
+        expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        end,
+    },
+    window = {
+         completion = cmp.config.window.bordered(),
+         documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<M-Space>'] = cmp.mapping.complete(),
+        ['<Esc>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'vsnip' }, -- For vsnip users.
+    }, {
+        { name = 'buffer' },
+    })
+}
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+require'lspconfig'.clangd.setup{
+    capabilities = capabilities,
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--compile-commands-dir=build",
+        "-j=4",
+        "--all-scopes-completion",
+        "--completion-style=detailed",
+        "--header-insertion=never",
+        "--clang-tidy",
+        "--clang-tidy-checks=*",
+        "--cross-file-rename",
+        "--header-insertion-decorators",
+        "--pch-storage=memory"
+    }
+}
