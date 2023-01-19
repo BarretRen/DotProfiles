@@ -102,12 +102,12 @@ require('telescope').setup{
       vimgrep_arguments = {
           "rg",
           "-u",
-          "--color=never",
+          --"--color=never",
           "--no-heading",
           "--with-filename",
           "--line-number",
           "--column",
-          "--smart-case"
+          "--case-sensitive"
         },
       path_display = {
           "truncate"
@@ -184,7 +184,7 @@ cmp.setup{
     },
     mapping = cmp.mapping.preset.insert({
         ['<M-Space>'] = cmp.mapping.complete(),
-        ['<Esc>'] = cmp.mapping.abort(),
+        ['<c-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
