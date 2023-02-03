@@ -7,6 +7,7 @@
 * tmx: 自动创建tmux的脚本
 
 ## Changelog
+* 2023/02/03: support rename pane for tmux
 * 2023/01/19: update live_grep for nvim
 * 2023/01/03: add nvim-cmp for nvim
 * 2022/10/25: add lsp and FTerm for nvim
