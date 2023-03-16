@@ -75,7 +75,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
 
     -- list of language that will be disabled
-    -- disable = { "c", "rust" },
+    disable = { "lua", "vim" },
 
     additional_vim_regex_highlighting = false,
   },
