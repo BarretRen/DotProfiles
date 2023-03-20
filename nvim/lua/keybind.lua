@@ -38,9 +38,10 @@ map("n", "cS", ":%s/\\s\\+$//g<cr>:noh<cr>", opt)
 map("n", "cM", ":%s/\\r$//g<cr>:noh<cr>", opt)
 -- gtags
 map("n", "fr", ":cexp[]<cr>:Gtags -r <C-R>=expand(\"<cword>\")<cr><cr>:Telescope quickfix<cr>", opt)
-map("n", "fs", ":cexp[]<cr>:Gtags -s <C-R>=expand(\"<cword>\")<cr><cr>:Telescope quickfix<cr>", opt)
+--map("n", "fs", ":cexp[]<cr>:Gtags -s <C-R>=expand(\"<cword>\")<cr><cr>:Telescope quickfix<cr>", opt)
 map("n", "fd", ":cexp[]<cr>:Gtags <C-R>=expand(\"<cword>\")<cr><cr>:Telescope quickfix<cr>", opt)
 map("n", "fg", ":<C-U><C-R>=printf(\"Gtags \")<cr><cr>", opt)
+map("n", "fs", ":<C-U><C-R>=printf(\"Gtags -s\")<cr><cr>", opt)
 -- quickfix
 map("n", "co", ":copen<cr>", opt)
 map("n", "cc", ":cclose<cr>", opt)
