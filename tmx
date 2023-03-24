@@ -11,7 +11,7 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
-# cmd=$(which tmux) # tmux path
+#alias cmd=$(which tmux) # tmux path
 alias cmd='~/.local/bin/tmux -u'
 session=$1   # session name from input
 

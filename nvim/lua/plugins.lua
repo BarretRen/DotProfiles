@@ -12,7 +12,8 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'aceofall/gtags.vim'
 Plug 'numToStr/FTerm.nvim'
 Plug 'vim-autoformat/vim-autoformat'
-Plug 'ap/vim-buftabline'
+--Plug 'ap/vim-buftabline'
+Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -58,15 +59,29 @@ vim.g.NERDTrimTrailingWhitespace = 1
 vim.g.SearchOnSelect_active = 1
 vim.g.miniBufExplAutoStart = 1
 -- bufTabline
-vim.g.buftabline_numbers = 1
-vim.g.buftabline_show = 1
-vim.g.buftabline_indicators = 1
-vim.g.buftabline_plug_max = 0
+--vim.g.buftabline_numbers = 1
+--vim.g.buftabline_show = 1
+--vim.g.buftabline_indicators = 1
+--vim.g.buftabline_plug_max = 0
 -- autoformat
 vim.g.formatdef_astyle_c = '"astyle --mode=c --options=/home/barretr/.astylerc"'
 vim.g.formatters_c = "['astyle_c', 'clangformat']"
 vim.g.formatdef_astyle_cpp = '"astyle --mode=c --options=/home/barretr/.astylerc"'
 vim.g.formatters_cpp = "['astyle_cpp', 'clangformat']"
+
+require("bufferline").setup {
+    options = {
+        --使用 nvim 内置lsp
+        diagnostics = "nvim_lsp",
+        --左侧让出 nvim-tree 的位置
+        offsets = {{
+            filetype = "NvimTree",
+            text = "File Explorer",
+            highlight = "Directory",
+            text_align = "left"
+        }}
+    }
+}
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "c", "cpp", "yang", "java"},

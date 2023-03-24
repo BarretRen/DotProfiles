@@ -34,4 +34,5 @@ alias gti="git"
 alias pip="pip3"
 alias ls="ls --color=auto"
 alias ll="ls -lh"
+alias em="TERM=screen-256color emacs -nw"
 
