@@ -71,8 +71,7 @@ vim.g.formatters_cpp = "['astyle_cpp', 'clangformat']"
 
 require("bufferline").setup {
     options = {
-        --使用 nvim 内置lsp
-        diagnostics = "nvim_lsp",
+        diagnostics = "false", --不显示告警
         --左侧让出 nvim-tree 的位置
         offsets = {{
             filetype = "NvimTree",
@@ -80,8 +79,17 @@ require("bufferline").setup {
             highlight = "Directory",
             text_align = "left"
         }}
+    },
+    highlights = {
+        buffer_selected = {
+            italic = false,
+        }
     }
 }
+
+local function ts_disable(_, bufnr)
+    return vim.api.nvim_buf_line_count(bufnr) > 10000
+end
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "c", "cpp", "yang", "java"},
@@ -90,7 +98,10 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
 
     -- list of language that will be disabled
-    disable = { "lua", "vim" },
+     --disable = { "lua", "vim" },
+     disable = function(lang, bufnr)
+         return lang == "cmake" or lang == "lua" or lang == "vim" or ts_disable(lang, bufnr)
+     end,
 
     additional_vim_regex_highlighting = false,
   },
@@ -199,6 +210,8 @@ require'nvim-tree'.setup {
     update_focused_file = {
         enable = true,
         update_cwd = true,
+        update_root = true,
+        ignore_list = { "FTerm", "term" },
     },
     view = {
         -- 宽度

@@ -1,6 +1,8 @@
 -- utf8
 vim.opt.encoding = "UTF-8"
 vim.opt.fileencoding = "utf-8"
+-- true color
+vim.o.termguicolors = true
 -- 不启动netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
