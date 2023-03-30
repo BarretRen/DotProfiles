@@ -88,7 +88,7 @@ require("bufferline").setup {
 }
 
 local function ts_disable(_, bufnr)
-    return vim.api.nvim_buf_line_count(bufnr) > 10000
+    return vim.api.nvim_buf_line_count(bufnr) > 50000
 end
 
 require'nvim-treesitter.configs'.setup {
