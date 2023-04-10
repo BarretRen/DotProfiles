@@ -30,7 +30,11 @@
     interactive = auto
     status = auto
     ui = auto
-[merge]
-    tool = kdiff3
 [init]
 	defaultBranch = master
+[merge]
+	tool = meld
+[mergetool "meld"]
+    # Choose one of these 2 lines (not both!) explained below.
+    cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+    ;cmd = meld"$LOCAL""$BASE""$REMOTE" --output"$MERGED"
