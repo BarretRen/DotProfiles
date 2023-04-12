@@ -6,6 +6,7 @@ Plug 'inkarkat/vim-mark'
 Plug 'inkarkat/vim-ingo-library'
 Plug 'scrooloose/nerdcommenter'
 Plug 'NTBBloodbath/doom-one.nvim'
+Plug 'NTBBloodbath/daylight.nvim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'nvim-treesitter/nvim-treesitter'
@@ -68,6 +69,8 @@ vim.g.formatdef_astyle_c = '"astyle --mode=c --options=/home/barretr/.astylerc"'
 vim.g.formatters_c = "['astyle_c', 'clangformat']"
 vim.g.formatdef_astyle_cpp = '"astyle --mode=c --options=/home/barretr/.astylerc"'
 vim.g.formatters_cpp = "['astyle_cpp', 'clangformat']"
+-- vim-solarized8
+vim.g.solarized_italics = 0
 
 require("bufferline").setup {
     options = {
@@ -310,4 +313,16 @@ require'lspconfig'.clangd.setup{
         "--header-insertion-decorators",
         "--pch-storage=memory"
     }
+}
+
+require("daylight").setup{
+    day = {
+        name = "solarized8_flat",
+        time = 8, -- 8 am
+    },
+    night = {
+        name = "doom-one",
+        time = 19, -- 7 pm, changes to dark theme on 07:01
+    },
+    interval = 900000, -- Time in milliseconds, 15 minute
 }
