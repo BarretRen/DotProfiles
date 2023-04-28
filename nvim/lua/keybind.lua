@@ -77,5 +77,5 @@ map("n", "lr", ":Telescope lsp_references<cr>", opt)
 map("n", "ld", ":Telescope lsp_definitions<cr>", opt)
 map("n", "ls", ":Telescope lsp_dynamic_workspace_symbols<cr>", opt)
 -- Diffview
-map("n", "df", ":DiffviewOpen<cr>", opt)
-map("n", "dc", ":DiffviewClose<cr>", opt)
+--map("n", "df", ":DiffviewOpen<cr>", opt)
+--map("n", "dc", ":DiffviewClose<cr>", opt)

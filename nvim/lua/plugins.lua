@@ -5,9 +5,8 @@ Plug 'vim-scripts/EasyGrep'
 Plug 'inkarkat/vim-mark'
 Plug 'inkarkat/vim-ingo-library'
 Plug 'scrooloose/nerdcommenter'
-Plug 'NTBBloodbath/doom-one.nvim'
 Plug 'NTBBloodbath/daylight.nvim'
-Plug 'lifepillar/vim-solarized8'
+Plug 'talha-akram/noctis.nvim'
 Plug 'BarretRen/SearchOnSelectVim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'aceofall/gtags.vim'
@@ -26,7 +25,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-tree/nvim-tree.lua'
-Plug 'sindrets/diffview.nvim'
+--Plug 'sindrets/diffview.nvim'
 --Plug 'nvim-tree/nvim-web-devicons'
 vim.call('plug#end')
 
@@ -70,7 +69,6 @@ vim.g.formatters_c = "['astyle_c', 'clangformat']"
 vim.g.formatdef_astyle_cpp = '"astyle --mode=c --options=/home/barretr/.astylerc"'
 vim.g.formatters_cpp = "['astyle_cpp', 'clangformat']"
 -- vim-solarized8
-vim.g.solarized_italics = 0
 
 require("bufferline").setup {
     options = {
@@ -131,10 +129,7 @@ require('telescope').setup{
       vimgrep_arguments = {
           "rg",
           "-u",
-          "-tc",
-          "-tcpp",
-          "-tyang",
-          "-tjava",
+          "-w",
           "--color=never",
           "--no-heading",
           "--with-filename",
@@ -242,9 +237,9 @@ require'nvim-tree'.setup {
     },
 }
 
-require("diffview").setup{
-    use_icons = false,
-    view = {
+--require("diffview").setup{
+    --use_icons = false,
+    --view = {
         -- Configure the layout and behavior of different types of views.
         -- Available layouts: 
         --  'diff1_plain'
@@ -255,21 +250,21 @@ require("diffview").setup{
         --    |'diff3_mixed'
         --    |'diff4_mixed'
         -- For more info, see ':h diffview-config-view.x.layout'.
-        default = {
-            -- Config for changed files, and staged files in diff views.
-            layout = "diff2_horizontal",
-        },
-        merge_tool = {
-            -- Config for conflicted files in diff views during a merge or rebase.
-            layout = "diff4_mixed",
-            disable_diagnostics = true,   -- Temporarily disable diagnostics for conflict buffers while in the view.
-        },
-        file_history = {
-            -- Config for changed files in file history views.
-            layout = "diff2_horizontal",
-        },
-    },
-}
+        --default = {
+             --Config for changed files, and staged files in diff views.
+            --layout = "diff2_horizontal",
+        --},
+        --merge_tool = {
+             --Config for conflicted files in diff views during a merge or rebase.
+            --layout = "diff4_mixed",
+            --disable_diagnostics = true,   -- Temporarily disable diagnostics for conflict buffers while in the view.
+        --},
+        --file_history = {
+             --Config for changed files in file history views.
+            --layout = "diff2_horizontal",
+        --},
+    --},
+--}
 
 local cmp = require'cmp'
 cmp.setup{
@@ -317,11 +312,11 @@ require'lspconfig'.clangd.setup{
 
 require("daylight").setup{
     day = {
-        name = "solarized8_flat",
+        name = "noctis_lilac",
         time = 8, -- 8 am
     },
     night = {
-        name = "doom-one",
+        name = "noctis_uva",
         time = 19, -- 7 pm, changes to dark theme on 07:01
     },
     interval = 900000, -- Time in milliseconds, 15 minute
