@@ -1,33 +1,58 @@
-local Plug = vim.fn['plug#']
-vim.call('plug#begin', '~/.config/nvim/plugs')
-Plug 'majutsushi/tagbar'
-Plug 'vim-scripts/EasyGrep'
-Plug 'inkarkat/vim-mark'
-Plug 'inkarkat/vim-ingo-library'
-Plug 'scrooloose/nerdcommenter'
-Plug 'NTBBloodbath/daylight.nvim'
-Plug 'talha-akram/noctis.nvim'
-Plug 'BarretRen/SearchOnSelectVim'
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'aceofall/gtags.vim'
-Plug 'numToStr/FTerm.nvim'
-Plug 'vim-autoformat/vim-autoformat'
---Plug 'ap/vim-buftabline'
-Plug 'akinsho/bufferline.nvim'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'nvim-tree/nvim-tree.lua'
---Plug 'sindrets/diffview.nvim'
---Plug 'nvim-tree/nvim-web-devicons'
-vim.call('plug#end')
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
+
+local packer_bootstrap = ensure_packer()
+
+require('packer').startup(
+{
+    function(use)
+        use 'wbthomason/packer.nvim'
+
+        use 'majutsushi/tagbar'
+        use 'inkarkat/vim-mark'
+        use 'inkarkat/vim-ingo-library'
+        use 'scrooloose/nerdcommenter'
+        use 'NTBBloodbath/daylight.nvim'
+        use 'talha-akram/noctis.nvim'
+        use 'BarretRen/SearchOnSelectVim'
+        use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+        use 'aceofall/gtags.vim'
+        use 'numToStr/FTerm.nvim'
+        use 'vim-autoformat/vim-autoformat'
+        use 'akinsho/bufferline.nvim'
+        use 'nvim-lualine/lualine.nvim'
+        use 'nvim-lua/plenary.nvim'
+        use 'nvim-telescope/telescope.nvim'
+        use 'neovim/nvim-lspconfig'
+        use 'hrsh7th/cmp-nvim-lsp'
+        use 'hrsh7th/cmp-buffer'
+        use 'hrsh7th/cmp-vsnip'
+        use 'hrsh7th/nvim-cmp'
+        use 'hrsh7th/vim-vsnip'
+        use 'lewis6991/gitsigns.nvim'
+        use 'nvim-tree/nvim-tree.lua'
+        use 'nvim-pack/nvim-spectre'
+        --use 'sindrets/diffview.nvim'
+        --use 'nvim-tree/nvim-web-devicons'
+
+        -- Automatically set up your configuration after cloning packer.nvim
+        -- Put this at the end after all useins
+        if packer_bootstrap then
+            require('packer').sync()
+        end
+    end,
+    config = {
+        compile_path = vim.fn.stdpath('data')..'/plugin/packer_compiled.lua',
+    }
+})
 
 -- Tagbar
 vim.g.tagbar_width = 30
@@ -44,11 +69,6 @@ vim.g.EasyGrepIgnoreCase = 1
 vim.g.EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
 -- vim-mark
 vim.g.mwDefaultHighlightingPalette = "extended"
--- netrw
-vim.g.netrw_browse_split = 4
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
-vim.g.netrw_liststyle = 3
 -- nerdcommenter
 vim.g.NERDCompactSexyComs = 1
 vim.g.NERDDefaultAlign = "left"

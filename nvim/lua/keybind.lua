@@ -10,10 +10,18 @@ map("n", "<F2>", ':bd<cr>', opt)
 map("n", "<F3>", ':q<cr>', opt)
 map("n", "<F4>", ':w<cr>', opt)
 map("n", "<F5>", ':TagbarToggle<cr>', opt)
-map("n", "<F7>", '<Leader>vv', optl)
-map("n", "<F8>", '<Leader>vr', optl)
-map("v", "<F7>", '<Leader>vv', optl)
-map("v", "<F8>", '<Leader>vr', optl)
+map('n', '<F7>', '<cmd>lua require("spectre").open()<CR>', {
+    desc = "Open Spectre"
+})
+map('n', '<F8>', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+    desc = "Search current word"
+})
+map('v', '<F8>', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+    desc = "Search current word"
+})
+map('n', '<leader>sf', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+    desc = "Search on current file"
+})
 map("n", "<F9>", ':Gitsigns blame_line<cr>', opt)
 map("n", "<F12>", ':Telescope oldfiles<cr>', opt)
 -- 16进制模式
