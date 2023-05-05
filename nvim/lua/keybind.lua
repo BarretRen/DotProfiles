@@ -10,19 +10,7 @@ map("n", "<F2>", ':bd<cr>', opt)
 map("n", "<F3>", ':q<cr>', opt)
 map("n", "<F4>", ':w<cr>', opt)
 map("n", "<F5>", ':TagbarToggle<cr>', opt)
-map('n', '<F7>', '<cmd>lua require("spectre").open()<CR>', {
-    desc = "Open Spectre"
-})
-map('n', '<F8>', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-    desc = "Search current word"
-})
-map('v', '<F8>', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
-    desc = "Search current word"
-})
-map('n', '<leader>sf', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
-    desc = "Search on current file"
-})
-map("n", "<F9>", ':Git blame<cr>', opt)
+map("n", "<F7>", ':Git blame<cr>', opt)
 map("n", "<F12>", ':Telescope oldfiles<cr>', opt)
 -- 16进制模式
 map("n", "hx", ':%!xxd', opt)
@@ -75,15 +63,25 @@ map("t", "<C-j>", "<cmd>lua require(\"FTerm\").toggle()<cr>", opt)
 map("n", "<C-p>", ":Telescope find_files<cr>", opt)
 map("n", "<C-b>", ":Telescope buffers<cr>", opt)
 map("n", "<C-f>", ":Telescope current_buffer_fuzzy_find<cr>", opt)
-map("n", "<F12>", ":Telescope oldfiles<cr>", opt)
 map("n", "fu", ":Telescope treesitter<cr>", opt)
-map("n", "rg", ":Telescope live_grep<cr>", opt)
-map("n", "gs", ":Telescope grep_string<cr>", opt)
 map("n", "fx", ":Telescope quickfix<cr>", opt)
 map("n", "lu", ":Telescope lsp_document_symbols<cr>", opt)
 map("n", "lr", ":Telescope lsp_references<cr>", opt)
 map("n", "ld", ":Telescope lsp_definitions<cr>", opt)
 map("n", "ls", ":Telescope lsp_dynamic_workspace_symbols<cr>", opt)
+-- nvim-spectre
+map('n', 'rg', '<cmd>lua require("spectre").open()<CR>', {
+    desc = "Open Spectre"
+})
+map('n', 'gs', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+    desc = "Search current word"
+})
+map('v', 'gs', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+    desc = "Search current word"
+})
+map('n', 'sf', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+    desc = "Search on current file"
+})
 -- Diffview
 --map("n", "df", ":DiffviewOpen<cr>", opt)
 --map("n", "dc", ":DiffviewClose<cr>", opt)

@@ -1,15 +1,14 @@
 [user]
-    email = barretren@qq.com
     name = Barret Ren
+    email = Barret.Ren@outlook.com
 [branch]
     autosetuprebase = always
 [core]
-    pager = less -r
-    editor = vi
-	quotepath = false
+	pager = less -x1,5
+    editor = ~/.local/bin/nvim
 [alias]
     br = branch
-    brd = branch -d
+    brd = branch -D
     st = status
     ci = commit
     cm = commit -m
@@ -18,6 +17,8 @@
     ft= fetch -p
     pl = pull
     pls = pull --recurse-submodules
+    ph = push
+    phd = push --delete
     rb = rebase
     l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
     ll = log --stat --abbrev-commit
@@ -30,8 +31,6 @@
     interactive = auto
     status = auto
     ui = auto
-[init]
-	defaultBranch = master
 [merge]
 	tool = meld
 [mergetool "meld"]
