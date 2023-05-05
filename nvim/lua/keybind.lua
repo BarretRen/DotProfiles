@@ -22,7 +22,7 @@ map('v', '<F8>', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
 map('n', '<leader>sf', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
     desc = "Search on current file"
 })
-map("n", "<F9>", ':Gitsigns blame_line<cr>', opt)
+map("n", "<F9>", ':Git blame<cr>', opt)
 map("n", "<F12>", ':Telescope oldfiles<cr>', opt)
 -- 16进制模式
 map("n", "hx", ':%!xxd', opt)

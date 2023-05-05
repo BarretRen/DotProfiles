@@ -37,9 +37,9 @@ require('packer').startup(
         use 'hrsh7th/cmp-vsnip'
         use 'hrsh7th/nvim-cmp'
         use 'hrsh7th/vim-vsnip'
-        use 'lewis6991/gitsigns.nvim'
         use 'nvim-tree/nvim-tree.lua'
         use 'nvim-pack/nvim-spectre'
+        use 'tpope/vim-fugitive'
         --use 'sindrets/diffview.nvim'
         --use 'nvim-tree/nvim-web-devicons'
 
@@ -215,10 +215,6 @@ require('telescope').setup{
 }
 vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
 
-require('gitsigns').setup{
-    signcolumn = false
-}
-
 require'nvim-tree'.setup {
     -- 不显示 git 状态图标
     git = {
@@ -332,7 +328,7 @@ require'lspconfig'.clangd.setup{
 
 require("daylight").setup{
     day = {
-        name = "noctis_lilac",
+        name = "noctis_viola",
         time = 8, -- 8 am
     },
     night = {
