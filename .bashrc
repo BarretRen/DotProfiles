@@ -34,5 +34,5 @@ alias gti="git"
 alias pip="pip3"
 alias ls="ls --color=auto"
 alias ll="ls -lh"
-alias em="TERM=screen-256color emacs -nw"
-
+alias gfile="rg -u -tc -tcpp -tyang -tjava --files > gtags.file && gtags -f gtags.file && rm gtags.file"
+alias rgc="rg -u -tc -tcpp -tyang -tjava"

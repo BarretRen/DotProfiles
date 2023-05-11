@@ -24,7 +24,7 @@ require('packer').startup(
         use 'talha-akram/noctis.nvim'
         use 'BarretRen/SearchOnSelectVim'
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-        use 'aceofall/gtags.vim'
+        use 'xbot/gtags.vim'
         use 'numToStr/FTerm.nvim'
         use 'vim-autoformat/vim-autoformat'
         use 'akinsho/bufferline.nvim'
