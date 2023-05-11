@@ -5,7 +5,7 @@
     autosetuprebase = always
 [core]
 	pager = less -x1,5
-    editor = ~/.local/bin/nvim
+    editor = nvim
 [alias]
     br = branch
     brd = branch -D
