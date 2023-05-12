@@ -167,7 +167,7 @@ require("lazy").setup({
             options = { theme = "papercolor_dark" },
             sections = {
                 lualine_c = {{'filename', path = 1}},
-                lualine_x = {'encoding', 'filetype'},
+                lualine_x = {'searchcount', 'encoding', 'filetype'},
             },
         }
     end,
@@ -265,6 +265,19 @@ require("lazy").setup({
     end,
 },
 {
+    "utilyre/barbecue.nvim",
+    dependencies = {
+        "SmiteshP/nvim-navic",
+    },
+    ft = { "c", "cpp"},
+    config = function()
+        require("barbecue").setup({
+            attach_navic = false, -- prevent barbecue from automatically attaching nvim-navic
+            show_navic = true,
+        })
+    end,
+},
+{
     "neovim/nvim-lspconfig",
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
@@ -287,7 +300,12 @@ require("lazy").setup({
                 "--cross-file-rename",
                 "--header-insertion-decorators",
                 "--pch-storage=memory"
-            }
+            },
+            on_attach = function(client, bufnr)
+                if client.server_capabilities["documentSymbolProvider"] then
+                    require("nvim-navic").attach(client, bufnr)
+                end
+            end,
         }
     end,
 },
@@ -383,7 +401,8 @@ require("lazy").setup({
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
-}},
+}
+},
 {
 git = {
     url_format = "https://github.com/%s.git",
