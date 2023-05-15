@@ -36,4 +36,9 @@ alias ls="ls --color=auto"
 alias ll="ls -lh"
 alias gfile="rg -u -tc -tcpp -tyang -tjava --files > gtags.file && gtags -f gtags.file && rm gtags.file"
 alias rgc="rg -u -tc -tcpp -tyang -tjava"
+
+# alias for gnome
 alias startway="MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM=wayland XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session"
+
+# alias for archlinux pacman
+alias pac_autoremove="sudo pacman -R $(sudo pacman -Qdtq)"
