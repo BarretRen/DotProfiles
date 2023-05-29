@@ -11,7 +11,7 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
-export PATH=$HOME/.local/clangd/bin:$HOME/.local/nvim/bin:$HOME/.local/gtags/bin:$PATH
+export PATH=$HOME/.local/clangd/bin:$HOME/.local/gtags/bin:$PATH
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
@@ -22,6 +22,8 @@ export TERM="xterm-256color"
 PS1='\[\033[01;32m\]\u\[\033[01;34m\] \w\[\033[31m\]$(__git_ps1 "(%s)")
 \[\033[01;34m\]$\[\033[00m\] '
 
+export EDITOR="nvim"
+export SUDO_EDITOR="nvim"
 #export GTAGSCONF="$HOME/.local/gtags/share/gtags/gtags.conf"
 #export GTAGSLABEL=pygments
 
