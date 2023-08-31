@@ -60,7 +60,8 @@ require("lazy").setup({
     keys = {
         {"fr", ":cexp[]<cr>:Gtags -r <C-R>=expand(\"<cword>\")<cr><cr>:Telescope quickfix<cr>"},
         {"fd", ":cexp[]<cr>:Gtags <C-R>=expand(\"<cword>\")<cr><cr>:Telescope quickfix<cr>"},
-        {"fg", ":<C-U><C-R>=printf(\"Gtags \")<cr><cr>"},
+        {"fg", ":<C-U><C-R>=printf(\"Gtags\")<cr><cr>"},
+        {"fa", ":<C-U><C-R>=printf(\"Gtags -g\")<cr><cr>"},
         {"fs", ":<C-U><C-R>=printf(\"Gtags -s\")<cr><cr>"},
     },
     init = function()
@@ -282,6 +283,7 @@ require("lazy").setup({
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
     },
+    enabled = false,
     ft = { "c", "cpp"},
     config = function()
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -401,7 +403,7 @@ require("lazy").setup({
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
-}
+},
 },
 {
 git = {
