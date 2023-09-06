@@ -4,6 +4,7 @@
 [branch]
     autosetuprebase = always
 [core]
+    autocrlf = false
 	pager = less -x1,5
     editor = nvim
 [alias]
