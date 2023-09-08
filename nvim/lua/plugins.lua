@@ -81,6 +81,7 @@ require("lazy").setup({
     },
     init = function()
         vim.g.mwDefaultHighlightingPalette = "extended"
+        vim.g.mwIgnoreCase = 0
     end,
 },
 {
@@ -99,6 +100,7 @@ require("lazy").setup({
 },
 {
     "BarretRen/SearchOnSelectVim",
+    enabled = false,
     keys = {
         {"n", mode="v"},
         {"<s-n>", mode="v"},
@@ -372,11 +374,6 @@ require("lazy").setup({
                 side = 'left',
                 -- 隐藏根目录
                 hide_root_folder = false,
-                -- 自定义列表中快捷键
-                mappings = {
-                    custom_only = false,
-                    list = list_keys,
-                },
                 -- 不显示行数
                 number = false,
                 relativenumber = false,
