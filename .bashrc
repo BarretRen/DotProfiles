@@ -26,6 +26,7 @@ export EDITOR="nvim"
 export SUDO_EDITOR="nvim"
 #export GTAGSCONF="$HOME/.local/gtags/share/gtags/gtags.conf"
 #export GTAGSLABEL=pygments
+export GTAGSOBJDIRPREFIX=~/.cache/gtags/
 
 # alias
 alias vi="nvim"
@@ -38,6 +39,5 @@ alias ls="ls --color=auto"
 alias ll="ls -lh"
 alias gfile="rg -u -tc -tcpp -tyang -tjava --files > gtags.file && gtags -f gtags.file && rm gtags.file"
 alias rgc="rg -u -tc -tcpp -tyang -tjava"
+alias gtags="gtags -O"
 
-# alias for gnome
-alias startway="MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM=wayland XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session"
