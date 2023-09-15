@@ -23,6 +23,7 @@ map("n", "<S-Insert>", '+gP', opt)
 map("n", "wv", "<C-W>v", opt)
 map("n", "wh", "<C-W>s", opt)
 map("n", "wc", "<C-W>c", opt)
+map("n", "w=", "<C-W>=", opt)
 -- 行号
 map("n", "ln", ":set nu!<cr>", opt)
 -- 清除行尾空格

@@ -17,6 +17,9 @@ end
 
 require("lazy").setup({
 {
+    "talha-akram/noctis.nvim",
+},
+{
     "numToStr/FTerm.nvim",
     keys = {
         {"<C-j>", "<cmd>lua require(\"FTerm\").toggle()<cr>"},
@@ -29,6 +32,7 @@ require("lazy").setup({
 },
 {
     "NTBBloodbath/daylight.nvim",
+    enabled = false,
     dependencies = {"talha-akram/noctis.nvim"},
     config = function()
         require("daylight").setup{
@@ -82,31 +86,6 @@ require("lazy").setup({
     init = function()
         vim.g.mwDefaultHighlightingPalette = "extended"
         vim.g.mwIgnoreCase = 0
-    end,
-},
-{
-    "scrooloose/nerdcommenter",
-    keys = {
-        {"<C-\\>", "<Leader>ci", remap=true},
-        {"<C-\\>", "<Leader>ci", mode="v", remap=true},
-    },
-    init = function()
-        vim.g.NERDCompactSexyComs = 1
-        vim.g.NERDDefaultAlign = "left"
-        vim.g.NERDAltDelims_java = 1
-        vim.g.NERDCommentEmptyLines = 1
-        vim.g.NERDTrimTrailingWhitespace = 1
-    end,
-},
-{
-    "BarretRen/SearchOnSelectVim",
-    enabled = false,
-    keys = {
-        {"n", mode="v"},
-        {"<s-n>", mode="v"},
-    },
-    init = function()
-        vim.g.SearchOnSelect_active = 1
     end,
 },
 {
@@ -269,6 +248,7 @@ require("lazy").setup({
 },
 {
     "utilyre/barbecue.nvim",
+    enabled = false,
     dependencies = {
         "SmiteshP/nvim-navic",
     },
@@ -399,6 +379,22 @@ require("lazy").setup({
     },
     dependencies = {
         "nvim-lua/plenary.nvim",
+    },
+},
+{
+    "numToStr/Comment.nvim",
+    keys = {
+        -- map key C-/
+        {"<C-_>", "gcc", remap=true},
+        {"<C-_>", "gbc", mode="v", remap=true},
+    },
+    opts = {
+        mappings = {
+            ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
+            basic = true,
+            ---Extra mapping; `gco`, `gcO`, `gcA`
+            extra = false,
+        },
     },
 },
 },
