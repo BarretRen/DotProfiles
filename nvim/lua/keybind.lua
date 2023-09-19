@@ -30,6 +30,12 @@ map("n", "ln", ":set nu!<cr>", opt)
 map("n", "cS", ":%s/\\s\\+$//g<cr>:noh<cr>", opt)
 -- 清除行尾 ^M 符号
 map("n", "cM", ":%s/\\r$//g<cr>:noh<cr>", opt)
+-- tab键是否转换为空格
+map("n", "tb", ":set et!<cr>", opt)
+-- 是否显示tab等不可见字符
+map("n", "ts", ":set list!<cr>", opt)
+-- 是否高亮search结果
+map("n", "hl", ":set hls!<cr>", opt)
 -- quickfix
 map("n", "co", ":copen<cr>", opt)
 map("n", "cc", ":cclose<cr>", opt)
