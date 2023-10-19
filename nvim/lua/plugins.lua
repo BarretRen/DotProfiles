@@ -372,9 +372,9 @@ require("lazy").setup({
 {
     "nvim-pack/nvim-spectre",
     keys = {
-        {"rg", "<cmd>lua require('spectre').open()<cr>"},
-        {"gs", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>"},
-        {"gs", "<esc><cmd>lua require('spectre').open_visual()<cr>", mode="v"},
+        {"rg", "<cmd>lua require('spectre').toggle()<cr>"},
+        {"sw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>"},
+        {"sw", "<esc><cmd>lua require('spectre').open_visual()<cr>", mode="v"},
         {"sf", "<cmd>lua require('spectre').open_file_search({select_word=true})<cr>"},
     },
     dependencies = {
