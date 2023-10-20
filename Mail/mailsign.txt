@@ -1,0 +1,10 @@
+<br/>
+<hr/>
+<p style="font-family:Microsoft Yahei;color:#696969;font-size:13px;">
+Best Regards<br/>
+Namebr/>
+公司<br/>
+English Corporation<br/>
+Address<br/>
+Mobile:XXX<br/>
+</p>

@@ -1,6 +1,6 @@
 local colorscheme
 local ctime = os.date("*t")
-if ctime.hour <= 18  and ctime.hour >= 8 then -- 8 am ~ 6 pm
+if ctime.hour < 17 and ctime.hour >= 8 then -- 8 am ~ 5 pm
     colorscheme = "noctis_lilac"
 else
     colorscheme = "noctis_uva"
