@@ -352,11 +352,12 @@ require("lazy").setup({
                 width = 40,
                 -- 也可以 'right'
                 side = 'left',
-                -- 隐藏根目录
-                hide_root_folder = false,
                 -- 不显示行数
                 number = false,
                 relativenumber = false,
+            },
+            renderer = {
+                root_folder_label = false,
             },
             actions = {
                 open_file = {
