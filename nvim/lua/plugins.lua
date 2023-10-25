@@ -20,11 +20,20 @@ require("lazy").setup({
     "talha-akram/noctis.nvim",
 },
 {
+    "equalsraf/neovim-gui-shim", -- used for nvim-qt
+    enabled = false,
+},
+{
     "numToStr/FTerm.nvim",
     keys = {
         {"<C-j>", "<cmd>lua require(\"FTerm\").toggle()<cr>"},
         {"<C-j>", "<cmd>lua require(\"FTerm\").toggle()<cr>", mode="t"},
     },
+    config = function()
+        require("FTerm").setup{
+            cmd = vim.g.sysop == "win" and "cmd" or "bash",
+        }
+    end
 },
 {
     "tpope/vim-fugitive",
@@ -111,13 +120,20 @@ require("lazy").setup({
     end,
 },
 {
-    "vim-autoformat/vim-autoformat",
+    "mhartington/formatter.nvim",
+    keys = {
+        {"fm", "<cmd>Format<cr>"},
+    },
     enabled = false,
     config = function()
-        vim.g.formatdef_astyle_c = '"astyle --mode=c --options=~/.astylerc"'
-        vim.g.formatters_c = "['astyle_c', 'clangformat']"
-        vim.g.formatdef_astyle_cpp = '"astyle --mode=c --options=~/.astylerc"'
-        vim.g.formatters_cpp = "['astyle_cpp', 'clangformat']"
+        require("formatter").setup {
+            filetype = {
+                -- configure formatter for each filetype
+                markdown = {
+                    require("formatter.filetypes.markdown").prettier,
+                },
+            },
+        }
     end,
 },
 {
@@ -146,7 +162,7 @@ require("lazy").setup({
     "nvim-lualine/lualine.nvim",
     config = function()
         require('lualine').setup{
-            options = { theme = "papercolor_dark" },
+            -- options = { theme = "papercolor_dark" },
             sections = {
                 lualine_c = {{'filename', path = 1}},
                 lualine_x = {'searchcount', 'encoding', 'filetype'},
@@ -357,7 +373,7 @@ require("lazy").setup({
                 relativenumber = false,
             },
             renderer = {
-                root_folder_label = false,
+                root_folder_label = true,
             },
             actions = {
                 open_file = {
@@ -395,6 +411,46 @@ require("lazy").setup({
             basic = true,
             ---Extra mapping; `gco`, `gcO`, `gcA`
             extra = false,
+        },
+    },
+},
+{
+    "iamcco/markdown-preview.nvim",
+    enabled = false,
+    keys = {
+        {"mp", "<cmd>MarkdownPreviewToggle<cr>"},
+    },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+},
+{ 
+    'zaiic/pinmd.nvim',
+    enabled = false,
+    keys = {
+        {"mv", "<cmd>PinmdPaste<cr>"},
+    },
+    ft = { "markdown" },
+    opts = {
+        files = {
+            location_for_new_attachments = "specified_folder_in_vault",
+            attachment_folder_path = vim.fn.expand("%:r") .. ".assets"
+        },
+        images = {
+            name = function()
+                local dir = vim.fn.expand("%:r") .. ".assets"
+                if not vim.loop.fs_stat(dir) then
+                    return "image"
+                else
+                    local filelist = vim.fn.readdir(dir, [[v:val =~ '.png$']])
+                    local img_cnt = vim.fn.len(filelist)
+                    if img_cnt == 0 then
+                        return "image"
+                    else
+                        return "image-" .. tostring(img_cnt)
+                    end
+                end
+
+            end,
         },
     },
 },
