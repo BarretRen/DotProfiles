@@ -1,4 +1,4 @@
 require("basic")
-require("plugins")
-require("colorscheme")
 require("keybind")
+require("lazyini")
+require("colorscheme")
