@@ -38,7 +38,6 @@ return {
                             return "image-" .. tostring(img_cnt)
                         end
                     end
-
                 end,
             },
         },
