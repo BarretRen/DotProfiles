@@ -11,6 +11,7 @@ return {
         config = function()
             require("FTerm").setup{
                 cmd = vim.g.sysop == "win" and "cmd" or "bash",
+                blend = 20,
             }
         end
     },

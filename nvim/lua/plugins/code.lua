@@ -12,6 +12,9 @@ return {
     },
     {
         "xbot/gtags.vim",
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+        },
         keys = {
             {"fr", ":cexp[]<cr>:Gtags -r <C-R>=expand(\"<cword>\")<cr><cr>:Telescope quickfix<cr>"},
             {"fd", ":cexp[]<cr>:Gtags <C-R>=expand(\"<cword>\")<cr><cr>:Telescope quickfix<cr>"},
