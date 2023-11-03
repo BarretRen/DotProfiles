@@ -81,5 +81,3 @@ vim.opt.laststatus = 2
 vim.opt.showtabline = 1
 -- viminfo
 vim.opt.shada="'50,<50,s10,h,/10,:10"
--- 记忆上次编辑的位置
-vim.cmd([[autocmd BufReadPost * if line("'\"")>0&&line("'\"")<=line("$") | exe "normal g'\"" | endif]])

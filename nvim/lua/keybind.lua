@@ -6,7 +6,7 @@ local opt = { noremap = true, silent = true }
 local optl = { silent = true }
 
 -- Fx键
-map("n", "<F2>", ':bd<cr>', opt)
+map("n", "<F2>", ':BufferDelete<cr>', opt)
 map("n", "<F3>", ':q<cr>', opt)
 map("n", "<F4>", ':w<cr>', opt)
 -- 16进制模式
