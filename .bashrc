@@ -27,6 +27,7 @@ export SUDO_EDITOR="nvim"
 #export GTAGSCONF="$HOME/.local/gtags/share/gtags/gtags.conf"
 #export GTAGSLABEL=pygments
 export GTAGSOBJDIRPREFIX=~/.cache/gtags/
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 # alias
 alias vi="nvim"
