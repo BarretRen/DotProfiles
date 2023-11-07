@@ -13,6 +13,7 @@
     st = status
     ci = commit
     cm = commit -m
+    cam = !git commit --amend --date=\"$(date -R)\"
     co = checkout
     cob = checkout -b
     ft= fetch -p

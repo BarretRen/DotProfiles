@@ -1,0 +1,214 @@
+[MottyOptions]
+
+[Misc]
+PasswordsInRegistry=1
+SlashDir=_AppDataDir_\MobaXterm\slash
+HomeDir=_AppDataDir_\MobaXterm\home
+DefTextEditor=<MobaTextEditor>
+LogFileFormat=
+StorePasswords=Always
+StoreSSHKeysPassphrases=1
+BackupIni=1
+LogTerminalActivity=0
+LogType=0
+LocalShell=Windows Powershell
+LogFolder=
+SkinSat=80
+XAuto=0
+XKeepAlive=1
+BackspaceSendsBS=1
+BSisBS=1
+BoldAsFont=0
+WinPath=1
+ConfirmExit=0
+RightClickAction=0
+Scrollbar=1
+PromptType=2
+TrackTermActivity=1
+WarnBeforePasteMultipleLines=0
+BellType=0
+TransTerm=11
+TransDetachedTabs=10
+X11SharedClipboard2=1
+X11OpenGL=0
+X11DisplayMode=0
+X11AccessControl2=0
+X11DisplayOffset=0
+X11ScreenNumber=1
+X11Keyboard=0
+X11DpiMode=stretched
+X11Version=MobaX
+DefaultHome=<Home (pinned)>
+DefaultNewTab=<Terminal>
+NewTabPosition=2
+ReplaceHomeTab=1
+NoTabClose=1
+AllowMultiInstances=0
+SkinName3=Windows dark theme
+LastSession=ubuntu local|#109#0%127.0.0.1%2222%[local vm]%%0%-1%%%%%0%0%0%_ProfileDir_\.ssh\id_rsa%%-1%0%0%0%%1080%%0%0%1%%0%%%%0%-1%-1%0#JetBrains Mono%12%0%0%-1%15%187,194,207%46,36,59%81,175,239%0%-1%0%%xterm%-1%0%_Std_Colors_0_%80%24%0%1%-1%<none>%%0%0%-1%-1#0# #-1
+RightClickAssigned=1
+DarknessIntensity=80
+
+[Font]
+Font2=JetBrains Mono
+FontIsBold2=0
+FontHeight2=12
+FontCharset2=0
+FontQuality2=3
+Ligatures=1
+Charset2=UTF-8
+LockRowsCols=0
+LockedCols=80
+LockedRows=24
+
+[Colors]
+Black=40,44,52
+BoldBlack=63,68,74
+Red=255,108,107
+BoldRed=255,108,107
+Green=152,190,101
+BoldGreen=152,190,101
+Yellow=236,190,123
+BoldYellow=218,133,72
+Blue=81,175,239
+BoldBlue=81,175,239
+Magenta=169,161,225
+BoldMagenta=169,161,225
+Cyan=70,217,255
+BoldCyan=70,217,255
+White=187,194,207
+BoldWhite=187,194,207
+ForegroundColour=187,194,207
+BackgroundColour=46,36,59
+CursorColour=81,175,239
+SyntaxType=1
+
+[Cursor]
+CursorType=0
+CursorBlinks=0
+
+[SSH]
+UseInternalMobAgent=0
+UseExternalPageant=1
+ValidateEachAgentRequest=0
+MobAgentKeys=
+DisplaySSHBanner=1
+UseNewMoTTY=1
+StrictHostKeyChecking=1
+GwUse2factor=0
+AutoStartSSHGUI=0
+SSHKeepAlive2=1
+EnableSFTP=1
+RemoteMonitoring=0
+ScpPreservesDates=0
+UseGSSAPI=1
+KrbDomain=
+GSSAPICustomLib=
+GSSAPILibNumber=0
+DefaultLoginName=
+SFTPShowDotFiles=0
+SFTPAsciiMode=0
+MonitorHost=1
+MonitorCPU=1
+MonitorRAM=1
+MonitorNetUp=1
+MonitorNetDown=1
+MonitorProcesses=0
+MonitoFDs=0
+MonitorUptime=1
+MonitorUsers=1
+MonitorPartitions=1
+MonitorNfsPartitions=0
+MonitorNetstat=0
+LastDownDir_Lenovo@DESKTOP-DRJF8KM=C:\Users\Lenovo\Desktop
+BrowserSortType=0
+BrowserSortReverse=0
+
+[Display]
+DisableQuickConnect=1
+CustomDPI_1920_96=0
+IconsTheme=0
+RoundedTabs=1
+GraphicCache=1
+SidebarRight=1
+C10Checked=1
+C11Checked=0
+C12Checked=1
+C13Checked=0
+C14Checked=0
+VisibleTabNum=1
+VisibleTabClose=1
+MenuAndButtons=2
+BtnType2=0
+
+[PopupConsole]
+Transparency=16
+Size=36
+Sizeable=0
+Position=3
+TryToOpenInExplorerFolder=1
+BackgroundInsteadOfClose=0
+
+[X11Extension]
+Composite=1
+DAMAGE=1
+RANDR=1
+XFIXES=1
+XTEST=1
+XINERAMA=1
+
+[WindowPos_DESKTOP-DRJF8KM_1920_1080_1920_1080]
+CompactMode=0
+MonitorCount=2
+Left=-1928
+Top=-8
+Width=1936
+Height=1048
+Maximized=1
+SidebarVisible=1
+SidebarWidth=240
+
+[TopToolbarBtns]
+Btn0=Session
+Btn1=Servers
+Btn2=Sessions
+Btn3=Split
+Btn4=Settings
+Btn5=Help
+Btn6=X server
+Btn7=Exit
+
+[HotKeys]
+Show / hide popup terminal=Ctrl + Alt + P
+
+[Macros]
+fatfstest M 1=12:0:0:fatfstest M 1|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL1200|
+lcd file_display=12:4:0:lcd file_display a.jpg 0 480X480|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL3000|12:2:0:lcd file_display b.jpg 0 480X480|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL3000|12:2:0:lcd file_display c.jpg 0 480X480|258:13:1835009:RETURN|
+log 1 3 1=12:4:0:log 1 3 1|258:13:1835009:RETURN|
+media lcd demoui 0=12:0:0:media lcd demoui 0|258:13:1835009:RETURN|
+lcd file_display lvgl=12:4:0:lcd file_display a.jpg 0|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL3000|12:2:0:lcd file_display b.jpg 0|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL3000|12:2:0:lcd file_display c.jpg 0|258:13:1835009:RETURN|
+lcd file_display a.rgb 0=12:4:0:lcd file_display a.rgb 0|258:13:1835009:RETURN|
+lcd file_display d.jpg 0=12:4:0:lcd file_display d.jpg 0|258:13:1835009:RETURN|
+
+[MacrosHotkeys]
+fatfstest M 1=0
+lcd file_display=0
+log 1 3 1=0
+media lcd demoui 0=0
+lcd file_display lvgl=0
+lcd file_display a.rgb 0=0
+lcd file_display d.jpg 0=0
+
+[ColorThemes]
+noctis_viola=282C34,3F444A,FF6C6B,FF6C6B,98BE65,98BE65,ECBE7B,DA8548,51AFEF,51AFEF,A9A1E1,A9A1E1,46D9FF,46D9FF,BBC2CF,BBC2CF,BBC2CF,2E243B,51AFEF
+noctis_lilac=073642,002B36,DC322F,CB4B16,859900,586E75,B58900,657B83,268BD2,839496,D33682,6C71C4,2AA198,93A1A1,99CECE,EEEEEC,586E75,F2F1F7,FF0000
+
+[ImportExportSpecials]
+ExportedSettings=Home and Slash directories location|Local terminal settings|Global X server settings|SSH settings|Services settings|MobaXterm interface settings|Macros|Sessions presets|MobaTextEditor and MobaDiff settings|Custom syntaxes|Shared sessions|Suppressed message dialogs
+mobauser@mobaserver=
+MobaVersion=23.0
+ExportDate=2023-11-07
+ExportTime=16:49:27
+ExportUsername=Lenovo
+ExportComputer=DESKTOP-DRJF8KM
+
