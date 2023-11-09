@@ -3,14 +3,23 @@ vim.g.maplocalleader = "\\"
 
 local map = vim.api.nvim_set_keymap
 local opt = { noremap = true, silent = true }
-local optl = { silent = true }
+local opt2 = { noremap = true, silent = false }
 
+-- Inser 和Command mode下光标移动
+map("i", "<M-h>", '<Left>', opt)
+map("i", "<M-j>", '<Down>', opt)
+map("i", "<M-k>", '<Up>', opt)
+map("i", "<M-l>", '<Right>', opt)
+map("c", "<M-h>", '<Left>', opt2)
+map("c", "<M-j>", '<Down>', opt2)
+map("c", "<M-k>", '<Up>', opt2)
+map("c", "<M-l>", '<Right>', opt2)
 -- Fx键
 map("n", "<F2>", ':BufferDelete<cr>', opt)
 map("n", "<F3>", ':q<cr>', opt)
 map("n", "<F4>", ':w<cr>', opt)
 -- 16进制模式
-map("n", "hx", ':%!xxd', opt)
+map("n", "xd", ':%!xxd<cr>', opt)
 -- 复制粘贴
 map("n", "<C-a>", 'ggvG$', opt)
 map("v", "<C-x>", '"+x', opt)
@@ -25,7 +34,7 @@ map("n", "wh", "<C-W>s", opt)
 map("n", "wc", "<C-W>c", opt)
 map("n", "w=", "<C-W>=", opt)
 -- 行号
-map("n", "ln", ":set nu!<cr>", opt)
+map("n", "<Leader>ln", ":set nu!<cr>", opt)
 -- 清除行尾空格
 map("n", "cS", ":%s/\\s\\+$//g<cr>:noh<cr>", opt)
 -- 清除行尾 ^M 符号
@@ -35,7 +44,7 @@ map("n", "tb", ":set et!<cr>", opt)
 -- 是否显示tab等不可见字符
 map("n", "ts", ":set list!<cr>", opt)
 -- 是否高亮search结果
-map("n", "hl", ":set hls!<cr>", opt)
+map("n", "<Leader>hl", ":set hls!<cr>", opt)
 -- quickfix
 map("n", "co", ":copen<cr>", opt)
 map("n", "cc", ":cclose<cr>", opt)
