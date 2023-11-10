@@ -71,10 +71,16 @@ return {
         end,
     },
     {
+        "tiagovla/scope.nvim",
+        event = {"BufRead","TabEnter", "BufWinEnter"},
+        config = true,
+    },
+    {
         "akinsho/bufferline.nvim",
         config = function()
             require("bufferline").setup {
                 options = {
+                    mode = "buffers",
                     diagnostics = "false", --不显示告警
                     --左侧让出 nvim-tree 的位置
                     offsets = {{
@@ -86,8 +92,13 @@ return {
                 },
                 highlights = {
                     buffer_selected = {
+                        fg = '#FF5733',
                         italic = false,
-                    }
+                    },
+                    tab_selected = {
+                        fg = '#F1C40F',
+                        bg = '#5D6D7E',
+                    },
                 }
             }
         end,

@@ -50,6 +50,9 @@ map("n", "co", ":copen<cr>", opt)
 map("n", "cc", ":cclose<cr>", opt)
 map("n", "cn", ":cn<cr>", opt)
 map("n", "cp", ":cp<cr>", opt)
--- bufTabline
+-- buffer
 map("n", "<m-n>", ":bnext<cr>", opt)
 map("n", "<m-p>", ":bprev<cr>", opt)
+-- tabpage
+map("n", "tn", ":tabnew<cr>", opt)
+map("n", "tc", ":tabclose<cr>", opt)
