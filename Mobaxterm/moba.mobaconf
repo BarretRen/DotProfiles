@@ -180,6 +180,7 @@ Btn7=Exit
 
 [HotKeys]
 Show / hide popup terminal=Ctrl + Alt + P
+Execute a macro=Ctrl + R
 
 [Macros]
 fatfstest M 1=12:0:0:fatfstest M 1|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL1200|
