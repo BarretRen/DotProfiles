@@ -141,6 +141,7 @@ return {
             {"ld", ":Telescope lsp_definitions<cr>"},
             {"ls", ":Telescope lsp_dynamic_workspace_symbols<cr>"},
             {"wp", ":Telescope persisted<cr>"},
+            {"wk", ":Telescope keymaps<cr>"},
         },
         config = function()
             require("telescope").load_extension("persisted")
