@@ -5,8 +5,9 @@
     autosetuprebase = always
 [core]
     autocrlf = false
-	pager = less -x1,5
+    pager =
     editor = nvim
+    quotepath = false
 [alias]
     br = branch
     brd = branch -D
@@ -34,7 +35,7 @@
     status = auto
     ui = auto
 [merge]
-	tool = meld
+    tool = meld
 [mergetool "meld"]
     # Choose one of these 2 lines (not both!) explained below.
     cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
