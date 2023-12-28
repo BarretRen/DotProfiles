@@ -277,6 +277,33 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
+        config = function()
+            require('spectre').setup({
+                mapping={
+                    ['toggle_search_whole'] = {
+                        map = "tw",
+                        cmd = "<cmd>lua require('spectre').change_options('search-whole')<CR>",
+                        desc = "toggle search whole word"
+                    },
+                },
+                find_engine = {
+                    ['rg'] = {
+                        options = {
+                            ['hidden'] = {
+                                value="-uu",
+                                desc="hidden file",
+                                icon="[H]"
+                            },
+                            ['search-whole'] = {
+                                value= "--word-regexp",
+                                icon="[W]",
+                                desc="search whole word"
+                            },
+                        },
+                    },
+                },
+            })
+        end,
     },
     {
         "numToStr/Comment.nvim",
