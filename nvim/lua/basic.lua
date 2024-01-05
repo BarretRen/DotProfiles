@@ -71,7 +71,7 @@ vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 10
 -- 不可见字符的显示
-vim.opt.list = true
+vim.opt.list = false
 vim.opt.listchars = { space = '.', tab = '→ '}
 -- 补全增强
 vim.opt.wildmenu = true
