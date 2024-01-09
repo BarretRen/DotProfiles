@@ -1,0 +1,4 @@
+// Settings in here override those in "prettierd_format/prettierd_format.sublime-settings"
+{
+    "format_on_save": false,  
+}
