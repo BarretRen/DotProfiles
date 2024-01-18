@@ -142,16 +142,19 @@ return {
             {"ls", ":Telescope lsp_dynamic_workspace_symbols<cr>"},
             {"wp", ":Telescope persisted<cr>"},
             {"wk", ":Telescope keymaps<cr>"},
+            {"rg", ":Telescope live_grep<cr>"},
+            {"sw", ":Telescope grep_string<cr>"},
         },
         config = function()
             require("telescope").load_extension("persisted")
             require('telescope').setup{
                 defaults = {
                     wrap_results = true,
+                    layout_strategy = 'vertical',
                     layout_config = { width = 0.9 },
                     vimgrep_arguments = {
                         "rg",
-                        "-u",
+                        "-uu",
                         "-w",
                         "--color=never",
                         "--no-heading",
@@ -210,11 +213,11 @@ return {
                 },
                 pickers = {
                     find_files = { no_ignore = true },
-                    quickfix = { fname_width = 100 },
-                    lsp_document_symbols = { fname_width = 100 },
-                    lsp_references = { fname_width = 100 },
-                    lsp_definitions = { fname_width = 100 },
-                    lsp_dynamic_workspace_symbols = { fname_width = 100 },
+                    quickfix = { fname_width = 0.6 },
+                    lsp_document_symbols = { fname_width = 0.6 },
+                    lsp_references = { fname_width = 0.6 },
+                    lsp_definitions = { fname_width = 0.6 },
+                    lsp_dynamic_workspace_symbols = { fname_width = 0.6 },
                 },
                 --pickers = vim.tbl_extend("force", picker_config, {
                 --})
@@ -268,6 +271,7 @@ return {
     },
     {
         "nvim-pack/nvim-spectre",
+        enabled = false,
         keys = {
             {"rg", "<cmd>lua require('spectre').toggle()<cr>"},
             {"sw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>"},
