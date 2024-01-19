@@ -233,6 +233,9 @@ return {
     {
         "nvim-tree/nvim-tree.lua",
         keys = {{"nw", "<cmd>NvimTreeToggle<cr>"}},
+        dependencies = {
+            "nvim-tree/nvim-web-devicons"
+        },
         config = function()
             require'nvim-tree'.setup {
                 -- 不显示 git 状态图标

@@ -37,3 +37,14 @@ vim.api.nvim_create_user_command("BufferDelete", function(ctx)
 
     vim.cmd(force and "bd!" or ("bp | bd! %s"):format(vim.api.nvim_get_current_buf()))
 end, { desc = "Delete the current Buffer while maintaining the window layout" })
+
+-- show quickfix if more than one item
+vim.api.nvim_create_user_command("ShowJumpQf", function(ctx)
+    local qf_counts = vim.fn.getqflist({size = true}).size
+
+    if qf_counts == 1 then
+        vim.cmd("cc 1")
+    elseif qf_counts > 1 then
+        vim.cmd("Telescope quickfix")
+    end
+end, { desc = "check if need to shouw telescope quickfix or jump to first one" })
