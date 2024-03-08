@@ -41,4 +41,5 @@ alias ll="ls -lh"
 alias gfile="rg -u -tc -tcpp -tyang -tjava --files > gtags.file && gtags -f gtags.file && rm gtags.file"
 alias rgc="rg -u -tc -tcpp -tyang -tjava"
 alias gtags="gtags -O"
+alias penv="source ~/.venv/bin/activate"
 
