@@ -42,4 +42,5 @@ alias gfile="rg -u -tc -tcpp -tyang -tjava --files > gtags.file && gtags -f gtag
 alias rgc="rg -u -tc -tcpp -tyang -tjava"
 alias gtags="gtags -O"
 alias penv="source ~/.venv/bin/activate"
+alias gnomew="XDG_SESSION_TYPE=wayland dbus-run-session gnome-session"
 

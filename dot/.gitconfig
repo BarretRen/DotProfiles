@@ -22,11 +22,12 @@
     ph = push
     phd = push --delete
     rb = rebase
-    l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+    l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %C(bold blue)%an%Creset, %Cgreen%ad%Creset' --date=format:'%Y-%m-%d %H:%M:%S' 
     ll = log --stat --abbrev-commit
     d = diff
     dh = diff HEAD
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+    unstage = restore --staged
 [color]
     branch = auto
     diff = auto
