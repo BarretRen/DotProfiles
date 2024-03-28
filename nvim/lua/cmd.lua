@@ -48,3 +48,45 @@ vim.api.nvim_create_user_command("ShowJumpQf", function(ctx)
         vim.cmd("Telescope quickfix")
     end
 end, { desc = "check if need to shouw telescope quickfix or jump to first one" })
+
+vim.api.nvim_create_user_command("Gtagsfd", function(ctx)
+    local symbol = ctx.args
+    if symbol:len() ~= 0 then
+        vim.cmd("Gtags " .. symbol)
+        vim.cmd("ShowJumpQf")
+    end
+end, { bang=true, nargs = "+", complete = "custom,GtagsCandidate", desc = "symbol define via Gtags" })
+
+vim.api.nvim_create_user_command("Gtagsfr", function(ctx)
+    local symbol = ctx.args
+    if symbol:len() ~= 0 then
+        vim.cmd("Gtags -r " .. symbol)
+        vim.cmd("ShowJumpQf")
+    end
+end, { bang=true, nargs = "+", complete = "custom,GtagsCandidate", desc = "symbol reference via Gtags" })
+
+vim.api.nvim_create_user_command("Gtagsfg", function(ctx)
+    local symbol = vim.fn.input("Gtags for pattern: ")
+    if symbol:len() ~= 0 then
+        vim.cmd("Gtags " .. symbol)
+        vim.cmd("ShowJumpQf")
+    end
+end,
+{ desc = "find symbol define via Gtags" })
+
+vim.api.nvim_create_user_command("Gtagsfa", function(ctx)
+    local symbol = vim.fn.input("Gtags for pattern: ")
+    if symbol:len() ~= 0 then
+        vim.cmd("Gtags -g " .. symbol)
+        vim.cmd("ShowJumpQf")
+    end
+end, { desc = "find all symbol via Gtags" })
+
+vim.api.nvim_create_user_command("Gtagsfs", function(ctx)
+    local symbol = vim.fn.input("Gtags for pattern: ")
+    if symbol:len() ~= 0 then
+        vim.cmd("Gtags -s " .. symbol)
+        vim.cmd("ShowJumpQf")
+    end
+end, { desc = "search symbol via Gtags" })
+

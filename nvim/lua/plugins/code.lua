@@ -16,14 +16,15 @@ return {
             "nvim-telescope/telescope.nvim",
         },
         keys = {
-            {"fr", ":let Gtags_No_Auto_Jump=1<cr>:cexp[]<cr>:Gtags -r <C-R>=expand(\"<cword>\")<cr><cr>:ShowJumpQf<cr>"},
-            {"fd", ":let Gtags_No_Auto_Jump=1<cr>:cexp[]<cr>:Gtags <C-R>=expand(\"<cword>\")<cr><cr>:ShowJumpQf<cr>"},
-            {"fg", ":let Gtags_No_Auto_Jump=0<cr>:<C-U><C-R>=printf(\"Gtags\")<cr><cr>"},
-            {"fa", ":let Gtags_No_Auto_Jump=0<cr>:<C-U><C-R>=printf(\"Gtags -g\")<cr><cr>"},
-            {"fs", ":let Gtags_No_Auto_Jump=0<cr>:<C-U><C-R>=printf(\"Gtags -s\")<cr><cr>"},
+            {"fr", ":cexp[]<cr>:Gtagsfr -r <C-R>=expand(\"<cword>\")<cr><cr>"},
+            {"fd", ":cexp[]<cr>:Gtagsfd <C-R>=expand(\"<cword>\")<cr><cr>"},
+            {"fg", ":cexp[]<cr>:Gtagsfg<cr>"},
+            {"fa", ":cexp[]<cr>:Gtagsfa<cr>"},
+            {"fs", ":cexp[]<cr>:Gtagsfs<cr>"},
         },
         init = function()
             vim.g.Gtags_OpenQuickfixWindow = 0
+            vim.g.Gtags_No_Auto_Jump = 1
         end,
     },
     {

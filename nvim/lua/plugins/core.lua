@@ -11,7 +11,7 @@ return {
         config = function()
             require("FTerm").setup{
                 cmd = vim.g.sysop == "win" and "cmd" or "bash",
-                blend = 20,
+                blend = 0,
             }
         end
     },
@@ -117,6 +117,7 @@ return {
     },
     {
         "olimorris/persisted.nvim",
+        lazy = true,
         config = function()
             require("persisted").setup({
                 use_git_branch = false,
@@ -128,6 +129,7 @@ return {
         "nvim-telescope/telescope.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-live-grep-args.nvim"
         },
         keys = {
             {"<F12>", "<cmd>Telescope oldfiles<cr>"},
@@ -142,11 +144,12 @@ return {
             {"ls", ":Telescope lsp_dynamic_workspace_symbols<cr>"},
             {"wp", ":Telescope persisted<cr>"},
             {"wk", ":Telescope keymaps<cr>"},
-            {"rg", ":Telescope live_grep<cr>"},
+            {"rg", ":Telescope live_grep_args<cr>"},
             {"sw", ":Telescope grep_string<cr>"},
         },
         config = function()
             require("telescope").load_extension("persisted")
+            require("telescope").load_extension("live_grep_args")
             require('telescope').setup{
                 defaults = {
                     wrap_results = true,
@@ -155,7 +158,7 @@ return {
                     vimgrep_arguments = {
                         "rg",
                         "-uu",
-                        "-w",
+                        -- "-w",
                         "--color=never",
                         "--no-heading",
                         "--with-filename",
