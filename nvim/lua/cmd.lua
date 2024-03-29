@@ -19,6 +19,19 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     end,
 })
 
+-- osc52 copy text to host clipboard
+vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+    pattern = { "*" },
+    callback = function()
+        vim.cmd([[
+        let c = join(v:event.regcontents,"\n")
+        let c64 = system("base64", c)
+        let s = "\e]52;c;" . trim(c64) . "\x07"
+        call chansend(v:stderr, s)
+        ]])
+    end,
+})
+
 -- keep layout after delete buffer
 vim.api.nvim_create_user_command("BufferDelete", function(ctx)
     ---@diagnostic disable-next-line: missing-parameter

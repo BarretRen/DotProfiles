@@ -152,7 +152,7 @@ return {
             require("telescope").load_extension("live_grep_args")
             require('telescope').setup{
                 defaults = {
-                    wrap_results = true,
+                    -- wrap_results = true,
                     layout_strategy = 'vertical',
                     layout_config = { width = 0.9 },
                     vimgrep_arguments = {
