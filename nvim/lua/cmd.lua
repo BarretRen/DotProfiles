@@ -23,12 +23,10 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     pattern = { "*" },
     callback = function()
-        vim.cmd([[
-        let c = join(v:event.regcontents,"\n")
-        let c64 = system("base64", c)
-        let s = "\e]52;c;" . trim(c64) . "\x07"
-        call chansend(v:stderr, s)
-        ]])
+        local c = vim.fn.join(vim.v.event.regcontents, "\n")
+        local c64 = vim.fn.system("base64", c)
+        local osc52str = string.format("\x1b]52;c;%s\x07", vim.fn.trim(c64))
+        vim.fn.chansend(vim.v.stderr, osc52str)
     end,
 })
 

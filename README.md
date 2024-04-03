@@ -1,23 +1,27 @@
 ## Introduction
 
-个人工作总结的Linux上软件配置，基本满足工作编程需要，包含如下软件的配置
-* NeoVim
-* zsh
-* bash
-* tmux
-* tmx: 自动创建tmux的脚本
-* gitconfig
+个人工作总结的Linux/Windows上软件配置备份
 
 ## NeoVim profile Installation
 
 ### Linux
-```bash
-git clone https://github.com/BarretRen/LinuxEnvProfiles.git
-cd LinuxEnvProfiles
-cp nvim ~/.config
-```
+
+* clone repo
+* 将nvim复制到`~/.config`
+* open nvim, waiting for plugins installed
+
 ### Windosw
+
 * clone repo
 * 将nvim复制到`~/AppData/Local`
 * open nvim, waiting for plugins installed
+
+## tmux profile installation
+
+* clone repo
+* 将tmux复制到`~/.config`
+
+## others
+
+其他配置文件覆盖即可
 
