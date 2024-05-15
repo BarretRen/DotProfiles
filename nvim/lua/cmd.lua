@@ -8,6 +8,20 @@ vim.api.nvim_create_autocmd("BufReadPost", {
             -- vim.cmd('normal zz')
             vim.cmd("silent! foldopen")
         end
+        --[[ local is_supported = false
+        local support_types = { "c", "cpp", "yang", "java"}
+        for i = 0, #support_types do
+            if support_types[i] == vim.bo.filetype then
+                is_supported = true
+                break
+            end
+        end
+        if is_supported then
+            vim.opt.foldmethod = "expr"
+            vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+        else
+            vim.opt.foldmethod = "indent"
+        end ]]
     end,
 })
 

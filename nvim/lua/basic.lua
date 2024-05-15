@@ -67,7 +67,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 -- 自动补全不自动选中
 vim.opt.completeopt = "menu,menuone,noselect"
--- 代码缩进
+-- 代码缩进, cmd中根据文件类型设置
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 10
 -- 不可见字符的显示
