@@ -4,6 +4,7 @@ vim.g.maplocalleader = "\\"
 local map = vim.api.nvim_set_keymap
 local opt = { noremap = true, silent = true }
 local opt2 = { noremap = true, silent = false }
+local opt3 = { noremap = false, silent = true }
 
 -- Inser 和Command mode下光标移动
 map("i", "<M-h>", '<Left>', opt)
@@ -56,3 +57,6 @@ map("n", "<m-p>", ":bprev<cr>", opt)
 -- tabpage
 map("n", "tn", ":tabnew<cr>", opt)
 map("n", "tc", ":tabclose<cr>", opt)
+-- builtin commenting
+map("n", "<C-_>", "gcc", opt3)
+map("v", "<C-_>", "gc", opt3)

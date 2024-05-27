@@ -317,6 +317,7 @@ return {
     },
     {
         "numToStr/Comment.nvim",
+        enabled = false, --nvim 0.10 supports this by default, no need this
         keys = {
             -- map key C-/
             {"<C-_>", "gcc", remap=true},

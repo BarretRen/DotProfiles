@@ -33,8 +33,8 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     end,
 })
 
--- osc52 copy text to host clipboard
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+-- osc52 copy text to host clipboard, nvim 0.10 supports this by default, no need this
+--[[ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     pattern = { "*" },
     callback = function()
         local c = vim.fn.join(vim.v.event.regcontents, "\n")
@@ -42,7 +42,7 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
         local osc52str = string.format("\x1b]52;c;%s\x07", vim.fn.trim(c64))
         vim.fn.chansend(vim.v.stderr, osc52str)
     end,
-})
+}) ]]
 
 -- keep layout after delete buffer
 vim.api.nvim_create_user_command("BufferDelete", function(ctx)
