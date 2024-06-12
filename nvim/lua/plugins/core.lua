@@ -43,7 +43,7 @@ return {
             "inkarkat/vim-ingo-library",
         },
         keys = {
-            {"m", "lbve<Leader>m", remap=true},
+            {"m", "<Leader>m", remap=true},
             {"m", "<Leader>m", mode="v", remap=true},
             {"<Leader>M", "<Plug>MarkToggle"},
             {"<Leader>N", "<Plug>MarkAllClear"},
@@ -110,7 +110,7 @@ return {
                 -- options = { theme = "papercolor_dark" },
                 sections = {
                     lualine_c = {{'filename', path = 1}},
-                    lualine_x = {'searchcount', 'encoding', 'filetype'},
+                    lualine_x = {'searchcount', 'encoding', 'fileformat', 'filetype'},
                 },
             }
         end,
@@ -145,7 +145,7 @@ return {
             {"wp", ":Telescope persisted<cr>"},
             {"wk", ":Telescope keymaps<cr>"},
             {"rg", ":Telescope live_grep_args<cr>"},
-            {"sw", ":Telescope grep_string<cr>"},
+            {"rw", ":Telescope grep_string<cr>"},
         },
         config = function()
             require("telescope").load_extension("persisted")
@@ -154,7 +154,12 @@ return {
                 defaults = {
                     -- wrap_results = true,
                     layout_strategy = 'vertical',
-                    layout_config = { width = 0.9 },
+                    layout_config = {
+                        vertical = {
+                            width = 0.9,
+                            preview_cutoff = 0,
+                        },
+                    },
                     vimgrep_arguments = {
                         "rg",
                         "-uu",
@@ -216,6 +221,7 @@ return {
                 },
                 pickers = {
                     find_files = { no_ignore = true },
+                    grep_string = { additional_args = {"-w"} },
                     quickfix = { fname_width = 0.6 },
                     lsp_document_symbols = { fname_width = 0.6 },
                     lsp_references = { fname_width = 0.6 },
