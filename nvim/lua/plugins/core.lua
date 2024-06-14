@@ -88,7 +88,10 @@ return {
                         text = "File Explorer",
                         highlight = "Directory",
                         text_align = "left"
-                    }}
+                    }},
+                    name_formatter = function(buf)
+                        return buf.name
+                    end,
                 },
                 highlights = {
                     buffer_selected = {
@@ -109,7 +112,8 @@ return {
             require('lualine').setup{
                 -- options = { theme = "papercolor_dark" },
                 sections = {
-                    lualine_c = {{'filename', path = 1}},
+                    lualine_c = {'filename'},
+                    -- lualine_c = {{'filename', path = 1}},
                     lualine_x = {'searchcount', 'encoding', 'fileformat', 'filetype'},
                 },
             }
@@ -138,6 +142,7 @@ return {
             {"<C-f>", ":Telescope current_buffer_fuzzy_find<cr>"},
             {"fu", ":Telescope treesitter<cr>"},
             {"fx", ":Telescope quickfix<cr>"},
+            {"fh", ":Telescope quickfixhistory<cr>"},
             {"lu", ":Telescope lsp_document_symbols<cr>"},
             {"lr", ":Telescope lsp_references<cr>"},
             {"ld", ":Telescope lsp_definitions<cr>"},
