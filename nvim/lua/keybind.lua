@@ -19,6 +19,7 @@ map("c", "<M-l>", '<Right>', opt2)
 map("n", "<F2>", ':BufferDelete<cr>', opt)
 map("n", "<F3>", ':q<cr>', opt)
 map("n", "<F4>", ':w<cr>', opt)
+map("n", "<F7>", ":TigBlame<cr>", opt)
 -- 16进制模式
 map("n", "xd", ':%!xxd<cr>', opt)
 -- 复制粘贴

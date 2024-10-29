@@ -17,6 +17,7 @@ return {
     },
     {
         "tpope/vim-fugitive",
+        enabled = false,
         keys = {{"<F7>", "<cmd>Git blame<cr>"}},
     },
     {

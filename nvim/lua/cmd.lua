@@ -115,3 +115,7 @@ vim.api.nvim_create_user_command("Gtagsfs", function(ctx)
     end
 end, { desc = "search symbol via Gtags" })
 
+vim.api.nvim_create_user_command('TigBlame', function()
+    local path = vim.fn.expand("%p")
+    require('FTerm').run("tig blame " .. path)
+end, { bang = true })
