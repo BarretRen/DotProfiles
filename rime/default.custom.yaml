@@ -1,6 +1,0 @@
-patch:
-  "menu/page_size": 8
-  schema_list:
-    - schema: clover
-  "style/display_tray_icon": true
-  "style/horizontal": true

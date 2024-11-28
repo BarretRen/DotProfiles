@@ -33,6 +33,14 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "c", "cpp", "java" },
+    callback = function()
+        vim.opt.commentstring = "// %s"
+    end,
+    desc = "Change commentstring for c/c++ files",
+})
+
 -- osc52 copy text to host clipboard, nvim 0.10 supports this by default, no need this
 --[[ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     pattern = { "*" },
@@ -116,6 +124,15 @@ vim.api.nvim_create_user_command("Gtagsfs", function(ctx)
 end, { desc = "search symbol via Gtags" })
 
 vim.api.nvim_create_user_command('TigBlame', function()
-    local path = vim.fn.expand("%p")
-    require('FTerm').run("tig blame " .. path)
+    local file = vim.fn.expand("%:t")
+    local ln = vim.fn.line(".")
+    local path = vim.fn.expand("%:h")
+    local termb = require("FTerm"):new({
+        -- cmd = "bash",
+        dimensions = {
+            height = 0.9,
+            width = 0.9,
+        },
+    })
+    termb:run(string.format("cd %s && tig blame +%d %s", path, ln, file))
 end, { bang = true })

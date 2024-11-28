@@ -1,5 +1,0 @@
-patch:
-  "style/color_scheme": aqua
-  "style/horizontal": true      # 候选横排
-  "style/inline_preedit": true  # 内嵌编码（仅支持TSF）
-  "style/display_tray_icon": true  # 显示托盘图标

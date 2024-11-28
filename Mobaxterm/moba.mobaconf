@@ -9,11 +9,11 @@ LogFileFormat=
 StorePasswords=Always
 StoreSSHKeysPassphrases=1
 BackupIni=1
-LogTerminalActivity=0
-LogType=0
+LogTerminalActivity=1
+LogType=2
 LocalShell=Windows Powershell
-LogFolder=
-SkinSat=80
+LogFolder=_CurrentDrive_:\Logs
+SkinSat=29
 XAuto=0
 XKeepAlive=1
 BackspaceSendsBS=1
@@ -27,7 +27,7 @@ PromptType=2
 TrackTermActivity=1
 WarnBeforePasteMultipleLines=0
 BellType=0
-TransTerm=11
+TransTerm=0
 TransDetachedTabs=10
 X11SharedClipboard2=1
 X11OpenGL=0
@@ -43,11 +43,17 @@ DefaultNewTab=<Terminal>
 NewTabPosition=2
 ReplaceHomeTab=1
 NoTabClose=1
-AllowMultiInstances=0
+AllowMultiInstances=1
 SkinName3=Windows dark theme
-LastSession=ubuntu local|#109#0%127.0.0.1%2222%[local vm]%%0%-1%%%%%0%0%0%_ProfileDir_\.ssh\id_rsa%%-1%0%0%0%%1080%%0%0%1%%0%%%%0%-1%-1%0#JetBrains Mono%12%0%0%-1%15%187,194,207%46,36,59%81,175,239%0%-1%0%%xterm%-1%0%_Std_Colors_0_%80%24%0%1%-1%<none>%%0%0%-1%-1#0# #-1
+LastSession=debian sftp|#140#7%127.0.0.1%2222%[debian]%-1%0%%0%0%_ProfileDir_\.ssh\id_rsa%0%%1080%%%C:\Users\Lenovo\Desktop%0#JetBrains Mono%12%0%0%-1%15%88,110,117%242,241,247%255,0,0%0%-1%-1%_CurrentDrive_:\Logs%xterm%-1%0%_Std_Colors_0_%80%24%0%1%-1%<none>%%0%0%-1%-1%#0# #-1
 RightClickAssigned=1
-DarknessIntensity=80
+PuTTYSessionsAlreadyImported=1
+WSLDebianAlreadyImported=1
+DarknessIntensity=29
+SessionP=67092132624
+AdvTermSettings=
+TermSaveToTxt=1
+SCRTSessionsAlreadyImported=1
 
 [Font]
 Font2=JetBrains Mono
@@ -98,7 +104,7 @@ StrictHostKeyChecking=1
 GwUse2factor=0
 AutoStartSSHGUI=0
 SSHKeepAlive2=1
-EnableSFTP=1
+EnableSFTP=0
 RemoteMonitoring=0
 ScpPreservesDates=0
 UseGSSAPI=1
@@ -130,7 +136,7 @@ CustomDPI_1920_96=0
 IconsTheme=0
 RoundedTabs=1
 GraphicCache=1
-SidebarRight=1
+SidebarRight=0
 C10Checked=1
 C11Checked=0
 C12Checked=1
@@ -138,7 +144,7 @@ C13Checked=0
 C14Checked=0
 VisibleTabNum=1
 VisibleTabClose=1
-MenuAndButtons=2
+MenuAndButtons=0
 BtnType2=0
 
 [PopupConsole]
@@ -160,7 +166,145 @@ XINERAMA=1
 [WindowPos_DESKTOP-DRJF8KM_1920_1080_1920_1080]
 CompactMode=0
 MonitorCount=2
-Left=-1928
+Left=-8
+Top=-8
+Width=1936
+Height=1048
+Maximized=1
+SidebarVisible=1
+SidebarWidth=249
+
+[SSH_Hostkeys]
+sha256-ssh-ed25519@2222:127.0.0.1=65:95:67:8c:29:0c:67:4e:85:bd:41:bf:52:c5:a5:f8:51:f2:52:c1:a0:55:38:78:43:ac:24:45:36:59:21:70
+sha256-ssh-ed25519@2223:127.0.0.1=7f:16:06:94:29:94:93:2b:70:71:65:36:0f:8e:10:9b:f7:62:2f:47:85:d3:0a:9d:06:fc:d1:bd:b1:4e:4d:08
+
+[HotKeys]
+Show / hide popup terminal=Ctrl + Alt + P
+Execute a macro=Alt + X
+
+[Macros]
+fatfstest M 1=12:0:0:fatfstest M 1|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL1200|
+log 1 3 1=12:4:0:log 1 3 1|258:13:1835009:RETURN|
+media lcd demoui 0=12:0:0:media lcd demoui 0|258:13:1835009:RETURN|
+lcd file_display lvgl=12:4:0:lcd file_display a.jpg 0|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL3000|12:2:0:lcd file_display b.jpg 0|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL3000|12:2:0:lcd file_display c.jpg 0|258:13:1835009:RETURN|
+lcd file_display d.jpg 0=12:4:0:lcd file_display d.jpg 0|258:13:1835009:RETURN|
+demo.spi 0 3 512=12:0:0:demo.spi 0 3 512|258:13:1835009:RETURN|
+|258:13:1835009:RETURN|
+spi_test duplex 13=12:4:0:spi_test duplex 512 13000000 3|258:13:1835009:RETURN|
+cpu load=12:4:0:cpuload|258:13:1835009:RETURN|12:2:0:tasklist|258:13:1835009:RETURN|
+spi_test loop 4 10000=12:2:0:spi_test loop 4 10000|258:13:1835009:RETURN|
+iperf -s=12:2:0:iperf -s |258:13:1835009:RETURN|
+spi_test loop 2 10000=12:2:0:spi_test loop 2 10000|258:13:1835009:RETURN|
+spi_test time 2 3600000=12:2:0:spi_test time 2 3600000|258:13:1835009:RETURN|
+iperf -b 1M -i1 -t 360 -c 192.168.137.1=12:2:0:iperf -b 1M -i1 -t 360 -c 192.168.137.1|
+spi_test time 2 300000=12:2:0:spi_test time 2 300000|258:13:1835009:RETURN|
+iperf --stop=12:2:0:iperf --stop|258:13:1835009:RETURN|
+sta xiuhuap 12345678=12:0:0:sta xiuhuap 12345678|258:13:1835009:RETURN|
+iperf -c 192.168.137.1=12:2:0:iperf -c 192.168.137.1|258:13:1835009:RETURN|
+memshow=12:4:0:memshow|258:13:1835009:RETURN|12:2:0:memstack|258:13:1835009:RETURN|
+spi_test duplex 26=12:4:0:spi_test duplex 512 26000000 3|258:13:1835009:RETURN|
+spi_test duplex 6.5=12:4:0:spi_test duplex 512 6500000 3|258:13:1835009:RETURN|
+mem_test https=12:4:0:mem_test https https__DBLDOT__//10.0.0.113/key.pem|258:13:1835009:RETURN|
+mem_test threads=12:4:0:mem_test threads|258:13:1835009:RETURN|
+AT+BLE boarding=12:2:0:AT+BLE__EQQUAL__BOARDING,0201060908373233355f525848,D|258:13:1835009:RETURN|
+mem_test https 3 bin=12:4:0:mem_test https https__DBLDOT__//10.0.0.113/a.bin https__DBLDOT__//10.0.0.113/b.bin https__DBLDOT__//10.0.0.113/c.bin|258:13:1835009:RETURN|
+flushdns=12:4:0:ipconfig /flushdns|258:13:1835009:RETURN|
+416s build=12:0:0:./generate_app_config.sh hisense_airconditioner BK7231M.3.00.12.00|258:13:1835009:RETURN|
+https jd=12:4:0:https https__DBLDOT__//www.jd.com|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL1200|
+http_ota=12:4:0:http_ota http__DBLDOT__//192.168.8.59/1.txt|
+softap xiuhuap 12345678=12:4:0:softap xiuhuap 12345678|258:13:1835009:RETURN|
+
+[MacrosHotkeys]
+fatfstest M 1=0
+log 1 3 1=0
+media lcd demoui 0=0
+lcd file_display lvgl=0
+lcd file_display d.jpg 0=0
+demo.spi 0 3 512=0
+spi_test duplex 13=0
+cpu load=0
+spi_test loop 4 10000=0
+iperf -s=0
+spi_test loop 2 10000=0
+spi_test time 2 3600000=0
+iperf -b 1M -i1 -t 360 -c 192.168.137.1=0
+spi_test time 2 300000=0
+iperf --stop=0
+sta xiuhuap 12345678=0
+iperf -c 192.168.137.1=0
+memshow=0
+spi_test duplex 26=0
+spi_test duplex 6.5=0
+mem_test https=0
+mem_test threads=0
+AT+BLE boarding=0
+mem_test https 3 bin=0
+flushdns=0
+416s build=0
+https jd=0
+http_ota=0
+softap xiuhuap 12345678=0
+
+[Services]
+TFTPRootDir=_MyDocuments_\
+TFTPCheck1=1
+TFTPCheck2=1
+SpinTFTPPort=69
+SpinTFTPTimeout=3600
+CheckTFTPTimeout=1
+FTPRootDir=_MyDocuments_\
+SpinFTPPort=21
+FTPLogin=mobaxterm
+FTPCheck1=1
+FTPCheck2=0
+FTPCheck3=0
+SpinFTPTimeout=3600
+CheckFTPTimeout=1
+ChkFtpConfirmation=1
+HTTPRootDir=_MyDocuments_\
+HTTPCheck1=1
+HTTPCheck2=0
+SpinHTTPPort=443
+SpinHTTPTimeout=3600
+CheckHTTPTimeout=0
+SpinSSHPort=22
+CheckSSHTimeout=1
+SpinSSHTimeout=3600
+SpinTelnetPort=23
+CheckTelnetTimeout=1
+SpinTelnetTimeout=3600
+ChkTelnetConfirmation=1
+CheckNFSTimeout=1
+SpinNFSTimeout=3600
+CheckVNCTimeout=1
+SpinVNCTimeout=3600
+SpinVNCPort=5900
+SpinVNCHTTPPort=5800
+SpinCronTimeout=3600
+CheckCronTimeout=1
+StartCronAtStartup=0
+CheckIperfTimeout=1
+SpinIperfTimeout=3600
+
+[DiffWindowPos_1920_1080_1920_1080_96]
+FoldersWinLeft=-1629
+FoldersWinTop=321
+FoldersWinWidth=960
+FoldersWinHeight=560
+FoldersWinMaximized=0
+FoldersWinMonitorCount=2
+
+[MobaTextDiff]
+Recursive=1
+SearchPattern=
+SearchCaseSensitive=0
+SearchLeft=1
+SearchRight=1
+
+[WindowPos_DESKTOP-DRJF8KM_1920_1080]
+CompactMode=0
+MonitorCount=1
+Left=-8
 Top=-8
 Width=1936
 Height=1048
@@ -168,48 +312,72 @@ Maximized=1
 SidebarVisible=1
 SidebarWidth=240
 
+[SessionsPresets]
+8=##8%%%3%0%0%0%2#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%<none>
+0=##0%%%%%0%-1%%%%%0%%0%_ProfileDir_\.ssh\id_rsa%%%0%%%%%%0%%1%%0%%%%0%-1%-1%0#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%<none>
+
 [TopToolbarBtns]
 Btn0=Session
 Btn1=Servers
-Btn2=Sessions
-Btn3=Split
-Btn4=Settings
-Btn5=Help
-Btn6=X server
-Btn7=Exit
+Btn2=Tools
+Btn3=View
+Btn4=Split
+Btn5=MultiExec
+Btn6=Sessions
+Btn7=Settings
+Btn8=Help
+Btn9=X server
+Btn10=Exit
 
-[HotKeys]
-Show / hide popup terminal=Ctrl + Alt + P
-Execute a macro=Ctrl + R
+[EditorWindowPos_1920_1080_1920_1080_96]
+Left=0
+Top=0
+Width=1920
+Height=1032
+Maximized=0
+MonitorCount=2
 
-[Macros]
-fatfstest M 1=12:0:0:fatfstest M 1|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL1200|
-lcd file_display=12:4:0:lcd file_display a.jpg 0 480X480|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL3000|12:2:0:lcd file_display b.jpg 0 480X480|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL3000|12:2:0:lcd file_display c.jpg 0 480X480|258:13:1835009:RETURN|
-log 1 3 1=12:4:0:log 1 3 1|258:13:1835009:RETURN|
-media lcd demoui 0=12:0:0:media lcd demoui 0|258:13:1835009:RETURN|
-lcd file_display lvgl=12:4:0:lcd file_display a.jpg 0|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL3000|12:2:0:lcd file_display b.jpg 0|258:13:1835009:RETURN|0:0:0:SLEEPEQUAL3000|12:2:0:lcd file_display c.jpg 0|258:13:1835009:RETURN|
-lcd file_display a.rgb 0=12:4:0:lcd file_display a.rgb 0|258:13:1835009:RETURN|
-lcd file_display d.jpg 0=12:4:0:lcd file_display d.jpg 0|258:13:1835009:RETURN|
-
-[MacrosHotkeys]
-fatfstest M 1=0
-lcd file_display=0
-log 1 3 1=0
-media lcd demoui 0=0
-lcd file_display lvgl=0
-lcd file_display a.rgb 0=0
-lcd file_display d.jpg 0=0
+[MobaTextEditor]
+FontName3=MobaFanta
+FontLigatures3=0
+FontHeight3=-13
+GutterVisible=1
+GutterAutosize=1
+GutterShowLineNumbers=1
+GutterZeroStart=0
+GutterLeadingZeros=0
+GutterFontName=Verdana
+GutterFontSize=8
+EdgeColumn=800
+EdgeColor=16777215
+ExtraLineSpacing=0
+TabWidth=2
+BookmarkKeys=1
+BookmarksVisible=1
+Options=39866307
+WantTabs=1
+WordWrap=1
 
 [ColorThemes]
 noctis_viola=282C34,3F444A,FF6C6B,FF6C6B,98BE65,98BE65,ECBE7B,DA8548,51AFEF,51AFEF,A9A1E1,A9A1E1,46D9FF,46D9FF,BBC2CF,BBC2CF,BBC2CF,2E243B,51AFEF
 noctis_lilac=073642,002B36,DC322F,CB4B16,859900,586E75,B58900,657B83,268BD2,839496,D33682,6C71C4,2AA198,93A1A1,99CECE,EEEEEC,586E75,F2F1F7,FF0000
 
+[Bookmarks]
+SubRep=
+ImgNum=42
+COM10=#131#8%0%1115200%3%0%0%1%2%COM10  (USB-SERIAL CH340 (COM10))#JetBrains Mono%12%0%0%-1%15%187,194,207%46,36,59%81,175,239%0%-1%-1%_CurrentDrive_:\Logs%xterm%-1%0%_Std_Colors_0_%80%24%0%1%-1%<none>%%0%1%-1%-1%1101111111110000000000,x2,1,,,,,R,S,Any,0,#0# #-1
+COM3  (USB-SERIAL CH340 (COM3))=#131#8%0%1115200%3%0%0%0%2%COM3  (USB-SERIAL CH340 (COM3))#JetBrains Mono%12%0%0%-1%15%187,194,207%46,36,59%81,175,239%0%-1%-1%_CurrentDrive_:\Logs%xterm%-1%0%_Std_Colors_0_%80%24%0%1%-1%<none>%%0%1%-1%-1%#0# #-1
+COM7=#131#8%-2%1115200%3%0%0%0%2%COM7  (USB-SERIAL CH340 (COM7))#JetBrains Mono%12%0%0%-1%15%187,194,207%46,36,59%81,175,239%0%-1%-1%_CurrentDrive_:\Logs%xterm%-1%0%_Std_Colors_0_%80%24%0%1%-1%<none>%%0%1%-1%-1%1101111111110000000000,x2,1,,,,,R,S,Any,0,#0# #-1
+Debian=#109#0%127.0.0.1%2222%[debian]%%0%-1%%%%%0%0%0%_ProfileDir_\.ssh\id_rsa%%0%0%0%0%%1080%%0%0%0%%0%%%%0%-1%-1%0#JetBrainsMono NFM%12%0%0%-1%15%187,194,207%46,36,59%81,175,239%0%-1%0%<>%xterm-256color%-1%0%40,44,52%63,68,74%255,108,107%255,108,107%152,190,101%152,190,101%236,190,123%218,133,72%81,175,239%81,175,239%169,161,225%169,161,225%70,217,255%70,217,255%187,194,207%187,194,207%80%24%0%1%-1%<none>%%0%0%-1%-1%#0# #-1
+debian sftp=#140#7%127.0.0.1%2222%[debian]%-1%0%%0%0%_ProfileDir_\.ssh\id_rsa%0%%1080%%%C:\Users\Lenovo\Desktop%0#JetBrains Mono%12%0%0%-1%15%88,110,117%242,241,247%255,0,0%0%-1%-1%_CurrentDrive_:\Logs%xterm%-1%0%_Std_Colors_0_%80%24%0%1%-1%<none>%%0%0%-1%-1%#0# #-1
+PowerShell=#192#10%4%#JetBrains Mono%12%0%0%-1%15%88,110,117%242,241,247%255,0,0%0%-1%0%<>%xterm%-1%0%_Std_Colors_0_%80%24%0%1%-1%<none>%%0%0%-1%-1%#0# #-1
+
 [ImportExportSpecials]
-ExportedSettings=Home and Slash directories location|Local terminal settings|Global X server settings|SSH settings|Services settings|MobaXterm interface settings|Macros|Sessions presets|MobaTextEditor and MobaDiff settings|Custom syntaxes|Shared sessions|Suppressed message dialogs
+ExportedSettings=Home and Slash directories location|Local terminal settings|Global X server settings|SSH settings|Folders history|Services settings|MobaXterm interface settings|Sessions|Macros|Stored passwords and credentials|Sessions presets|SSH tunnels|MobaTextEditor and MobaDiff settings|Custom syntaxes|Shared sessions|Suppressed message dialogs
 mobauser@mobaserver=
-MobaVersion=23.0
-ExportDate=2023-11-07
-ExportTime=16:49:27
+MobaVersion=24.0
+ExportDate=2024-11-09
+ExportTime=11:01:18
 ExportUsername=Lenovo
 ExportComputer=DESKTOP-DRJF8KM
 
