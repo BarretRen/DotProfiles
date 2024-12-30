@@ -40,7 +40,7 @@
     cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
     ;cmd = meld"$LOCAL""$BASE""$REMOTE" --output"$MERGED"
 [user]
-    email = Barret.Ren@outlook.com
+    email = renxiuhu@outlook.com
     name = Barret Ren
 ; use other config for certain folder
 [includeIf "gitdir:~/repos/"]

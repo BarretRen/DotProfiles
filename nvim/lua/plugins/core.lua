@@ -11,7 +11,11 @@ return {
         config = function()
             require("FTerm").setup{
                 cmd = vim.g.sysop == "win" and "cmd" or "bash",
-                blend = 0,
+                blend = 20,
+                dimensions = {
+                    height = 0.9,
+                    width = 0.9,
+                },
             }
         end
     },
@@ -159,6 +163,7 @@ return {
             require('telescope').setup{
                 defaults = {
                     -- wrap_results = true,
+                    winblend = 20,
                     layout_strategy = 'vertical',
                     layout_config = {
                         vertical = {

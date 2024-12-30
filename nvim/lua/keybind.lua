@@ -61,3 +61,5 @@ map("n", "tc", ":tabclose<cr>", opt)
 -- builtin commenting
 map("n", "<C-_>", "gcc", opt3)
 map("v", "<C-_>", "gc", opt3)
+-- exit terminal mode
+map("t", "<Esc>", "<C-\\><C-n>", opt)
