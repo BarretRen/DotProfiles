@@ -130,6 +130,7 @@ return {
         config = function()
             require("persisted").setup({
                 use_git_branch = false,
+                autostart = false,
                 autosave = false,
             })
         end
@@ -148,6 +149,7 @@ return {
             {"fu", ":Telescope treesitter<cr>"},
             {"fx", ":Telescope quickfix<cr>"},
             {"fh", ":Telescope quickfixhistory<cr>"},
+            {"fl", ":Telescope loclist<cr>"},
             {"lu", ":Telescope lsp_document_symbols<cr>"},
             {"lr", ":Telescope lsp_references<cr>"},
             {"ld", ":Telescope lsp_definitions<cr>"},
@@ -228,6 +230,14 @@ return {
                         "%.met",
                         "smalljre_*/*",
                         ".vale/",
+                    },
+                    mappings = {
+                        i = {
+                            ["<C-l>"] = require("telescope.actions").send_to_loclist,
+                        },
+                        n = {
+                            ["<C-l>"] = require("telescope.actions").send_to_loclist,
+                        },
                     },
                 },
                 pickers = {
