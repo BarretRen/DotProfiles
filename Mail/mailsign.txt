@@ -1,3 +1,4 @@
+sign:
 <br/>
 <hr/>
 <p style="font-family:Microsoft Yahei;color:#696969;font-size:13px;">
@@ -8,3 +9,13 @@ English Corporation<br/>
 Address<br/>
 Mobile:XXX<br/>
 </p>
+
+reply quote:
+<br>
+<div style="white-space: pre-line;border-top: 1px solid #e1e1e1; padding-top: 6px; margin-top: 10px; font-size: 11.5pt;">
+<b>发件人:</b> %%1
+<b>发送时间:</b> %%5
+<b>收件人:</b> %%2
+{{<b>抄送:</b> %%3}}
+<b>主题:</b> Re: %%4
+</div>

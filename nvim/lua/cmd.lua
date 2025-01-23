@@ -127,12 +127,13 @@ vim.api.nvim_create_user_command('TigBlame', function()
     local file = vim.fn.expand("%:t")
     local ln = vim.fn.line(".")
     local path = vim.fn.expand("%:h")
-    local termb = require("FTerm"):new({
-        -- cmd = "bash",
-        dimensions = {
-            height = 0.9,
-            width = 0.9,
-        },
-    })
-    termb:run(string.format("cd %s && tig blame +%d %s", path, ln, file))
+    vim.cmd("terminal " .. string.format("cd %s && tig blame +%d %s", path, ln, file))
+    -- local termb = require("FTerm"):new({
+    --     -- cmd = "bash",
+    --     dimensions = {
+    --         height = 0.9,
+    --         width = 0.9,
+    --     },
+    -- })
+    -- termb:run(string.format("cd %s && tig blame +%d %s", path, ln, file))
 end, { bang = true })
