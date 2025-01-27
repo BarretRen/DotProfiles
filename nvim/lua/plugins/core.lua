@@ -113,11 +113,14 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
+        dependencies = {
+            "arkav/lualine-lsp-progress",
+        },
         config = function()
             require('lualine').setup{
                 -- options = { theme = "papercolor_dark" },
                 sections = {
-                    lualine_c = {'filename'},
+                    lualine_c = {'filename', 'lsp_progress'},
                     -- lualine_c = {{'filename', path = 1}},
                     lualine_x = {'searchcount', 'encoding', 'fileformat', 'filetype'},
                 },

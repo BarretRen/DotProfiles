@@ -69,7 +69,7 @@ return {
                 cmd = {
                     "clangd",
                     "--background-index",
-                    "--compile-commands-dir=build",
+                    -- "--compile-commands-dir=build",
                     "-j=4",
                     "--all-scopes-completion",
                     "--completion-style=detailed",
@@ -80,11 +80,6 @@ return {
                     "--header-insertion-decorators",
                     "--pch-storage=memory"
                 },
-                on_attach = function(client, bufnr)
-                    if client.server_capabilities["documentSymbolProvider"] then
-                        require("nvim-navic").attach(client, bufnr)
-                    end
-                end,
             }
         end,
     },
@@ -124,20 +119,6 @@ return {
                     { name = 'buffer' },
                 })
             }
-        end,
-    },
-    {
-        "utilyre/barbecue.nvim",
-        enabled = false,
-        dependencies = {
-            "SmiteshP/nvim-navic",
-        },
-        ft = { "c", "cpp"},
-        config = function()
-            require("barbecue").setup({
-                attach_navic = false, -- prevent barbecue from automatically attaching nvim-navic
-                show_navic = true,
-            })
         end,
     },
 }
