@@ -25,6 +25,7 @@
     dh = diff HEAD
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
     unstage = restore --staged
+    refcl = !git reflog expire --expire-unreachable=now --all | git gc --prune=now
 [color]
     branch = auto
     diff = auto
