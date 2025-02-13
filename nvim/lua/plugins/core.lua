@@ -14,7 +14,7 @@ return {
                 blend = 20,
                 dimensions = {
                     height = 0.9,
-                    width = 0.9,
+                    -- width = 0.9,
                 },
             }
         end
@@ -63,13 +63,19 @@ return {
         keys = {
             {"fm", "<cmd>Format<cr>"},
         },
-        enabled = false,
+        enabled = true,
         config = function()
             require("formatter").setup {
                 filetype = {
                     -- configure formatter for each filetype
                     markdown = {
                         require("formatter.filetypes.markdown").prettier,
+                    },
+                    c = {
+                        require("formatter.filetypes.c").clangformat,
+                    },
+                    cpp = {
+                        require("formatter.filetypes.cpp").clangformat,
                     },
                 },
             }

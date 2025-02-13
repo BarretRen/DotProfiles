@@ -94,6 +94,10 @@ vim.api.nvim_create_user_command("Gtagsfr", function(ctx)
     local symbol = ctx.args
     if symbol:len() ~= 0 then
         vim.cmd("Gtags -r " .. symbol)
+        local qf_counts = vim.fn.getqflist({size = true}).size
+        if qf_counts == 0 then
+            vim.cmd("Gtags -s " .. symbol)
+        end
         vim.cmd("ShowJumpQf")
     end
 end, { bang=true, nargs = "+", complete = "custom,GtagsCandidate", desc = "symbol reference via Gtags" })
