@@ -1,9 +1,3 @@
-[branch]
-    autosetuprebase = always
-[core]
-    autocrlf = false
-    editor = nvim
-    quotepath = false
 [alias]
     br = branch
     brd = branch -D
@@ -26,23 +20,59 @@
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
     unstage = restore --staged
     refcl = !git reflog expire --expire-unreachable=now --all | git gc --prune=now
+[branch]
+    autosetuprebase = always
+    sort = -committerdate
 [color]
     branch = auto
     diff = auto
     interactive = auto
     status = auto
     ui = auto
+[column]
+    ui = auto
+[core]
+    autocrlf = false
+    editor = nvim
+    quotepath = false
+    whitespace = cr-at-eol
+[diff]
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+[help]
+    autocorrect = prompt
+[includeIf "gitdir:~/repos/"]
+    path = ~/.gitconfig-work
 [init]
-    defaultBranch = master
+    defaultBranch = main
 [merge]
-    tool = meld
+    conflictstyle = zdiff3
+    #tool = meld
 [mergetool "meld"]
     # Choose one of these 2 lines (not both!) explained below.
     cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
     ;cmd = meld"$LOCAL""$BASE""$REMOTE" --output"$MERGED"
+[pull]
+    rebase = true
+[push]
+    default = simple
+    autoSetupRemote = true
+    followTags = true
+[rebase]
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
+[rerere]
+    enabled = true
+    autoupdate = true
+[tag]
+    sort = version:refname
 [user]
     email = renxiuhu@outlook.com
-    name = Barret Ren
-; use other config for certain folder
-[includeIf "gitdir:~/repos/"]
-    path = ~/.gitconfig-work
+    name = renxiuhu
