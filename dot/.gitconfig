@@ -1,3 +1,6 @@
+[user]
+    email = renxiuhu@outlook.com
+    name = renxiuhu
 [alias]
     br = branch
     brd = branch -D
@@ -67,12 +70,8 @@
 [rebase]
     autoSquash = true
     autoStash = true
-    updateRefs = true
 [rerere]
     enabled = true
     autoupdate = true
 [tag]
     sort = version:refname
-[user]
-    email = renxiuhu@outlook.com
-    name = renxiuhu
