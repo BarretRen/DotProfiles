@@ -89,9 +89,56 @@ return {
     {
         "akinsho/bufferline.nvim",
         config = function()
+            local inactive_bg = "#606060"
+            local inactive_fg = "#e0e0e0"
+            local visible_bg = "#e0e0e0"
+            local visible_fg = "#404040"
+            local selected_bg = "#f3f3f3"
+            local selected_fg = "#000000"
+            local background  = "#000000"
+            local inactive_set = { fg = inactive_fg, bg = inactive_bg, }
+            local visible_set = { fg = visible_fg, bg = visible_bg, }
+            local active_set = { fg = selected_fg, bg = selected_bg, }
             require("bufferline").setup {
+                highlights = {
+                    background = inactive_set,
+                    buffer_visible = visible_set,
+                    buffer_selected = active_set,
+
+                    numbers = inactive_set,
+                    numbers_visible = visible_set, 
+                    numbers_selected = active_set,
+
+                    close_button = inactive_set,
+                    close_button_visible = visible_set, 
+                    close_button_selected = active_set,
+
+                    tab_selected = visible_set,
+
+                    separator = { fg = background, bg = inactive_bg },
+                    separator_visible = { fg = background, bg = visible_bg },
+                    separator_selected = { fg = background, bg = selected_bg },
+
+                    modified = { fg = '#ff0000', bg = inactive_bg, },
+                    modified_visible = { fg = '#ff0000', bg = visible_bg, },
+                    modified_selected = { fg = '#ff0000', bg = selected_bg, },
+
+                    fill = { bg = background, }
+                },
                 options = {
+                    themable = true,
+                    style_preset = {
+                        require("bufferline").style_preset.no_italic,
+                        require("bufferline").style_preset.no_bold,
+                    },
+                    separator_style = 'slant',
+                    indicator = { style = 'none'},
                     mode = "buffers",
+                    -- show_buffer_icons = false,
+                    -- show_buffer_close_icons = false,
+                    -- show_close_icon = false,
+                    show_tab_indicators = true,
+                    tab_size = 5,
                     diagnostics = "false", --不显示告警
                     --左侧让出 nvim-tree 的位置
                     offsets = {{
@@ -103,16 +150,6 @@ return {
                     name_formatter = function(buf)
                         return buf.name
                     end,
-                },
-                highlights = {
-                    buffer_selected = {
-                        fg = '#FF5733',
-                        italic = false,
-                    },
-                    tab_selected = {
-                        fg = '#F1C40F',
-                        bg = '#5D6D7E',
-                    },
                 }
             }
         end,
