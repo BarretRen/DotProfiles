@@ -1,0 +1,39 @@
+patch:
+  style:
+    color_scheme: Microsoft
+    display_tray_icon: false # 显示系统托盘图标,不能打开, 会卡死系统
+    inline_preedit: true # 在光标位置显示预编辑文本
+    preedit_type: composition # 预编辑文本类型
+    mouse_hover_ms: 0 # 鼠标悬停选词响应时间
+    paging_on_scroll: false # 鼠标滚轮翻页候选词
+    fullscreen: false # 全屏候选词窗口
+    horizontal: true # 横排显示
+    font_face: "Microsoft YaHei" # 主要字体
+    font_point: 13 # 主要字体大小
+    label_font_point: 13 # 标签字体大小
+    comment_font_point: 13 # 注释字体大小
+
+    layout: # 此行之下为布局设置
+      shadow_offset_x: 5 # 阴影 X 轴偏移
+      shadow_offset_y: 5 # 阴影 Y 轴偏移
+      shadow_radius: 10 # 阴影半径
+      border_width: 0 # 边框宽度
+      margin_x: 12 # 候选项左右边距
+      margin_y: 12 # 候选项上下边距
+      hilite_padding: 12 # 激活候选项背景色高度
+      hilite_spacing: 3 # 序号和候选项之间的间隔
+      spacing: 10 # 候选项间距
+      candidate_spacing: 24 # 候选项内部间距
+      round_corner: 0 # 圆角幅度，0为直角
+
+  "preset_color_schemes/Microsoft": # 此行之下为配色设置
+    name: "Microsoft" # 配色名称
+    author: "XNOM" # 作者名称
+    text_color: 0xD77800 # 内选区文字色
+    hilited_text_color: 0x000000 # 内选区编码色
+    hilited_back_color: 0xFFFFFF # 内选区背景色
+    hilited_candidate_text_color: 0xFFFFFF # 激活候选项文字色
+    hilited_candidate_back_color: 0xD77800 # 激活候选项背景色
+    candidate_text_color: 0x000000 # 其他候选项文字颜色
+    comment_text_color: 0x000000 # 其他候选项提示色
+

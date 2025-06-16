@@ -1,0 +1,26 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.17.4
+  generator: "Rime::SwitcherSettings"
+  modified_time: "Thu Jun 12 09:41:56 2025"
+  rime_version: 1.13.1
+patch:
+  schema_list:
+    - {schema: rime_ice}
+  "menu/page_size": 9
+  switcher:
+    hotkeys:
+      - Control+grave
+  key_binder:
+    bindings:
+      - { when: composing, accept: Tab, send: Shift+Right } # 切换光标至下一个拼音
+      - { when: has_menu, accept: period, send: Page_Down } # 句号向下翻页
+      - { when: has_menu, accept: comma, send: Page_Up } # 逗号向上翻页
+      - { when: always, toggle: ascii_punct, accept: Control+period } # 切换中英标点
+  ascii_composer:
+    switch_key:
+      Shift_L: noop
+      Shift_R: noop
+      Control_L: noop
+      Control_R: noop
+      Caps_Lock: clear
