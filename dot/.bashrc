@@ -32,6 +32,28 @@ export SUDO_EDITOR="nvim"
 export GTAGSOBJDIRPREFIX=~/.cache/gtags/
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
+#fzf config
+source /usr/share/doc/fzf/examples/key-bindings.bash
+# 需要安装fd-find
+export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# 历史命令搜索配置（优化 Ctrl+R）
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}'
+  --preview-window down:3:hidden:wrap
+  --bind '?:toggle-preview'
+  --color header:italic
+  --header 'Press ? to show preview'
+"
+# 目录切换优化（Alt+C）
+export FZF_ALT_C_COMMAND="fdfind --type d --hidden --exclude .git"
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+# 默认配置
+export FZF_DEFAULT_OPTS="
+  --layout=reverse --height 40% --border
+"
+#end fzf config
+
 # alias
 alias vi="nvim"
 alias v="nvim"
@@ -43,7 +65,8 @@ alias ls="ls --color=auto"
 alias ll="ls -lh"
 alias gfile="rg -u -tc -tcpp -tyang -tjava --files > gtags.file && gtags -f gtags.file && rm gtags.file"
 alias rgc="rg -u -tc -tcpp -tyang -tjava"
-alias gtags="gtags -O"
+alias gtags="gtags --skip-symlink -O"
 alias penv="source ~/.venv/bin/activate"
 alias gnomew="XDG_SESSION_TYPE=wayland dbus-run-session gnome-session"
+alias wget="wget2"
 
