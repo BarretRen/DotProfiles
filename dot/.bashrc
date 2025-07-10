@@ -22,8 +22,8 @@ export LS_COLORS="rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=3
 # 	. /usr/lib/git-core/git-sh-prompt
 # fi
 export TERM="xterm-256color"
-PS1='\[\033[01;32m\]\u\[\033[01;34m\] \w\[\033[31m\]$(__git_ps1 "(%s)")
-\[\033[01;34m\]$\[\033[00m\] '
+PS1='\033[33m┌\033[0m\[\033[01;32m\]\u\[\033[01;34m\] \w\[\033[31m\]$(__git_ps1 "(%s)")\n\033[33m└\033[0m>'
+# PS1='\[\033[01;32m\]\u\[\033[01;34m\] \w\[\033[31m\]$(__git_ps1 "(%s)")\n\[\033[01;34m\]$\[\033[00m\] '
 
 export EDITOR="nvim"
 export SUDO_EDITOR="nvim"
