@@ -48,6 +48,7 @@
     prune = true
     pruneTags = true
     all = true
+    showProgress = true
 [help]
     autocorrect = prompt
 [includeIf "gitdir:~/repos/"]
