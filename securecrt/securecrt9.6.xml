@@ -122,7 +122,7 @@
 		<string name="Default Download Directory V2"/>
 		<string name="Directory Permissions"/>
 		<dword name="Disable Aero Peek">0</dword>
-		<dword name="Disable All Printing">0</dword>
+		<dword name="Disable All Printing">1</dword>
 		<dword name="Disable Close">0</dword>
 		<dword name="Disable Directory Tree Detection">0</dword>
 		<dword name="Disable Pass Through Printing">0</dword>
