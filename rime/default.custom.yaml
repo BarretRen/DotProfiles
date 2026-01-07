@@ -18,6 +18,7 @@ patch:
       - { when: has_menu, accept: comma, send: Page_Up } # 逗号向上翻页
       - { when: always, toggle: ascii_punct, accept: Control+period } # 切换中英标点
   ascii_composer:
+    good_old_caps_lock: true
     switch_key:
       Shift_L: noop
       Shift_R: noop
