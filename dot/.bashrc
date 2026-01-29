@@ -22,13 +22,14 @@ export LS_COLORS="rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=3
 # 	. /usr/lib/git-core/git-sh-prompt
 # fi
 export TERM="xterm-256color"
-PS1='\033[33m┌\033[0m\[\033[01;32m\]\u\[\033[01;34m\] \w\[\033[31m\]$(__git_ps1 "(%s)")\n\033[33m└\033[0m>'
-# PS1='\[\033[01;32m\]\u\[\033[01;34m\] \w\[\033[31m\]$(__git_ps1 "(%s)")\n\[\033[01;34m\]$\[\033[00m\] '
+# PS1='\033[33m┌\033[0m\[\033[01;32m\]\u\[\033[01;34m\] \w\[\033[31m\]$(__git_ps1 "(%s)")\n\033[33m└\033[0m>'
+PS1='\[\033[01;32m\]\u\[\033[01;34m\] \w\[\033[31m\]$(__git_ps1 "(%s)")\n\[\033[01;34m\]$\[\033[00m\] '
 
 export EDITOR="nvim"
 export SUDO_EDITOR="nvim"
 #export GTAGSCONF="$HOME/.local/gtags/share/gtags/gtags.conf"
 #export GTAGSLABEL=pygments
+export XDG_CACHE_HOME="$HOME/.cache"
 export GTAGSOBJDIRPREFIX=~/.cache/gtags/
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
@@ -65,7 +66,7 @@ alias ls="ls --color=auto"
 alias ll="ls -lh"
 alias gfile="rg -u -tc -tcpp -tyang -tjava --files > gtags.file && gtags -f gtags.file && rm gtags.file"
 alias rgc="rg -u -tc -tcpp -tyang -tjava"
-alias gtags="gtags --skip-symlink -O"
+alias gtags="gtags --skip-symlink --skip-unreadable -O"
 alias penv="source ~/.venv/bin/activate"
 alias gnomew="XDG_SESSION_TYPE=wayland dbus-run-session gnome-session"
 alias wget="wget2"

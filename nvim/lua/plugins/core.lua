@@ -95,7 +95,7 @@ return {
             local visible_fg = "#404040"
             local selected_bg = "#f3f3f3"
             local selected_fg = "#000000"
-            local background  = "#000000"
+            local background  = "#606060"
             local inactive_set = { fg = inactive_fg, bg = inactive_bg, }
             local visible_set = { fg = visible_fg, bg = visible_bg, }
             local active_set = { fg = selected_fg, bg = selected_bg, }

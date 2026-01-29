@@ -1,11 +1,12 @@
 local colorscheme
 local ctime = os.date("*t")
 if ctime.hour < 17 and ctime.hour >= 8 then -- 8 am ~ 6 pm
-    colorscheme = "noctis_bordo"
-    -- colorscheme = "noctis_hibernus"
+    -- colorscheme = "noctis_minimus"
+    colorscheme = "noctis_lilac"
     -- vim.opt.background = "light"
 else
-    colorscheme = "noctis_bordo"
+    colorscheme = "noctis_minimus"
+    -- colorscheme = "noctis_lilac"
     -- vim.opt.background = "dark"
 end
 
