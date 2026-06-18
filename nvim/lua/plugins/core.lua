@@ -3,23 +3,6 @@ return {
         "talha-akram/noctis.nvim",
     },
     {
-        "numToStr/FTerm.nvim",
-        keys = {
-            {"<C-j>", "<cmd>lua require(\"FTerm\").toggle()<cr>"},
-            {"<C-j>", "<cmd>lua require(\"FTerm\").toggle()<cr>", mode="t"},
-        },
-        config = function()
-            require("FTerm").setup{
-                cmd = vim.g.sysop == "win" and "cmd" or "bash",
-                blend = 20,
-                dimensions = {
-                    height = 0.9,
-                    -- width = 0.9,
-                },
-            }
-        end
-    },
-    {
         "tpope/vim-fugitive",
         enabled = false,
         keys = {{"<F7>", "<cmd>Git blame<cr>"}},
@@ -140,9 +123,9 @@ return {
                     show_tab_indicators = true,
                     tab_size = 5,
                     diagnostics = "false", --不显示告警
-                    --左侧让出 nvim-tree 的位置
+                    --左侧让出 snacks_picker_list 的位置
                     offsets = {{
-                        filetype = "NvimTree",
+                        filetype = "snacks_picker_list",
                         text = "File Explorer",
                         highlight = "Directory",
                         text_align = "left"
@@ -171,222 +154,126 @@ return {
         end,
     },
     {
-        "olimorris/persisted.nvim",
-        lazy = true,
-        config = function()
-            require("persisted").setup({
-                use_git_branch = false,
-                autostart = false,
-                autosave = false,
-            })
-        end
-    },
-    {
-        "nvim-telescope/telescope.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope-live-grep-args.nvim"
-        },
-        keys = {
-            {"<F12>", "<cmd>Telescope oldfiles<cr>"},
-            {"<C-p>", ":Telescope find_files<cr>"},
-            {"<C-b>", ":Telescope buffers<cr>"},
-            {"<C-f>", ":Telescope current_buffer_fuzzy_find<cr>"},
-            {"fu", ":Telescope treesitter<cr>"},
-            {"fx", ":Telescope quickfix<cr>"},
-            {"fh", ":Telescope quickfixhistory<cr>"},
-            {"fl", ":Telescope loclist<cr>"},
-            {"lu", ":Telescope lsp_document_symbols<cr>"},
-            {"lr", ":Telescope lsp_references<cr>"},
-            {"ld", ":Telescope lsp_definitions<cr>"},
-            {"ls", ":Telescope lsp_dynamic_workspace_symbols<cr>"},
-            {"wp", ":Telescope persisted<cr>"},
-            {"wk", ":Telescope keymaps<cr>"},
-            {"rg", ":Telescope live_grep_args<cr>"},
-            {"rw", ":Telescope grep_string<cr>"},
-        },
-        config = function()
-            require("telescope").load_extension("persisted")
-            require("telescope").load_extension("live_grep_args")
-            require('telescope').setup{
-                defaults = {
-                    -- wrap_results = true,
-                    winblend = 20,
-                    layout_strategy = 'vertical',
-                    layout_config = {
-                        vertical = {
-                            width = 0.9,
-                            preview_cutoff = 0,
-                        },
-                    },
-                    vimgrep_arguments = {
-                        "rg",
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        opts = {
+            picker = {
+                winblend = 20,
+                layout = {
+                    preset = "vertical",
+                    width = 0.9,
+                    preview = { cutoff = 0 },
+                },
+                ignore = {
+                    "vendor/*",
+                    "%.lock",
+                    "__pycache__/*",
+                    "%.sqlite3",
+                    "%.ipynb",
+                    "node_modules/*",
+                    "%.jpg", "%.jpeg", "%.png", "%.svg", "%.otf", "%.ttf",
+                    ".git/",
+                    "%.webp",
+                    ".dart_tool/",
+                    ".github/",
+                    ".gradle/",
+                    ".idea/",
+                    ".settings/",
+                    ".vscode/",
+                    "__pycache__/",
+                    "build/",
+                    "env/",
+                    "gradle/",
+                    "node_modules/",
+                    "target/",
+                    "%.pdb", "%.dll", "%.class", "%.exe", "%.cache",
+                    "%.ico", "%.pdf", "%.dylib", "%.jar", "%.docx", "%.met",
+                    "smalljre_*/*",
+                    ".vale/",
+                },
+                grep = {
+                    args = {
                         "-uu",
-                        -- "-w",
                         "--color=never",
                         "--no-heading",
                         "--with-filename",
                         "--line-number",
                         "--column",
-                        "--case-sensitive"
-                    },
-                    path_display = {
-                        "truncate"
-                    },
-                    preview = {
-                        treesitter = false,
-                    },
-                    file_ignore_patterns = {
-                        "vendor/*",
-                        "%.lock",
-                        "__pycache__/*",
-                        "%.sqlite3",
-                        "%.ipynb",
-                        "node_modules/*",
-                        "%.jpg",
-                        "%.jpeg",
-                        "%.png",
-                        "%.svg",
-                        "%.otf",
-                        "%.ttf",
-                        ".git/",
-                        "%.webp",
-                        ".dart_tool/",
-                        ".github/",
-                        ".gradle/",
-                        ".idea/",
-                        ".settings/",
-                        ".vscode/",
-                        "__pycache__/",
-                        "build/",
-                        "env/",
-                        "gradle/",
-                        "node_modules/",
-                        "target/",
-                        "%.pdb",
-                        "%.dll",
-                        "%.class",
-                        "%.exe",
-                        "%.cache",
-                        "%.ico",
-                        "%.pdf",
-                        "%.dylib",
-                        "%.jar",
-                        "%.docx",
-                        "%.met",
-                        "smalljre_*/*",
-                        ".vale/",
-                    },
-                    mappings = {
-                        i = {
-                            ["<C-l>"] = require("telescope.actions").send_to_loclist,
-                        },
-                        n = {
-                            ["<C-l>"] = require("telescope.actions").send_to_loclist,
-                        },
+                        "--case-sensitive",
                     },
                 },
-                pickers = {
-                    find_files = { no_ignore = true },
-                    grep_string = { additional_args = {"-w"} },
-                    quickfix = { fname_width = 0.6 },
-                    lsp_document_symbols = { fname_width = 0.6 },
-                    lsp_references = { fname_width = 0.6 },
-                    lsp_definitions = { fname_width = 0.6 },
-                    lsp_dynamic_workspace_symbols = { fname_width = 0.6 },
+            },
+            session = {
+                autosave = false,
+                autoload = false,
+            },
+             -- ===== explorer 文件管理器（替代 oil.nvim / nvim-tree） =====
+            explorer = {
+                -- 是否显示隐藏文件（原 nvim-tree 默认不显示，但可开启）
+                hidden = true,
+                -- 窗口宽度（与之前 nvim-tree 的 width = 40 一致）
+                width = 40,
+                -- 自动关闭 explorer 当打开文件时（保持行为与之前类似）
+                auto_close = false,
+                -- 显示 git 状态（原 nvim-tree 禁用了，此处也禁用）
+                git = false,
+                -- 是否在 root 目录显示项目名（类似原 root_folder_label）
+                show_root = true,
+                -- 排序方式
+                sort = { "type", "name" },
+                -- 快捷键映射（可保留默认或自定义）
+                mappings = {
+                    ["<CR>"] = "open",
+                    ["<C-c>"] = "close",
+                    ["<C-h>"] = "parent",
+                    ["<C-l>"] = "refresh",
                 },
-                --pickers = vim.tbl_extend("force", picker_config, {
-                --})
-                extensions = {
-                    persisted = {
-                        layout_config = { width = 0.55, height = 0.55 }
-                    }
+                -- 启动时自动聚焦
+                focus = true,
+            },
+            -- ===== terminal 浮动终端（替代 FTerm） =====
+            terminal = {
+                -- 可选配置，默认已合理
+                win = {
+                    style = "float",
+                    relative = "editor",
+                    width = 0.7,
+                    height = 0.8,
+                    row = 0.1,
+                    col = 0.15,
+                    blend = 30,
+                    border = "rounded",
+                    title = "Terminal",
                 },
-            }
-            vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
-        end,
-    },
-    {
-        "nvim-tree/nvim-tree.lua",
-        keys = {{"nw", "<cmd>NvimTreeToggle<cr>"}},
-        dependencies = {
-            "nvim-tree/nvim-web-devicons"
+                -- 默认 shell 使用系统配置，也可指定
+                -- cmd = vim.g.sysop == "win" and "cmd" or "bash",
+            },
         },
-        config = function()
-            require'nvim-tree'.setup {
-                -- 不显示 git 状态图标
-                git = {
-                    enable = false
-                },
-                update_cwd = true,
-                update_focused_file = {
-                    enable = true,
-                    update_cwd = true,
-                    update_root = true,
-                    ignore_list = { "FTerm", "term" },
-                },
-                view = {
-                    -- 宽度
-                    width = 40,
-                    -- 也可以 'right'
-                    side = 'left',
-                    -- 不显示行数
-                    number = false,
-                    relativenumber = false,
-                },
-                renderer = {
-                    root_folder_label = true,
-                },
-                actions = {
-                    open_file = {
-                        -- 首次打开大小适配
-                        resize_window = true,
-                        -- 打开文件时关闭
-                        quit_on_open = false,
-                    },
-                },
-            }
-        end,
-    },
-    {
-        "nvim-pack/nvim-spectre",
-        enabled = false,
         keys = {
-            {"rg", "<cmd>lua require('spectre').toggle()<cr>"},
-            {"sw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>"},
-            {"sw", "<esc><cmd>lua require('spectre').open_visual()<cr>", mode="v"},
-            {"sf", "<cmd>lua require('spectre').open_file_search({select_word=true})<cr>"},
+            { "<F12>", function() require("snacks").picker.recent() end, desc = "Find oldfiles" },
+            { "<C-p>", function() require("snacks").picker.files() end, desc = "Find files" },
+            { "<C-b>", function() require("snacks").picker.buffers() end, desc = "Find buffers" },
+            { "<C-f>", function() require("snacks").picker.lines() end, desc = "Find in current buffer" },
+            { "fu", function() require("snacks").picker.treesitter() end, desc = "Treesitter symbols" },
+            { "fx", function() require("snacks").picker.qflist() end, desc = "Quickfix list" },
+            -- 原 fh 为 quickfixhistory，snacks 无直接对应，暂时映射为 quickfix
+            { "fh", function() require("snacks").picker.qflist() end, desc = "Quickfix (no history)" },
+            { "fl", function() require("snacks").picker.loclist() end, desc = "Loclist" },
+            { "lu", function() require("snacks").picker.lsp_symbols() end, desc = "LSP document symbols" },
+            { "lr", function() require("snacks").picker.lsp_references() end, desc = "LSP references" },
+            { "ld", function() require("snacks").picker.lsp_definitions() end, desc = "LSP definitions" },
+            { "ls", function() require("snacks").picker.lsp_workspace_symbols() end, desc = "LSP workspace symbols" },
+            { "wp", function() require("snacks").picker.sessions() end, desc = "Sessions" },
+            { "wk", function() require("snacks").picker.keymaps() end, desc = "Keymaps" },
+            { "rg", function() require("snacks").picker.grep() end, desc = "Live grep" },
+            { "rw", function() require("snacks").picker.grep_word() end, desc = "Grep word under cursor" },
+            { "nw", function() require("snacks").picker.explorer() end, desc = "Open file explorer" },
+            -- 正常模式下 toggle 终端
+            { "<C-j>", function() require("snacks").terminal.toggle() end, desc = "Toggle terminal" },
+            -- 终端模式下也映射 <C-j> 退出终端（或 toggle 回 normal）
+            { "<C-j>", function() require("snacks").terminal.toggle() end, mode = "t", desc = "Toggle terminal" },
         },
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-        config = function()
-            require('spectre').setup({
-                mapping={
-                    ['toggle_search_whole'] = {
-                        map = "tw",
-                        cmd = "<cmd>lua require('spectre').change_options('search-whole')<CR>",
-                        desc = "toggle search whole word"
-                    },
-                },
-                find_engine = {
-                    ['rg'] = {
-                        options = {
-                            ['hidden'] = {
-                                value="-uu",
-                                desc="hidden file",
-                                icon="[H]"
-                            },
-                            ['search-whole'] = {
-                                value= "--word-regexp",
-                                icon="[W]",
-                                desc="search whole word"
-                            },
-                        },
-                    },
-                },
-            })
-        end,
     },
     {
         "numToStr/Comment.nvim",

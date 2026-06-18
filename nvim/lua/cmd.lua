@@ -106,9 +106,10 @@ vim.api.nvim_create_user_command("ShowJumpQf", function(ctx)
     if qf_counts == 1 then
         vim.cmd("cc 1")
     elseif qf_counts > 1 then
-        vim.cmd("Telescope quickfix")
+        -- 原: vim.cmd("Telescope quickfix")
+        vim.cmd('lua require("snacks").picker.qflist()')
     end
-end, { desc = "check if need to shouw telescope quickfix or jump to first one" })
+end, { desc = "check if need to show snacks quickfix or jump to first one" })
 
 vim.api.nvim_create_user_command("Gtagsfd", function(ctx)
     local symbol = ctx.args
