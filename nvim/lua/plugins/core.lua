@@ -159,11 +159,35 @@ return {
         lazy = false,
         opts = {
             picker = {
+                history = { enabled = false },
                 winblend = 20,
                 layout = {
-                    preset = "vertical",
-                    width = 0.9,
-                    preview = { cutoff = 0 },
+                    preset = "mytelescope",
+                },
+                layouts = {
+                    mytelescope = {
+                        reverse = true,
+                        layout = {
+                            box = "horizontal",
+                            backdrop = false,
+                            width = 0.9,
+                            height = 0.9,
+                            border = "none",
+                            {
+                                box = "vertical",
+                                { win = "list", title = " Results ", title_pos = "center", border = true },
+                                { win = "input", height = 1, border = true, title = "{title} {live} {flags}", title_pos = "center" },
+                            },
+                            {
+                                win = "preview",
+                                title = "{preview:Preview}",
+                                width = 0.45,
+                                border = true,
+                                title_pos = "center",
+                                cutoff = 100,
+                            },
+                        },
+                    },
                 },
                 ignore = {
                     "vendor/*",
@@ -192,21 +216,33 @@ return {
                     "smalljre_*/*",
                     ".vale/",
                 },
-                grep = {
-                    args = {
-                        "-uu",
-                        "--color=never",
-                        "--no-heading",
-                        "--with-filename",
-                        "--line-number",
-                        "--column",
-                        "--case-sensitive",
+                sources = {
+                    explorer = {
+                        show_root = true,
+                        git_status = false,
+                        git_status_open = false,
+                        git_untracked = false,
+                    },
+                    projects = {
+                        session = false,
+                    },
+                    grep = {
+                        debounce = 1000,   -- 停止输入 1s 后才触发搜索
+                        args = {
+                            "-u",
+                            "--color=never",
+                            "--no-heading",
+                            "--with-filename",
+                            "--line-number",
+                            "--column",
+                            "--case-sensitive",
+                            "--max-filesize=1M",   -- 跳过大于 1MB 的文件
+                        },
                     },
                 },
             },
             session = {
-                autosave = false,
-                autoload = false,
+                enable = false, -- 关闭snacks自带session相关模块
             },
              -- ===== explorer 文件管理器（替代 oil.nvim / nvim-tree） =====
             explorer = {
@@ -216,19 +252,10 @@ return {
                 width = 40,
                 -- 自动关闭 explorer 当打开文件时（保持行为与之前类似）
                 auto_close = false,
-                -- 显示 git 状态（原 nvim-tree 禁用了，此处也禁用）
-                git = false,
                 -- 是否在 root 目录显示项目名（类似原 root_folder_label）
                 show_root = true,
                 -- 排序方式
                 sort = { "type", "name" },
-                -- 快捷键映射（可保留默认或自定义）
-                mappings = {
-                    ["<CR>"] = "open",
-                    ["<C-c>"] = "close",
-                    ["<C-h>"] = "parent",
-                    ["<C-l>"] = "refresh",
-                },
                 -- 启动时自动聚焦
                 focus = true,
             },
@@ -249,6 +276,18 @@ return {
                 -- 默认 shell 使用系统配置，也可指定
                 -- cmd = vim.g.sysop == "win" and "cmd" or "bash",
             },
+            -- dashboard = {
+            --     enabled = true,
+            --     sections = {
+            --         { section = "header" },
+            --         { section = "keys", gap = 1, padding = 1 },
+            --         { pane = 2, section = "projects", indent = 2, title = "Projects"},
+            --         { section = "startup" },
+            --     },
+            --     -- 整体居中偏移
+            --     row = nil,
+            --     col = nil,
+            -- },
         },
         keys = {
             { "<F12>", function() require("snacks").picker.recent() end, desc = "Find oldfiles" },
@@ -264,7 +303,7 @@ return {
             { "lr", function() require("snacks").picker.lsp_references() end, desc = "LSP references" },
             { "ld", function() require("snacks").picker.lsp_definitions() end, desc = "LSP definitions" },
             { "ls", function() require("snacks").picker.lsp_workspace_symbols() end, desc = "LSP workspace symbols" },
-            { "wp", function() require("snacks").picker.sessions() end, desc = "Sessions" },
+            { "wp", function() require("snacks").picker.projects() end, desc = "Projects" },
             { "wk", function() require("snacks").picker.keymaps() end, desc = "Keymaps" },
             { "rg", function() require("snacks").picker.grep() end, desc = "Live grep" },
             { "rw", function() require("snacks").picker.grep_word() end, desc = "Grep word under cursor" },
