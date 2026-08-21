@@ -70,4 +70,6 @@ alias gtags="gtags --skip-symlink --skip-unreadable -O"
 alias penv="source ~/.venv/bin/activate"
 alias gnomew="XDG_SESSION_TYPE=wayland dbus-run-session gnome-session"
 alias wget="wget2"
+alias dmake='docker run --rm -v $PWD:/work -w /work bekencorp/armino-idk:1.5.1 make'
+alias denv='docker run -it --rm -v $PWD:/work -w /work bekencorp/armino-idk:1.5.1'
 
