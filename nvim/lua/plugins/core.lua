@@ -71,6 +71,7 @@ return {
     },
     {
         "akinsho/bufferline.nvim",
+        enabled = false,
         config = function()
             local inactive_bg = "#606060"
             local inactive_fg = "#e0e0e0"
@@ -143,12 +144,41 @@ return {
             "arkav/lualine-lsp-progress",
         },
         config = function()
+            local inactive_bg = "#606060"
+            local inactive_fg = "#e0e0e0"
+            local selected_bg = "#f59127"
+            local selected_fg = "#000000"
+            local inactive_set = { fg = inactive_fg, bg = inactive_bg, }
+            local active_set = { fg = selected_fg, bg = selected_bg, }
             require('lualine').setup{
                 -- options = { theme = "papercolor_dark" },
                 sections = {
-                    lualine_c = {'filename', 'lsp_progress'},
+                    lualine_c = {{'filename', path=1}, 'lsp_progress'},
                     -- lualine_c = {{'filename', path = 1}},
                     lualine_x = {'searchcount', 'encoding', 'fileformat', 'filetype'},
+                },
+                tabline = {
+                    lualine_a = {
+                        {
+                            'buffers',
+                            mode = 0,
+                            max_length = vim.o.columns, -- 允许缓冲区组件使用整个标签栏宽度
+                            buffers_color = {
+                                active = active_set,   -- 活动缓冲区的颜色
+                                inactive = inactive_set, -- 非活动缓冲区的颜色
+                            },
+                        },
+                    },
+                    lualine_z = {
+                        {
+                            'tabs',
+                            mode = 0,
+                            tabs_color = {
+                                active = active_set,
+                                inactive = inactive_set,
+                            },
+                        },
+                    },
                 },
             }
         end,

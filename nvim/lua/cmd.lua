@@ -170,3 +170,8 @@ vim.api.nvim_create_user_command('TigBlame', function()
     -- })
     -- termb:run(string.format("cd %s && tig blame +%d %s", path, ln, file))
 end, { bang = true })
+
+vim.api.nvim_create_user_command("BufCloseOthers", function(ctx)
+    vim.cmd("%bd|e#")
+end, { desc = "close other buffers" })
+
