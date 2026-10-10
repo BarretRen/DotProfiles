@@ -189,7 +189,7 @@ return {
                         },
                     },
                 },
-                ignore = {
+                exclude = {
                     "vendor/*",
                     "%.lock",
                     "__pycache__/*",
