@@ -192,7 +192,7 @@ return {
                 history = { enabled = false },
                 winblend = 20,
                 layout = {
-                    preset = "mytelescope",
+                    preset = "vertical",
                 },
                 layouts = {
                     mytelescope = {
@@ -220,6 +220,7 @@ return {
                     },
                 },
                 exclude = {
+                    "*.d", "*.o",
                     "vendor/*",
                     "%.lock",
                     "__pycache__/*",

@@ -29,17 +29,12 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
+        lazy = false, -- main分支强制不能懒加载，删掉 ft
         build = ":TSUpdate",
-        ft = { "c", "cpp", "yang", "java"},
         config = function()
-            require'nvim-treesitter.configs'.setup {
-                ensure_installed = { "c", "cpp", "yang", "java"},
+            local ts = require("nvim-treesitter")
+            ts.setup({
                 highlight = {
-                    -- `false` will disable the whole extension
-                    enable = true,
-
-                    -- list of language that will be disabled
-                    --disable = { "lua", "vim" },
                     disable = function(lang, bufnr)
                         if lang == "cmake" or lang == "lua" or lang == "vim" then
                             return true
@@ -49,10 +44,19 @@ return {
                             return false
                         end
                     end,
-
                     additional_vim_regex_highlighting = false,
                 },
-            }
+            })
+            -- 替换原来 ensure_installed
+            ts.install({ "c", "cpp", "yang", "java" })
+            -- ========== 这一段是新增核心！自动开启treesitter高亮 ==========
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = { "c", "cpp", "yang", "java" },
+                callback = function(ev)
+                    -- pcall防止parser没装时报错
+                    pcall(vim.treesitter.start, ev.buf)
+                end
+            })
         end,
     },
     {
