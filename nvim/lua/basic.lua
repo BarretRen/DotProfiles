@@ -81,3 +81,17 @@ vim.opt.laststatus = 2
 vim.opt.showtabline = 1
 -- viminfo
 vim.opt.shada="'50,<50,s10,h,/10,:10"
+-- 强制在 SSH 会话中使用 OSC 52 作为剪贴板 provider
+if vim.env.SSH_TTY ~= nil then
+  vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+      ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+    },
+    paste = {
+      ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+    },
+  }
+end
